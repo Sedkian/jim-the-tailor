@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jim The Tailor | Suit Builder</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="scripts.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1>Suit Builder - Find Your Perfect Suit</h1>
+    </header>
+
+    <main class="fit-finder">
+        <!-- Section for the 360-Degree Suit Display -->
+        <!-- Suit Display Section (Center) -->
+        <section class="suit-display">
+            <h2>Your Suit Preview</h2>
+            <div id="suit-360-view">
+                <!-- Placeholder color square (initially an image) -->
+                <img src="images/default-suit.png" alt="Suit 360 View" id="suit-image">
+            </div>
+            <div class="view-controls">
+                <button onclick="changeView('front')">Front View</button>
+                <button onclick="changeView('back')">Back View</button>
+            </div>
+        </section>
+
+        <!-- Customization Options for Suit Pieces -->
+        <aside class="customization">
+            <h2>Customize Your Suit</h2>
+            <div class="custom-option">
+                <label>Jacket Color:</label>
+                <select id="jacket-color" onchange="updateSuitPreview()">
+                    <option value="navy">Navy</option>
+                    <option value="black">Black</option>
+                    <option value="grey">Grey</option>
+                </select>
+            </div>
+            <div class="custom-option">
+                <label>Pants Size:</label>
+                <input type="number" id="pants-size" placeholder="Choose size">
+            </div>
+            <div class="custom-option">
+                <label>Accessories:</label>
+                <select id="accessory" onchange="updateSuitPreview()">
+                    <option value="none">None</option>
+                    <option value="tie">Tie</option>
+                    <option value="pocket-square">Pocket Square</option>
+                </select>
+            </div>
+        </aside>
+
+        <!-- Measurement Input Form for Sizing -->
+        <section class="size-finder">
+            <h2>Customize Your Size</h2>
+            <form id="size-form">
+                <label for="height">Height (cm):</label>
+                <input type="number" id="height" required>
+                
+                <label for="chest">Chest Width (cm):</label>
+                <input type="number" id="chest" required>
+                
+                <label for="waist">Waist (cm):</label>
+                <input type="number" id="waist" required>
+                
+                <label for="arm-length">Arm Length (cm):</label>
+                <input type="number" id="arm-length" required>
+                
+                <button type="button" onclick="calculateFit()">Calculate Fit</button>
+            </form>
+        </section>
+
+        <!-- Add to Cart Section -->
+        <section class="add-to-cart">
+            <button id="add-to-cart" onclick="addToCart()">Add to Cart</button>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Jim The Tailor - The Future of Suit Shopping</p>
+    </footer>
+</body>
+</html>
