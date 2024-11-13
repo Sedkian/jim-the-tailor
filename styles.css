@@ -159,6 +159,7 @@ footer {
     margin-top: 2rem;
     font-size: 0.9rem;
 }
+
 /* Popup Notification */
 .popup {
     display: none;
@@ -171,4 +172,17 @@ footer {
     border-radius: 4px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     z-index: 1000;
+}
+
+/* Shopping Cart Icon */
+.cart-icon {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 2rem;
+    color: #fff;
+}
+
+.cart-icon:hover {
+    color: #d3d3d3;
 }
