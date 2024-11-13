@@ -159,3 +159,16 @@ footer {
     margin-top: 2rem;
     font-size: 0.9rem;
 }
+/* Popup Notification */
+.popup {
+    display: none;
+    position: fixed;
+    bottom: 1rem;
+    left: 1rem;
+    background-color: #28a745;
+    color: #fff;
+    padding: 1rem;
+    border-radius: 4px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}

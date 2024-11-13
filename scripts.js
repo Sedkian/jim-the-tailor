@@ -27,3 +27,20 @@ function updateSuitPreview() {
     suitImage.style.height = "200px";
     suitImage.style.display = "inline-block"; // Ensure it appears as a square
 }
+
+// Function to add item to cart
+function addToCart() {
+    // For now, just return true
+    const success = true;
+
+    if (success) {
+        // Show popup
+        const popup = document.getElementById("popup");
+        popup.style.display = "block";
+        setTimeout(() => {
+            popup.style.display = "none";
+        }, 3000); // Hide after 3 seconds
+    }
+
+    return success;
+}
