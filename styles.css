@@ -91,6 +91,33 @@ main.fit-finder {
     margin-top: 1rem;
 }
 
+.suit-360-view {
+    position: relative;
+}
+.jacketImage {
+    position: relative;
+    z-index: 2;
+    /* top: 0; */
+}
+.pantsImage {
+    position: relative;
+    top: -120px;
+    z-index: 1;
+    /* left: 30px; */
+}
+
+.custom-option {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    /* margin: 1rem 0; */
+}
+.arrowButton {
+    width: 50px;
+    height: 20px;
+}
+
 /* Temporary */
 #suit-image {
     width: 100%;

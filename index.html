@@ -27,7 +27,10 @@
             <h2>Your Suit Preview</h2>
             <div id="suit-360-view">
                 <!-- Placeholder color square (initially an image) -->
-                <img src="images/default-suit.png" alt="Suit 360 View" id="suit-image">
+                <!-- <img src="images/default-suit.png" alt="Suit 360 View" id="suit-image"> -->
+                <image class="jacketImage" id="jacketImage" src="images/jackets/j0.png"></image>
+                <image class="pantsImage" id="pantsImage" src="images/pants/p0.png"></image>
+
             </div>
             <div class="view-controls">
                 <button onclick="changeView('front')">Front View</button>
@@ -39,6 +42,31 @@
         <aside class="customization">
             <h2>Customize Your Suit</h2>
             <div class="custom-option">
+                <button onclick="changeImage(0,-1)"><img class="arrowButton" src="images/leftArrow.png"></button>
+                <label>Jacket</label>
+                <button onclick="changeImage(0,1)"><img class="arrowButton" src="images/rightArrow.png"></button>
+            </div>
+            <div class="custom-option">
+                <button onclick="changeImage()"><img class="arrowButton" src="images/leftArrow.png"></button>
+                <label>Shirt</label>
+                <button onclick="changeImage()"><img class="arrowButton" src="images/rightArrow.png"></button>
+            </div>
+            <div class="custom-option">
+                <button onclick="changeImage()"><img class="arrowButton" src="images/leftArrow.png"></button>
+                <label>Tie</label>
+                <button onclick="changeImage()"><img class="arrowButton" src="images/rightArrow.png"></button>
+            </div>
+            <div class="custom-option">
+                <button onclick="changeImage(4,-1)"><img class="arrowButton" src="images/leftArrow.png"></button>
+                <label>Pants</label>
+                <button onclick="changeImage(4,1)"><img class="arrowButton" src="images/rightArrow.png"></button>
+            </div>
+            <div class="custom-option">
+                <button onclick="changeImage()"><img class="arrowButton" src="images/leftArrow.png"></button>
+                <label>Shoes</label>
+                <button onclick="changeImage()"><img class="arrowButton" src="images/rightArrow.png"></button>
+            </div>
+            <!-- <div class="custom-option">
                 <label>Jacket Color:</label>
                 <select id="jacket-color" onchange="updateSuitPreview()">
                     <option value="navy">Navy</option>
@@ -57,7 +85,7 @@
                     <option value="tie">Tie</option>
                     <option value="pocket-square">Pocket Square</option>
                 </select>
-            </div>
+            </div> -->
         </aside>
 
         <!-- Measurement Input Form for Sizing -->
