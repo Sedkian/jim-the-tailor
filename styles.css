@@ -155,12 +155,6 @@ button[type="button"]:hover {
     background-color: #e65c00;
 }
 
-/* Footer */
-footer {
-    margin-top: 2rem;
-    font-size: 0.9rem;
-}
-
 /* Popup Notification */
 .popup {
     display: none;
@@ -186,4 +180,46 @@ footer {
 
 .cart-icon:hover {
     color: #d3d3d3;
+}
+
+/* My Shopping Cart  Page */
+main.cart-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2rem auto;
+    max-width: 800px;
+}
+
+.cart-item {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 1rem 0;
+    padding: 1rem;
+    width: 100%;
+}
+
+.cart-item img {
+    max-width: 150px;
+    margin-right: 1rem;
+    border-radius: 8px;
+}
+
+.item-details {
+    flex: 1;
+}
+
+.total-price {
+    margin-top: 2rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+/* Footer */
+footer {
+    margin-top: 2rem;
+    font-size: 0.9rem;
 }
