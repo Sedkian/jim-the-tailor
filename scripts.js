@@ -1,10 +1,18 @@
 // Function to initialize event listeners
 document.addEventListener("DOMContentLoaded", () => {
     const jacketColorSelect = document.getElementById("jacket-color");
-    const suitImage = document.getElementById("suit-image");
+    if (jacketColorSelect) {
+        const suitImage = document.getElementById("suit-image");
 
-    // Set up event listener for jacket color change
-    jacketColorSelect.addEventListener("change", updateSuitPreview);
+        // Set up event listener for jacket color change
+        jacketColorSelect.addEventListener("change", updateSuitPreview);
+    }
+
+    // Initialize the database and display cart items if on cart page
+    if (document.querySelector(".cart-container")) {
+        initializeDatabase();
+        displayCartItems();
+    }
 });
 
 // Function to update the suit preview color square
@@ -26,4 +34,83 @@ function updateSuitPreview() {
     suitImage.style.width = "200px"; // Set the size of the color square
     suitImage.style.height = "200px";
     suitImage.style.display = "inline-block"; // Ensure it appears as a square
+}
+
+// Function to add item to cart
+function addToCart() {
+    // For now, just return true
+    const success = true;
+
+    if (success) {
+        // Show popup
+        const popup = document.getElementById("popup");
+        popup.classList.add("show");
+        setTimeout(() => {
+            popup.classList.remove("show");
+        }, 3000); // Hide after 3 seconds
+    }
+
+    return success;
+}
+
+/* Shopping Cart */
+// Function to initialize the database
+function initializeDatabase() {
+    const items = [
+        {
+            name: "Suit Jacket",
+            type: "jacket",
+            color: "Navy",
+            price: 150,
+            image: "images/suit_jacket.jpg"
+        },
+        {
+            name: "Suit Pants",
+            type: "pants",
+            color: "Black",
+            price: 80,
+            image: "images/suit_pants.png"
+        },
+        {
+            name: "Tie",
+            type: "tie",
+            color: "Red",
+            price: 20,
+            image: "images/suit_tie.png"
+        }
+    ];
+
+    // Store items in local storage
+    localStorage.setItem("items", JSON.stringify(items));
+}
+
+function displayCartItems() {
+    const items = JSON.parse(localStorage.getItem("items"));
+    const cartContainer = document.querySelector(".cart-container");
+
+    let totalPrice = 0;
+
+    items.forEach(item => {
+        const cartItem = document.createElement("div");
+        cartItem.className = "cart-item";
+
+        cartItem.innerHTML = `
+            <img src="${item.image}" alt="${item.name}">
+            <div class="item-details">
+                <h2>${item.name}</h2>
+                <p>Color: ${item.color}</p>
+                <p>Quantity: 1</p>
+                <p>Price: $${item.price} CAD</p>
+            </div>
+        `;
+
+        cartContainer.appendChild(cartItem);
+        totalPrice += item.price;
+    });
+
+    const totalPriceElement = document.createElement("div");
+    totalPriceElement.className = "total-price";
+    totalPriceElement.innerHTML = `<h2>Total Price: $${totalPrice} CAD</h2>`;
+
+    cartContainer.appendChild(totalPriceElement);
 }
