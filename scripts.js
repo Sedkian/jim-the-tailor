@@ -54,6 +54,11 @@ function changeImage(type, direction) {
     }
 }
 
+function measurementSwitchCheck(checkedButton, uncheckedButton){
+    checkedButton.classList.add('checked');
+    uncheckedButton.classList.remove('checked');
+
+}
 // Function to add item to cart
 function addToCart() {
     // For now, just return true

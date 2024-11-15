@@ -92,16 +92,46 @@
         <section class="size-finder">
             <h2>Customize Your Size</h2>
             <form id="size-form">
+                <button type="button" id = "measurementSwitchToCm" class = "sizeOption" onclick="measurementSwitchCheck(this, measurementSwitchToIn)"> cm</button>
+                <button type="button" id = "measurementSwitchToIn" class = "sizeOption" onclick="measurementSwitchCheck(this, measurementSwitchToCm)"> in</button>
+                <label for="height">Height: 
+                    <span class="how-to-measure">how to measure
+                        <div class="tooltip-content">
+                            <img src="images/adult-man.jpg" alt="Height Measurement for man">
+                        <!-- <img src="img/adult-woman.jpg" alt="Height Measurement for adult-woman"> -->
+                            <p>Stand straight and measure from the top of your head to your feet.</p>
+                        </div>
+                    </span>
+                </label>
                 <label for="height">Height (cm):</label>
                 <input type="number" id="height" required>
                 
-                <label for="chest">Chest Width (cm):</label>
+                
+                <label for="chest">Chest Width:
+                    <span class="how-to-measure">how to measure
+                        <div class="tooltip-content">
+                            <p>Measure just under the arms and across the shoulder blades holding the tape measure firm and level. Make sure the tape measure is snug (not tight).</p>
+                        </div>
+                    </span>
+                </label>
                 <input type="number" id="chest" required>
                 
-                <label for="waist">Waist (cm):</label>
+                <label for="waist">Waist:
+                    <span class="how-to-measure">how to measure
+                        <div class="tooltip-content">
+                            <p>Measure around your natural waistline, which is just under your ribs. If you are not sure, you can bend to the side to find where your body natural creases and that is your natural waist.</p>
+                        </div>
+                    </span>
+                </label>
                 <input type="number" id="waist" required>
                 
-                <label for="arm-length">Arm Length (cm):</label>
+                <label for="arm-length">Sleeve Length:
+                    <span class="how-to-measure">how to measure
+                        <div class="tooltip-content">
+                            <p>With arms relaxed at your side and slightly bent, measure from the center back of your neck, over point of shoulder, down the outside of your arm to the wrist.</p>
+                        </div>
+                    </span>
+                </label>
                 <input type="number" id="arm-length" required>
                 
                 <button type="button" onclick="calculateFit()">Calculate Fit</button>

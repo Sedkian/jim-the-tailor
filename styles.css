@@ -197,6 +197,10 @@ button[type="button"]:hover {
     background-color: #218838;
 }
 
+button[type="button"]:hover {
+    background-color: #218838;
+}
+
 /* Add to Cart Section */
 .add-to-cart {
     text-align: center;
