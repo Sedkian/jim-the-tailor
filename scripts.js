@@ -40,17 +40,22 @@ var currentJacket = 0;
 var currentPants = 0;
 
 function changeImage(type, direction) {
-    // changes the currently being displayed jacket base on which button was pressed
-    if(type == 0) {
-        const NUM_JACKETS = 4;
+    if (type === 0) {
+        // Jacket update
+        const NUM_JACKETS = 4; // Assuming 4 jackets available
         const img = document.getElementById("jacketImage");
-        currentJacket = (currentJacket + direction) % NUM_JACKETS;
-        img.src = "images/jackets/j" + currentJacket + ".png";
-    } else if(type == 4) {
-        const NUM_PANTS = 3;
+
+        // Update currentJacket index
+        currentJacket = (currentJacket + direction + NUM_JACKETS) % NUM_JACKETS; // Ensure no negative values
+        img.src = `images/jackets/j${currentJacket}.png`;
+    } else if (type === 4) {
+        // Pants update
+        const NUM_PANTS = 3; // Assuming 3 pants available
         const img = document.getElementById("pantsImage");
-        currentPants = (currentPants + direction) % NUM_PANTS;
-        img.src = "images/pants/p" + currentPants + ".png";
+
+        // Update currentPants index
+        currentPants = (currentPants + direction + NUM_PANTS) % NUM_PANTS; // Ensure no negative values
+        img.src = `images/pants/p${currentPants}.png`;
     }
 }
 
