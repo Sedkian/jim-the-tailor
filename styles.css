@@ -205,6 +205,7 @@ main.cart-container {
     margin: 1rem 0;
     padding: 1rem;
     width: 100%;
+    position: relative; /* Add this to position the delete icon */
 }
 
 .cart-item img {
@@ -216,6 +217,19 @@ main.cart-container {
 
 .item-details {
     flex: 1;
+}
+
+.delete-icon {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: #ff0000;
+}
+
+.delete-icon:hover {
+    color: #cc0000;
 }
 
 .total-price {

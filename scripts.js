@@ -90,7 +90,7 @@ function displayCartItems() {
 
     let totalPrice = 0;
 
-    items.forEach(item => {
+    items.forEach((item, index) => {
         const cartItem = document.createElement("div");
         cartItem.className = "cart-item";
 
@@ -102,15 +102,21 @@ function displayCartItems() {
                 <p>Quantity: 1</p>
                 <p>Price: $${item.price} CAD</p>
             </div>
+            <i class="fas fa-trash delete-icon" onclick="removeCartItem(${index})"></i>
         `;
 
         cartContainer.appendChild(cartItem);
         totalPrice += item.price;
     });
 
-    const totalPriceElement = document.createElement("div");
-    totalPriceElement.className = "total-price";
-    totalPriceElement.innerHTML = `<h2>Total Price: $${totalPrice} CAD</h2>`;
+    const totalPriceElement = document.querySelector(".total-price h2");
+    totalPriceElement.textContent = `Total Price: $${totalPrice} CAD`;
+}
 
-    cartContainer.appendChild(totalPriceElement);
+function removeCartItem(index) {
+    let items = JSON.parse(localStorage.getItem("items"));
+    items.splice(index, 1);
+    localStorage.setItem("items", JSON.stringify(items));
+    document.querySelector(".cart-container").innerHTML = "";
+    displayCartItems();
 }
