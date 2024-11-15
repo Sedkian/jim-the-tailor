@@ -62,21 +62,24 @@ function initializeDatabase() {
             type: "jacket",
             color: "Navy",
             price: 150,
-            image: "images/suit_jacket.jpg"
+            image: "images/suit_jacket.jpg",
+            quantity: 1
         },
         {
             name: "Suit Pants",
             type: "pants",
             color: "Black",
             price: 80,
-            image: "images/suit_pants.png"
+            image: "images/suit_pants.png",
+            quantity: 1
         },
         {
             name: "Tie",
             type: "tie",
             color: "Red",
             price: 20,
-            image: "images/suit_tie.png"
+            image: "images/suit_tie.png",
+            quantity: 1
         }
     ];
 
@@ -99,14 +102,18 @@ function displayCartItems() {
             <div class="item-details">
                 <h2>${item.name}</h2>
                 <p>Color: ${item.color}</p>
-                <p>Quantity: 1</p>
-                <p>Price: $${item.price} CAD</p>
+                <div class="quantity-controls">
+                    <button onclick="decreaseQuantity(${index})">-</button>
+                    <span>${item.quantity}</span>
+                    <button onclick="increaseQuantity(${index})">+</button>
+                </div>
+                <p>Price: $${item.price * item.quantity} CAD</p>
             </div>
             <i class="fas fa-trash delete-icon" onclick="removeCartItem(${index})"></i>
         `;
 
         cartContainer.appendChild(cartItem);
-        totalPrice += item.price;
+        totalPrice += item.price * item.quantity;
     });
 
     const totalPriceElement = document.querySelector(".total-price h2");
@@ -119,4 +126,22 @@ function removeCartItem(index) {
     localStorage.setItem("items", JSON.stringify(items));
     document.querySelector(".cart-container").innerHTML = "";
     displayCartItems();
+}
+
+function increaseQuantity(index) {
+    let items = JSON.parse(localStorage.getItem("items"));
+    items[index].quantity += 1;
+    localStorage.setItem("items", JSON.stringify(items));
+    document.querySelector(".cart-container").innerHTML = "";
+    displayCartItems();
+}
+
+function decreaseQuantity(index) {
+    let items = JSON.parse(localStorage.getItem("items"));
+    if (items[index].quantity > 1) {
+        items[index].quantity -= 1;
+        localStorage.setItem("items", JSON.stringify(items));
+        document.querySelector(".cart-container").innerHTML = "";
+        displayCartItems();
+    }
 }
