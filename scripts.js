@@ -58,7 +58,7 @@ function measurementSwitchCheck(checkedButton, uncheckedButton) {
     checkedButton.classList.add('checked');
     uncheckedButton.classList.remove('checked');
     const sizeForm = document.getElementById('size-form');
-    sizeForm.setAttribute('data-unit', selectedButton.id === "measurementSwitchToCm" ? "cm" : "in");
+    sizeForm.setAttribute('data-unit', checkedButton.id === "measurementSwitchToCm" ? "cm" : "in");
 }
 
 function calculateFit(){
@@ -66,8 +66,8 @@ function calculateFit(){
     let neck = document.getElementById('neck').value;
     let sl = document.getElementById('sleeve-length').value;
     let hip = document.getElementById('hip').value;
-    let inseam = document.getElementById('inseam').value;
-    let waist = document.getElementById('Waist').value;
+    //let inseam = document.getElementById('inseam').value;
+    let waist = document.getElementById('waist').value;
     let sizeForm = document.getElementById('size-form');
     let currentUnit = sizeForm.getAttribute('data-unit');
     if(currentUnit === 'cm'){
@@ -75,7 +75,7 @@ function calculateFit(){
         neck = neck*0.3937;
         sl = sl*0.3937;
         hip = hip*0.3937; 
-        inseam = inseam*0.3937;
+        //inseam = inseam*0.3937;
         waist = waist*0.3937;
     }
 
@@ -89,9 +89,23 @@ function calculateFit(){
     const sleeve = ((sl -32 / 2)) | 0
     const sSize = ((sl - sleeve - 33.5) / 0.5)
     const sizeArr = [Nsize, Csize, Wsize, Hsize, sSize]
-    const jacket = (numbers.reduce((sum, num) => sum + num, 0) / numbers.length) | 0; // Same as pants
+    const jacket = (sizeArr.reduce((sum, num) => sum + num, 0) / sizeArr.length) | 0; // Same as pants
 
+    document.getElementById('pants').value = pants;
+    document.getElementById('suitVest').value = suitVest;
+    document.getElementById('jacket').value = jacket;
 
+    document.getElementById('size-finder').style.display = 'none';
+    document.getElementById('size-selector').style.display = 'block';
+
+}
+
+function goBackToSizeFinder() {
+    const sizeFinder = document.getElementById('size-finder');
+    const sizeSelector = document.getElementById('size-selector');
+
+    sizeFinder.style.display = 'block';  // Hide the size-finder form
+    sizeSelector.style.display = 'none';  // Show the size-selector form
 }
 // Function to add item to cart
 function addToCart() {

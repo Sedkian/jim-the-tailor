@@ -89,11 +89,12 @@
         </aside>
 
         <!-- Measurement Input Form for Sizing -->
-        <section class="size-finder">
+        <section class="size-finder" id = "size-finder">
             <h2>Customize Your Size</h2>
             <form id="size-form">
                 <button type="button" id="measurementSwitchToCm" class="sizeOption" onclick="measurementSwitchCheck(this, measurementSwitchToIn)">cm</button>
                 <button type="button" id="measurementSwitchToIn" class="sizeOption" onclick="measurementSwitchCheck(this, measurementSwitchToCm)">in</button>
+                <input type="hidden" id="data-unit" name="data-unit" value="cm">
 
                 <label for="chest">Chest: 
                     <span class="how-to-measure">how to measure
@@ -109,7 +110,6 @@
                 <label for="neck">Neck:
                     <span class="how-to-measure">how to measure
                         <div class="tooltip-content">
-                            <img src="images/adult-man.jpg" alt="Height Measurement for man">
                             <p>Measure your neck circumference where you would normally button up your shirt.</p>
                         </div>
                     </span>
@@ -119,7 +119,6 @@
                 <label for="sleeve-length">Sleeve Length:
                     <span class="how-to-measure">how to measure
                         <div class="tooltip-content">
-                            <img src="images/adult-man.jpg" alt="Height Measurement for man">
                             <p>With arms relaxed at your side and slightly bent, measure from the center back of your neck, over point of shoulder, down the outside of your arm to the wrist.</p>
                         </div>
                     </span>
@@ -154,11 +153,24 @@
                 </label>
                 <input type="number" id="inseam" required>
                 -->
-                
+
                 <button type="button" class = 'calculateFit' onclick="calculateFit()">Calculate Fit</button>
             </form>
         </section>
 
+        <section id="size-selector" style="display: none">
+            <h2>Size Selector</h2>
+            <form id="size-selector-form">
+                <label for="pants">Pants Size:</label>
+                <input type="number" id="pants" readonly>
+                <label for="suitVest">Suit Vest Size:</label>
+                <input type="number" id="suitVest" readonly>
+                <label for="jacket">Jacket Size:</label>
+                <input type="number" id="jacket" readonly>
+
+                <button type="button" onclick="goBackToSizeFinder()">Go Back</button>
+            </form>
+        </section>
 
     </main>
 

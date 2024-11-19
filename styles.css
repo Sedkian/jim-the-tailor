@@ -165,8 +165,19 @@ label {
 }
 
 /* Size Finder Section (Right) */
+#size-selector{
+    flex: 1;
+    max-width: 25%;
+    margin: 1rem;
+    padding: 1rem;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    order: 3; 
+}
 .size-finder {
     flex: 1;
+    display: block !important;
     max-width: 25%;
     margin: 1rem;
     padding: 1rem;
