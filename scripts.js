@@ -82,30 +82,27 @@ function calculateFit(){
     const suitVest =((chest - 35) / 3) | 0 /*0 = small, 1=Med, 2= large, 3=xl, 4=xxl, 5=xxxl, 6=xxxxl*/ 
     const pants = ((waist - 28) / 4) | 0 /*0 = small, 1=Med, 2= large, 3=xl, 4=xxl,*/ 
 
-    const Nsize = (neck - 14)
-    const Csize = ((chest - 34) / 4)
-    const Wsize = ((waist - 28) / 4)
-    const Hsize = ((hip - 33) / 4)
-    const sleeve = ((sl -32 / 2)) | 0
-    const sSize = ((sl - sleeve - 33.5) / 0.5)
+    const Nsize = Math.max((neck - 14), 0)
+    const Csize = Math.max(((chest - 34) / 4), 0)
+    const Wsize = Math.max(((waist - 28) / 4), 0)
+    const Hsize = Math.max(((hip - 33) / 4), 0)
+    const sleeve = Math.max(((sl -32 / 2)) | 0, 0)
+    const sSize = Math.max(((sl - sleeve - 33.5) / 0.5), 0)
     const sizeArr = [Nsize, Csize, Wsize, Hsize, sSize]
-    const jacket = (sizeArr.reduce((sum, num) => sum + num, 0) / sizeArr.length) | 0; // Same as pants
+    const jacket = Math.max((sizeArr.reduce((sum, num) => sum + num, 0) / sizeArr.length) | 0, 0); // Same as pants
 
     document.getElementById('pants').value = pants;
     document.getElementById('suitVest').value = suitVest;
     document.getElementById('jacket').value = jacket;
 
-    document.getElementById('size-finder').style.display = 'none';
-    document.getElementById('size-selector').style.display = 'block';
+    document.getElementById('size-finder').style.setProperty('display', 'none', 'important');
+    document.getElementById('size-selector').style.setProperty('display', 'block', 'important');
 
 }
 
 function goBackToSizeFinder() {
-    const sizeFinder = document.getElementById('size-finder');
-    const sizeSelector = document.getElementById('size-selector');
-
-    sizeFinder.style.display = 'block';  // Hide the size-finder form
-    sizeSelector.style.display = 'none';  // Show the size-selector form
+    document.getElementById('size-finder').style.setProperty('display', 'block', 'important'); // Hide the size-finder form
+    document.getElementById('size-selector').style.setProperty('display', 'none', 'important');  // Show the size-selector form
 }
 // Function to add item to cart
 function addToCart() {
