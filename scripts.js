@@ -54,9 +54,43 @@ function changeImage(type, direction) {
     }
 }
 
-function measurementSwitchCheck(checkedButton, uncheckedButton){
+function measurementSwitchCheck(checkedButton, uncheckedButton) {
     checkedButton.classList.add('checked');
     uncheckedButton.classList.remove('checked');
+    const sizeForm = document.getElementById('size-form');
+    sizeForm.setAttribute('data-unit', selectedButton.id === "measurementSwitchToCm" ? "cm" : "in");
+}
+
+function calculateFit(){
+    let chest = document.getElementById('chest').value;
+    let neck = document.getElementById('neck').value;
+    let sl = document.getElementById('sleeve-length').value;
+    let hip = document.getElementById('hip').value;
+    let inseam = document.getElementById('inseam').value;
+    let waist = document.getElementById('Waist').value;
+    let sizeForm = document.getElementById('size-form');
+    let currentUnit = sizeForm.getAttribute('data-unit');
+    if(currentUnit === 'cm'){
+        chest = chest*0.3937;
+        neck = neck*0.3937;
+        sl = sl*0.3937;
+        hip = hip*0.3937; 
+        inseam = inseam*0.3937;
+        waist = waist*0.3937;
+    }
+
+    const suitVest =((chest - 35) / 3) | 0 /*0 = small, 1=Med, 2= large, 3=xl, 4=xxl, 5=xxxl, 6=xxxxl*/ 
+    const pants = ((waist - 28) / 4) | 0 /*0 = small, 1=Med, 2= large, 3=xl, 4=xxl,*/ 
+
+    const Nsize = (neck - 14)
+    const Csize = ((chest - 34) / 4)
+    const Wsize = ((waist - 28) / 4)
+    const Hsize = ((hip - 33) / 4)
+    const sleeve = ((sl -32 / 2)) | 0
+    const sSize = ((sl - sleeve - 33.5) / 0.5)
+    const sizeArr = [Nsize, Csize, Wsize, Hsize, sSize]
+    const jacket = (numbers.reduce((sum, num) => sum + num, 0) / numbers.length) | 0; // Same as pants
+
 
 }
 // Function to add item to cart
