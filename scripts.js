@@ -36,26 +36,45 @@ document.addEventListener("DOMContentLoaded", () => {
 //     suitImage.style.display = "inline-block"; // Ensure it appears as a square
 // }
 
+// Price lists for each item category
+const itemPrices = {
+    jacket: [150, 160, 170, 180], // Prices for jacket options
+    shirt: [50, 55, 60], // Prices for shirt options
+    tie: [20, 25, 30], // Prices for tie options
+    pants: [80, 90, 100], // Prices for pants options
+    shoes: [120, 130, 140], // Prices for shoes options
+};
+
 var currentJacket = 0;
+var currentShirt = 0;
+var currentTie = 0;
 var currentPants = 0;
+var currentShoes = 0;
 
 function changeImage(type, direction) {
-    if (type === 0) {
-        // Jacket update
-        const NUM_JACKETS = 4; // Assuming 4 jackets available
-        const img = document.getElementById("jacketImage");
-
-        // Update currentJacket index
-        currentJacket = (currentJacket + direction + NUM_JACKETS) % NUM_JACKETS; // Ensure no negative values
-        img.src = `images/jackets/j${currentJacket}.png`;
-    } else if (type === 4) {
-        // Pants update
-        const NUM_PANTS = 3; // Assuming 3 pants available
-        const img = document.getElementById("pantsImage");
-
-        // Update currentPants index
-        currentPants = (currentPants + direction + NUM_PANTS) % NUM_PANTS; // Ensure no negative values
-        img.src = `images/pants/p${currentPants}.png`;
+    // Handle changes based on the item type
+    if (type === 0) { // Jacket
+        const NUM_JACKETS = 4;
+        currentJacket = (currentJacket + direction + NUM_JACKETS) % NUM_JACKETS;
+        document.getElementById("jacketImage").src = `images/jackets/j${currentJacket}.png`;
+        document.getElementById("jacket-price").innerText = `$${itemPrices.jacket[currentJacket]}`;
+    } else if (type === 1) { // Shirt
+        const NUM_SHIRTS = 3;
+        currentShirt = (currentShirt + direction + NUM_SHIRTS) % NUM_SHIRTS;
+        document.getElementById("shirt-price").innerText = `$${itemPrices.shirt[currentShirt]}`;
+    } else if (type === 2) { // Tie
+        const NUM_TIES = 3;
+        currentTie = (currentTie + direction + NUM_TIES) % NUM_TIES;
+        document.getElementById("tie-price").innerText = `$${itemPrices.tie[currentTie]}`;
+    } else if (type === 4) { // Pants
+        const NUM_PANTS = 3;
+        currentPants = (currentPants + direction + NUM_PANTS) % NUM_PANTS;
+        document.getElementById("pantsImage").src = `images/pants/p${currentPants}.png`;
+        document.getElementById("pants-price").innerText = `$${itemPrices.pants[currentPants]}`;
+    } else if (type === 5) { // Shoes
+        const NUM_SHOES = 3;
+        currentShoes = (currentShoes + direction + NUM_SHOES) % NUM_SHOES;
+        document.getElementById("shoes-price").innerText = `$${itemPrices.shoes[currentShoes]}`;
     }
 }
 
