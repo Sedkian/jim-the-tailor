@@ -142,34 +142,43 @@
                     </span>
                 </label>
                 <input type="number" id="hip" required>
-
-                <!--
-                <label for="inseam">Inseam:
-                    <span class="how-to-measure">how to measure
-                        <div class="tooltip-content">
-                            <p>Measure from crotch to the bottom of your foot. If you don't have someone to help you - take your favorite pair of well-fitting pants and measure them! Make sure they are smoothed out flat and measure from the crotch to the bottom of the hem.</p>
-                        </div>
-                    </span>
-                </label>
-                <input type="number" id="inseam" required>
-                -->
-
                 <button type="button" class = 'calculateFit' onclick="calculateFit()">Calculate Fit</button>
             </form>
         </section>
 
         <section id="size-selector" style="display: none">
             <h2>Size Selector</h2>
-            <form id="size-selector-form">
-                <label for="pants">Pants Size:</label>
-                <input type="number" id="pants" readonly>
-                <label for="suitVest">Suit Vest Size:</label>
-                <input type="number" id="suitVest" readonly>
-                <label for="jacket">Jacket Size:</label>
-                <input type="number" id="jacket" readonly>
+            <div id = "pants-size" class = "size-select-cot">Pants Size
+                <p>
+                <button class = "size-select-btn"> S </button>
+                <button class = "size-select-btn"> M </button>
+                <button class = "size-select-btn"> L </button>
+                <button class = "size-select-btn"> XL </button>
+                <button class = "size-select-btn"> 2XL </button>
+                </p>
+            </div>
+            <div id = "vest-size" class = "size-select-cot">Suit Vest Size:
+                <p>
+                <button class = "size-select-btn"> S </button>
+                <button class = "size-select-btn"> M </button>
+                <button class = "size-select-btn"> L </button>
+                <button class = "size-select-btn"> XL </button>
+                <button class = "size-select-btn"> 2XL </button>
+                <button class = "size-select-btn"> 3XL </button>
+                <button class = "size-select-btn"> 4XL </button>
+                </p>
+            </div>
+            <div id = "jacket-size" class = "size-select-cot">Jacket Size:
+                <p>
+                <button class = "size-select-btn"> S </button>
+                <button class = "size-select-btn"> M </button>
+                <button class = "size-select-btn"> L </button>
+                <button class = "size-select-btn"> XL </button>
+                <button class = "size-select-btn"> 2XL </button>
 
-                <button type="button" class = 'calculateFit' onclick="goBackToSizeFinder()">Go Back</button>
-            </form>
+                </p>
+            </div>
+            <button type="button" class = 'calculateFit' onclick="goBackToSizeFinder()">Go Back</button>
         </section>
 
     </main>

@@ -275,6 +275,20 @@ button.calculateFit:hover {
     background-color: #218838;
 }
 
+.size-select-btn {
+    background-color: lightgray;
+    padding: 10px 20px;
+    margin: 5px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .size-select-btn.selected {
+    background-color: green;
+    color: white;
+  }
+
+
 /* Add to Cart Section */
 .add-to-cart {
     text-align: center;
