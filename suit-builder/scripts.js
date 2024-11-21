@@ -1,4 +1,4 @@
-import { initializeDatabase } from "./database/database.js";
+import { initializeDatabase } from "../database/database.js";
 
 // Function to initialize event listeners
 document.addEventListener("DOMContentLoaded", () => {
