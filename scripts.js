@@ -36,21 +36,45 @@ document.addEventListener("DOMContentLoaded", () => {
 //     suitImage.style.display = "inline-block"; // Ensure it appears as a square
 // }
 
+// Price lists for each item category
+const itemPrices = {
+    jacket: [150, 160, 170, 180], // Prices for jacket options
+    shirt: [50, 55, 60], // Prices for shirt options
+    tie: [20, 25, 30], // Prices for tie options
+    pants: [80, 90, 100], // Prices for pants options
+    shoes: [120, 130, 140], // Prices for shoes options
+};
+
 var currentJacket = 0;
+var currentShirt = 0;
+var currentTie = 0;
 var currentPants = 0;
+var currentShoes = 0;
 
 function changeImage(type, direction) {
-    // changes the currently being displayed jacket base on which button was pressed
-    if(type == 0) {
+    // Handle changes based on the item type
+    if (type === 0) { // Jacket
         const NUM_JACKETS = 4;
-        const img = document.getElementById("jacketImage");
-        currentJacket = (currentJacket + direction) % NUM_JACKETS;
-        img.src = "images/jackets/j" + currentJacket + ".png";
-    } else if(type == 4) {
+        currentJacket = (currentJacket + direction + NUM_JACKETS) % NUM_JACKETS;
+        document.getElementById("jacketImage").src = `images/jackets/j${currentJacket}.png`;
+        document.getElementById("jacket-price").innerText = `$${itemPrices.jacket[currentJacket]}`;
+    } else if (type === 1) { // Shirt
+        const NUM_SHIRTS = 3;
+        currentShirt = (currentShirt + direction + NUM_SHIRTS) % NUM_SHIRTS;
+        document.getElementById("shirt-price").innerText = `$${itemPrices.shirt[currentShirt]}`;
+    } else if (type === 2) { // Tie
+        const NUM_TIES = 3;
+        currentTie = (currentTie + direction + NUM_TIES) % NUM_TIES;
+        document.getElementById("tie-price").innerText = `$${itemPrices.tie[currentTie]}`;
+    } else if (type === 4) { // Pants
         const NUM_PANTS = 3;
-        const img = document.getElementById("pantsImage");
-        currentPants = (currentPants + direction) % NUM_PANTS;
-        img.src = "images/pants/p" + currentPants + ".png";
+        currentPants = (currentPants + direction + NUM_PANTS) % NUM_PANTS;
+        document.getElementById("pantsImage").src = `images/pants/p${currentPants}.png`;
+        document.getElementById("pants-price").innerText = `$${itemPrices.pants[currentPants]}`;
+    } else if (type === 5) { // Shoes
+        const NUM_SHOES = 3;
+        currentShoes = (currentShoes + direction + NUM_SHOES) % NUM_SHOES;
+        document.getElementById("shoes-price").innerText = `$${itemPrices.shoes[currentShoes]}`;
     }
 }
 

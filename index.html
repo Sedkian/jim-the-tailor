@@ -35,60 +35,77 @@
                 <image class="shoesImage" id="shoesImage" src="images/shoes/f0.png"></image>
 
             </div>
-            <div class="view-controls">
-                <button onclick="changeView('front')">Front View</button>
-                <button onclick="changeView('back')">Back View</button>
-            </div>
         </section>
 
-        <!-- Customization Options for Suit Pieces -->
-        <aside class="customization">
+    <!-- Customization Options for Suit Pieces -->
+    <aside class="customization">
             <h2>Customize Your Suit</h2>
+            <p class="scroll-instruction">Use the arrows to view different options</p>
+            
             <div class="custom-option">
-                <button onclick="changeImage(0,-1)"><img class="arrowButton" src="images/leftArrow.png"></button>
-                <label>Jacket</label>
-                <button onclick="changeImage(0,1)"><img class="arrowButton" src="images/rightArrow.png"></button>
+                <button onclick="changeImage(0, -1)">
+                    <img class="arrowButton" src="images/leftArrow.png">
+                </button>
+                <div class="item-container">
+                    <label for="jacket">Jacket</label>
+                    <span id="jacket-price">$150</span> <!-- Price for Jacket -->
+                </div>
+                <button onclick="changeImage(0, 1)">
+                    <img class="arrowButton" src="images/rightArrow.png">
+                </button>
             </div>
+        
             <div class="custom-option">
-                <button onclick="changeImage()"><img class="arrowButton" src="images/leftArrow.png"></button>
-                <label>Shirt</label>
-                <button onclick="changeImage()"><img class="arrowButton" src="images/rightArrow.png"></button>
+                <button onclick="changeImage(1, -1)">
+                    <img class="arrowButton" src="images/leftArrow.png">
+                </button>
+                <div class="item-container">
+                    <label for="shirt">Shirt</label>
+                    <span id="shirt-price">$50</span> <!-- Price for Shirt -->
+                </div>
+                <button onclick="changeImage(1, 1)">
+                    <img class="arrowButton" src="images/rightArrow.png">
+                </button>
             </div>
+        
             <div class="custom-option">
-                <button onclick="changeImage()"><img class="arrowButton" src="images/leftArrow.png"></button>
-                <label>Tie</label>
-                <button onclick="changeImage()"><img class="arrowButton" src="images/rightArrow.png"></button>
+                <button onclick="changeImage(2, -1)">
+                    <img class="arrowButton" src="images/leftArrow.png">
+                </button>
+                <div class="item-container">
+                    <label for="tie">Tie</label>
+                    <span id="tie-price">$20</span> <!-- Price for Tie -->
+                </div>
+                <button onclick="changeImage(2, 1)">
+                    <img class="arrowButton" src="images/rightArrow.png">
+                </button>
             </div>
+        
             <div class="custom-option">
-                <button onclick="changeImage(4,-1)"><img class="arrowButton" src="images/leftArrow.png"></button>
-                <label>Pants</label>
-                <button onclick="changeImage(4,1)"><img class="arrowButton" src="images/rightArrow.png"></button>
+                <button onclick="changeImage(4, -1)">
+                    <img class="arrowButton" src="images/leftArrow.png">
+                </button>
+                <div class="item-container">
+                    <label for="pants">Pants</label>
+                    <span id="pants-price">$80</span> <!-- Price for Pants -->
+                </div>
+                <button onclick="changeImage(4, 1)">
+                    <img class="arrowButton" src="images/rightArrow.png">
+                </button>
             </div>
+        
             <div class="custom-option">
-                <button onclick="changeImage()"><img class="arrowButton" src="images/leftArrow.png"></button>
-                <label>Shoes</label>
-                <button onclick="changeImage()"><img class="arrowButton" src="images/rightArrow.png"></button>
+                <button onclick="changeImage(5, -1)">
+                    <img class="arrowButton" src="images/leftArrow.png">
+                </button>
+                <div class="item-container">
+                    <label for="shoes">Shoes</label>
+                    <span id="shoes-price">$120</span> <!-- Price for Shoes -->
+                </div>
+                <button onclick="changeImage(5, 1)">
+                    <img class="arrowButton" src="images/rightArrow.png">
+                </button>
             </div>
-            <!-- <div class="custom-option">
-                <label>Jacket Color:</label>
-                <select id="jacket-color" onchange="updateSuitPreview()">
-                    <option value="navy">Navy</option>
-                    <option value="black">Black</option>
-                    <option value="grey">Grey</option>
-                </select>
-            </div>
-            <div class="custom-option">
-                <label>Pants Size:</label>
-                <input type="number" id="pants-size" placeholder="Choose size">
-            </div>
-            <div class="custom-option">
-                <label>Accessories:</label>
-                <select id="accessory" onchange="updateSuitPreview()">
-                    <option value="none">None</option>
-                    <option value="tie">Tie</option>
-                    <option value="pocket-square">Pocket Square</option>
-                </select>
-            </div> -->
         </aside>
 
         <!-- Measurement Input Form for Sizing -->
