@@ -215,20 +215,67 @@ function addToCart() {
 function initializeDatabase() {
     const items = [
         {
-            name: "Suit Jacket",
+            name: "Slim Trim Jacket",
             type: "jacket",
-            color: "Navy",
+            color: "Black",
             price: 150,
-            image: "images/suit_jacket.jpg",
-            quantity: 1
+            image: "images/jackets/j0.png",
+            quantity: 1,
+            rating: 4
         },
         {
-            name: "Suit Pants",
+            name: "Modern Trim Jacket",
+            type: "jacket",
+            color: "Grey",
+            price: 150,
+            image: "images/jackets/j1.png",
+            quantity: 1,
+            rating: 5
+        },
+        {
+            name: "Jetted Jacket",
+            type: "jacket",
+            color: "Blue",
+            price: 150,
+            image: "images/jackets/j2.png",
+            quantity: 1,
+            rating: 2
+        },
+        {
+            name: "Center Vent Jacket",
+            type: "jacket",
+            color: "Brown",
+            price: 150,
+            image: "images/jackets/j3.png",
+            quantity: 1,
+            rating: 3
+        },
+        {
+            name: "Slim Fit Pants",
             type: "pants",
-            color: "Black",
+            color: "Grey",
             price: 80,
-            image: "images/suit_pants.png",
-            quantity: 1
+            image: "images/pants/p0.png",
+            quantity: 1,
+            rating: 3
+        },
+        {
+            name: "Modern Fit Pants",
+            type: "pants",
+            color: "Brown",
+            price: 80,
+            image: "images/pants/p1.png",
+            quantity: 1,
+            rating: 3
+        },
+        {
+            name: "Comfy Fit Pants",
+            type: "pants",
+            color: "Red/White",
+            price: 80,
+            image: "images/pants/p2.png",
+            quantity: 1,
+            rating: 3
         },
         {
             name: "Tie",
@@ -236,7 +283,8 @@ function initializeDatabase() {
             color: "Red",
             price: 20,
             image: "images/suit_tie.png",
-            quantity: 1
+            quantity: 1,
+            rating: 5
         }
     ];
 
