@@ -173,14 +173,24 @@ function goBackToSizeFinder() {
     document.getElementById('size-selector').style.setProperty('display', 'none', 'important');  // Show the size-selector form
 }
 
+function switchToSelector() {
+    document.getElementById('size-finder').style.setProperty('display', 'none', 'important');
+    document.getElementById('size-selector').style.setProperty('display', 'block', 'important');
+}
+
 //Event listener for size select, when select one, deselect everthing else
 const buttonGroups = document.querySelectorAll('.size-select-cot');
 buttonGroups.forEach(group => {
     group.addEventListener('click', (event) => {
         if (event.target.classList.contains('size-select-btn')) {
             const buttons = group.querySelectorAll('.size-select-btn');
-            buttons.forEach(button => button.classList.remove('selected'));
-            event.target.classList.add('selected');
+            if (event.target.classList.contains('selected')){
+                event.target.classList.remove('selected');
+            } else {
+                buttons.forEach(button => button.classList.remove('selected'));
+                event.target.classList.add('selected');
+            }
+           
         }
     });
 });
