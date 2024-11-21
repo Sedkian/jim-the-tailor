@@ -1,3 +1,5 @@
+import { initializeDatabase } from "./database/database.js";
+
 // Function to initialize event listeners
 document.addEventListener("DOMContentLoaded", () => {
     const jacketColorSelect = document.getElementById("jacket-color");
@@ -211,87 +213,6 @@ function addToCart() {
 }
 
 /* Shopping Cart */
-// Function to initialize the database
-function initializeDatabase() {
-    const items = [
-        {
-            name: "Slim Trim Jacket",
-            type: "jacket",
-            color: "Black",
-            price: 150,
-            image: "images/jackets/j0.png",
-            quantity: 1,
-            rating: 4
-        },
-        {
-            name: "Modern Trim Jacket",
-            type: "jacket",
-            color: "Grey",
-            price: 150,
-            image: "images/jackets/j1.png",
-            quantity: 1,
-            rating: 5
-        },
-        {
-            name: "Jetted Jacket",
-            type: "jacket",
-            color: "Blue",
-            price: 150,
-            image: "images/jackets/j2.png",
-            quantity: 1,
-            rating: 2
-        },
-        {
-            name: "Center Vent Jacket",
-            type: "jacket",
-            color: "Brown",
-            price: 150,
-            image: "images/jackets/j3.png",
-            quantity: 1,
-            rating: 3
-        },
-        {
-            name: "Slim Fit Pants",
-            type: "pants",
-            color: "Grey",
-            price: 80,
-            image: "images/pants/p0.png",
-            quantity: 1,
-            rating: 3
-        },
-        {
-            name: "Modern Fit Pants",
-            type: "pants",
-            color: "Brown",
-            price: 80,
-            image: "images/pants/p1.png",
-            quantity: 1,
-            rating: 3
-        },
-        {
-            name: "Comfy Fit Pants",
-            type: "pants",
-            color: "Red/White",
-            price: 80,
-            image: "images/pants/p2.png",
-            quantity: 1,
-            rating: 3
-        },
-        {
-            name: "Tie",
-            type: "tie",
-            color: "Red",
-            price: 20,
-            image: "images/suit_tie.png",
-            quantity: 1,
-            rating: 5
-        }
-    ];
-
-    // Store items in local storage
-    localStorage.setItem("items", JSON.stringify(items));
-}
-
 function displayCartItems() {
     const items = JSON.parse(localStorage.getItem("items"));
     const cartContainer = document.querySelector(".cart-container");
