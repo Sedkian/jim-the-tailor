@@ -54,6 +54,121 @@ function changeImage(type, direction) {
     }
 }
 
+function measurementSwitchCheck(checkedButton, uncheckedButton) {
+    checkedButton.classList.add('checked');
+    uncheckedButton.classList.remove('checked');
+    const sizeForm = document.getElementById('size-form');
+    sizeForm.setAttribute('data-unit', checkedButton.id === "measurementSwitchToCm" ? "cm" : "in");
+}
+
+function calculateFit(){
+    let chest = document.getElementById('chest').value;
+    let neck = document.getElementById('neck').value;
+    let sl = document.getElementById('sleeve-length').value;
+    let hip = document.getElementById('hip').value;
+    let waist = document.getElementById('waist').value;
+    let sizeForm = document.getElementById('size-form');
+    let currentUnit = sizeForm.getAttribute('data-unit');
+    if(currentUnit === 'cm'){
+        chest = chest*0.3937;
+        neck = neck*0.3937;
+        sl = sl*0.3937;
+        hip = hip*0.3937; 
+        waist = waist*0.3937;
+    }
+
+    let suitVest =((chest - 35) / 3) | 0 /*0 = small, 1=Med, 2= large, 3=xl, 4=xxl, 5=xxxl, 6=xxxxl*/ 
+    let pants = ((waist - 28) / 4) | 0 /*0 = small, 1=Med, 2= large, 3=xl, 4=xxl,*/ 
+
+    const Nsize = (neck - 14)
+    const Csize = ((chest - 34) / 4)
+    const Wsize = ((waist - 28) / 4)
+    const Hsize = ((hip - 33) / 4)
+    const sleeve = ((sl -32 / 2)) | 0
+    const sSize = ((sl - sleeve - 33.5) / 0.5)
+    const sizeArr = [Nsize, Csize, Wsize, Hsize, sSize]
+    let jacket = Math.max((sizeArr.reduce((sum, num) => sum + num, 0) / sizeArr.length) | 0, 0); // Same as pants
+
+    if(suitVest < 0){
+        userConfirmed = confirm("Vest size smaller than we can provied, would you accpet one that is larger?");
+        if (userConfirmed) {
+            suitVest = 0
+        } else {
+            return
+        }
+    } else if (suitVest > 6){
+        userConfirmed = confirm("Vest size larger than we can provied, would you accpet one that is smaller?");
+        if (userConfirmed) {
+            suitVest = 6
+        } else {
+            return
+        }
+    }
+    if(pants < 0){
+        userConfirmed = confirm("Vest size smaller than we can provied, would you accpet one that is larger?");
+        if (userConfirmed) {
+            pants = 0
+        } else {
+            return
+        }
+    } else if( pants > 4){
+        userConfirmed = confirm("Vest size larger than we can provied, would you accpet one that is smaller?");
+        if (userConfirmed) {
+            pants = 4
+        } else {
+            return
+        }
+    }
+    if(jacket < 0){
+        userConfirmed = confirm("Vest size smaller than we can provied, would you accpet a larger one?");
+        if (userConfirmed) {
+            jacket = 0
+        } else {
+            return
+        }
+    } else if(jacket > 4){
+        userConfirmed = confirm("Vest size larger than we can provied, would you accpet a smaller one?");
+        if (userConfirmed) {
+            jacket = 0
+        } else {
+            return
+        }
+    }
+
+    preselectButton("pants-size", pants)
+    preselectButton("vest-size", suitVest)
+    preselectButton("jacket-size", jacket)
+
+    document.getElementById('size-finder').style.setProperty('display', 'none', 'important');
+    document.getElementById('size-selector').style.setProperty('display', 'block', 'important');
+
+}
+
+function goBackToSizeFinder() {
+    document.getElementById('size-finder').style.setProperty('display', 'block', 'important'); // Hide the size-finder form
+    document.getElementById('size-selector').style.setProperty('display', 'none', 'important');  // Show the size-selector form
+}
+
+//Event listener for size select, when select one, deselect everthing else
+const buttonGroups = document.querySelectorAll('.size-select-cot');
+buttonGroups.forEach(group => {
+    group.addEventListener('click', (event) => {
+        if (event.target.classList.contains('size-select-btn')) {
+            const buttons = group.querySelectorAll('.size-select-btn');
+            buttons.forEach(button => button.classList.remove('selected'));
+            event.target.classList.add('selected');
+        }
+    });
+});
+//pre select size based on calculation
+function preselectButton(groupId, index) {
+    const group = document.getElementById(groupId);
+    const buttons = group.querySelectorAll('.size-select-btn');
+    buttons.forEach(button => button.classList.remove('selected'));
+    buttons[index].classList.add('selected');
+}
+
+
 // Function to add item to cart
 function addToCart() {
     // For now, just return true

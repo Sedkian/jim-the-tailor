@@ -89,25 +89,97 @@
         </aside>
 
         <!-- Measurement Input Form for Sizing -->
-        <section class="size-finder">
+        <section class="size-finder" id = "size-finder">
             <h2>Customize Your Size</h2>
             <form id="size-form">
-                <label for="height">Height (cm):</label>
-                <input type="number" id="height" required>
-                
-                <label for="chest">Chest Width (cm):</label>
+                <button type="button" id="measurementSwitchToCm" class="sizeOption" onclick="measurementSwitchCheck(this, measurementSwitchToIn)">cm</button>
+                <button type="button" id="measurementSwitchToIn" class="sizeOption" onclick="measurementSwitchCheck(this, measurementSwitchToCm)">in</button>
+                <input type="hidden" id="data-unit" name="data-unit" value="cm">
+
+                <label for="chest">Chest: 
+                    <span class="how-to-measure">how to measure
+                        <div class="tooltip-content">
+                            <img src="images/adult-man.jpg" alt="Height Measurement for man">
+                        <!-- <img src="img/adult-woman.jpg" alt="Height Measurement for adult-woman"> -->
+                            <p>Measure just under the arms and across the shoulder blades holding the tape measure firm and level. Make sure the tape measure is snug (not tight).</p>
+                        </div>
+                    </span>
+                </label>
                 <input type="number" id="chest" required>
                 
-                <label for="waist">Waist (cm):</label>
+                <label for="neck">Neck:
+                    <span class="how-to-measure">how to measure
+                        <div class="tooltip-content">
+                            <p>Measure your neck circumference where you would normally button up your shirt.</p>
+                        </div>
+                    </span>
+                </label>
+                <input type="number" id="neck" required>
+                
+                <label for="sleeve-length">Sleeve Length:
+                    <span class="how-to-measure">how to measure
+                        <div class="tooltip-content">
+                            <p>With arms relaxed at your side and slightly bent, measure from the center back of your neck, over point of shoulder, down the outside of your arm to the wrist.</p>
+                        </div>
+                    </span>
+                </label>
+                <input type="number" id="sleeve-length" required>
+                
+                <label for="waist">Waist:
+                    <span class="how-to-measure">how to measure
+                        <div class="tooltip-content">
+                            <p>Measure around your natural waistline, which is just under your ribs. If you are not sure, you can bend to the side to find where your body natural creases and that is your natural waist.</p>
+                        </div>
+                    </span>
+                </label>
                 <input type="number" id="waist" required>
-                
-                <label for="arm-length">Arm Length (cm):</label>
-                <input type="number" id="arm-length" required>
-                
-                <button type="button" onclick="calculateFit()">Calculate Fit</button>
+
+                <label for="hip">Hip:
+                    <span class="how-to-measure">how to measure
+                        <div class="tooltip-content">
+                            <p>With your feet hip-width apart, measure around the fullest part of your hips.</p>
+                        </div>
+                    </span>
+                </label>
+                <input type="number" id="hip" required>
+                <button type="button" class = 'calculateFit' onclick="calculateFit()">Calculate Fit</button>
             </form>
         </section>
 
+        <section id="size-selector" style="display: none">
+            <h2>Size Selector</h2>
+            <div id = "pants-size" class = "size-select-cot">Pants Size
+                <p>
+                <button class = "size-select-btn"> S </button>
+                <button class = "size-select-btn"> M </button>
+                <button class = "size-select-btn"> L </button>
+                <button class = "size-select-btn"> XL </button>
+                <button class = "size-select-btn"> 2XL </button>
+                </p>
+            </div>
+            <div id = "vest-size" class = "size-select-cot">Shirt Size:
+                <p>
+                <button class = "size-select-btn"> S </button>
+                <button class = "size-select-btn"> M </button>
+                <button class = "size-select-btn"> L </button>
+                <button class = "size-select-btn"> XL </button>
+                <button class = "size-select-btn"> 2XL </button>
+                <button class = "size-select-btn"> 3XL </button>
+                <button class = "size-select-btn"> 4XL </button>
+                </p>
+            </div>
+            <div id = "jacket-size" class = "size-select-cot">Jacket Size:
+                <p>
+                <button class = "size-select-btn"> S </button>
+                <button class = "size-select-btn"> M </button>
+                <button class = "size-select-btn"> L </button>
+                <button class = "size-select-btn"> XL </button>
+                <button class = "size-select-btn"> 2XL </button>
+
+                </p>
+            </div>
+            <button type="button" class = 'calculateFit' onclick="goBackToSizeFinder()">Go Back</button>
+        </section>
 
     </main>
 
