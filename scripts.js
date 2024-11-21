@@ -265,6 +265,7 @@ function displayCartItems() {
                     <button onclick="increaseQuantity(${index})">+</button>
                 </div>
                 <p>Price: $${item.price * item.quantity} CAD</p>
+                <div class="rating">${generateStars(item.rating)}</div>
             </div>
             <i class="fas fa-trash delete-icon" onclick="removeCartItem(${index})"></i>
         `;
@@ -275,6 +276,18 @@ function displayCartItems() {
 
     const totalPriceElement = document.querySelector(".total-price h2");
     totalPriceElement.textContent = `Total Price: $${totalPrice} CAD`;
+}
+
+function generateStars(rating) {
+    let stars = '';
+    for (let i = 0; i < 5; i++) {
+        if (i < rating) {
+            stars += '<i class="fas fa-star"></i>';
+        } else {
+            stars += '<i class="far fa-star"></i>';
+        }
+    }
+    return stars;
 }
 
 function removeCartItem(index) {
