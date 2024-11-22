@@ -92,21 +92,34 @@ main.fit-finder {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     order: 2; /* Center this section */
     max-height: 950px;
+    max-height: 950px;
 }
 
+/* #suit-360-view img {
 /* #suit-360-view img {
     width: 100%;
     max-width: 300px;
     margin-top: 1rem;
     height: 100%;
     max-height: 300px;
+    height: 100%;
+    max-height: 300px;
     overflow: hidden;
+} */
 } */
 
 .suit-360-view {
     position: relative;
 }
 .tieImage {
+    position: absolute;
+    z-index: 3;
+    top: auto;
+    left: auto;
+    transform: translate(-50%, 0%);
+    height: 55%;
+    width: auto;
+    /* top: -825px; */
     position: absolute;
     z-index: 3;
     top: auto;
@@ -126,13 +139,27 @@ main.fit-finder {
     height: 55%;
     width: auto;
     /* top: -410px; */
+    position: absolute;
+    z-index: 4;
+    top: auto;
+    left: auto;
+    transform: translate(-50%, 0%);
+    height: 55%;
+    width: auto;
+    /* top: -410px; */
     /* object-fit: scale-down; */
     /* top: 0; */
 }
 
 .shirtImage {
     position: absolute;
+    position: absolute;
     z-index: 1;
+    top: auto;
+    left: auto;
+    transform: translate(-50%, 0%);
+    height: 55%;
+    width: auto;
     top: auto;
     left: auto;
     transform: translate(-50%, 0%);
@@ -142,7 +169,14 @@ main.fit-finder {
 
 .pantsImage {
     position: absolute;
+    position: absolute;
     z-index: 2;
+    top: auto;
+    left: auto;
+    transform: translate(-50%, 0%);
+    height: 55%;
+    width: auto;
+    /* top: -1000px; */
     top: auto;
     left: auto;
     transform: translate(-50%, 0%);
@@ -153,7 +187,14 @@ main.fit-finder {
 
 .shoesImage {
     position: absolute;
+    position: absolute;
     z-index: 1;
+    top: auto;
+    left: auto;
+    transform: translate(-50%, 0%);
+    height: 55%;
+    width: auto;
+    /* top: -1050px; */
     top: auto;
     left: auto;
     transform: translate(-50%, 0%);
