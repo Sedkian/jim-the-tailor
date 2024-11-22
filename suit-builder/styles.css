@@ -151,27 +151,6 @@ main.fit-finder {
     height: 20px;
 }
 
-/* Temporary */
-#suit-image {
-    width: 100%;
-    max-width: 300px;
-    height: auto;
-    background-color: transparent;
-    display: inline-block;
-    border-radius: 8px;
-}
-
-.jacketImage {
-    position: relative;
-    z-index: 2;
-}
-
-.pantsImage {
-    position: relative;
-    top: -120px;
-    z-index: 1;
-}
-
 /* Customization Section (Left) */
 .customization {
     flex: 1;
