@@ -20,6 +20,11 @@ document.addEventListener("DOMContentLoaded", () => {
     if (cartContainer) {
         displayCartItems();
     }
+
+    const clearCartButton = document.getElementById('clear-cart');
+    if (clearCartButton) {
+        clearCartButton.addEventListener('click', clearCart);
+    }
 });
 
 var currentJacket = 0;
