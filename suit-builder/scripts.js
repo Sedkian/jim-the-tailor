@@ -146,6 +146,10 @@ window.calculateFit = function() {
     document.getElementById('size-finder').style.setProperty('display', 'none', 'important');
     document.getElementById('size-selector').style.setProperty('display', 'block', 'important');
 }
+window.switchToSelector = function() {
+    document.getElementById('size-finder').style.setProperty('display', 'none', 'important');
+    document.getElementById('size-selector').style.setProperty('display', 'block', 'important');
+}
 
 window.goBackToSizeFinder = function() {
     document.getElementById('size-finder').style.setProperty('display', 'block', 'important'); // Hide the size-finder form
@@ -159,8 +163,12 @@ function initializeEventListeners() {
         group.addEventListener('click', (event) => {
             if (event.target.classList.contains('size-select-btn')) {
                 const buttons = group.querySelectorAll('.size-select-btn');
-                buttons.forEach(button => button.classList.remove('selected'));
-                event.target.classList.add('selected');
+                if (event.target.classList.contains('selected')){
+                    event.target.classList.remove('selected');
+                } else {
+                    buttons.forEach(button => button.classList.remove('selected'));
+                    event.target.classList.add('selected');
+                }
             }
         });
     });
