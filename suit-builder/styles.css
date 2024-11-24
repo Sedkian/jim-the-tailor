@@ -291,6 +291,17 @@ label {
     display: block;
 }
 
+.range-info {
+    font-size: 0.85rem;
+    color: red;
+    margin-left: 10px;
+}
+.error-message-size {
+    color: red;
+    font-size: 0.9rem;
+    margin-left: 10px;
+}
+
 button.sizeOption {
     background-color: #28a745;
     color: #fff;
