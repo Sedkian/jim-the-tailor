@@ -114,53 +114,72 @@
                 <button type="button" id="measurementSwitchToCm" class="sizeOption" onclick="measurementSwitchCheck(this, measurementSwitchToIn)">cm</button>
                 <button type="button" id="measurementSwitchToIn" class="sizeOption" onclick="measurementSwitchCheck(this, measurementSwitchToCm)">in</button>
                 <input type="hidden" id="data-unit" name="data-unit" value="cm">
+                <div>
+                    <label for="chest">Chest: 
+                        <span class="how-to-measure">how to measure
+                            <div class="tooltip-content">
+                            <!-- <img src="images/adult-man.jpg" alt="Height Measurement for man"> -->
+                            <!-- <img src="img/adult-woman.jpg" alt="Height Measurement for adult-woman"> -->
+                                <p>Measure just under the arms and across the shoulder blades holding the tape measure firm and level. Make sure the tape measure is snug (not tight).</p>
+                            </div>
+                        </span>
+                    </label>
+                    <input type="number" id="chest" data-cm-min=89 data-cm-max=132 data-in-min = 34 data-in-max = 52 required>
+                    <span class="range-info" style="display: none;"></span>
+                    <span class="error-message-size" style="display: none;">Invalid chest size!</span>
+                </div>
 
-                <label for="chest">Chest: 
-                    <span class="how-to-measure">how to measure
-                        <div class="tooltip-content">
-                        <!--     <img src="images/adult-man.jpg" alt="Height Measurement for man"> -->
-                        <!-- <img src="img/adult-woman.jpg" alt="Height Measurement for adult-woman"> -->
-                            <p>Measure just under the arms and across the shoulder blades holding the tape measure firm and level. Make sure the tape measure is snug (not tight).</p>
-                        </div>
-                    </span>
-                </label>
-                <input type="number" id="chest" required>
-                
-                <label for="neck">Neck:
-                    <span class="how-to-measure">how to measure
-                        <div class="tooltip-content">
-                            <p>Measure your neck circumference where you would normally button up your shirt.</p>
-                        </div>
-                    </span>
-                </label>
-                <input type="number" id="neck" required>
+                <div>
+                    <label for="neck">Neck:
+                        <span class="how-to-measure">how to measure
+                            <div class="tooltip-content">
+                                <p>Measure your neck circumference where you would normally button up your shirt.</p>
+                            </div>
+                        </span>
+                    </label>
+                    <input type="number" id="neck" data-cm-min=40 data-cm-max=51 data-in-min = 14 data-in-max = 18.5 required>
+                    <span class="range-info" style="display: none;"></span>
+                    <span class="error-message-size" style="display: none;">Invalid neck size!</span>
+                </div>
 
-                <label for="sleeve-length">Sleeve Length:
-                    <span class="how-to-measure">how to measure
-                        <div class="tooltip-content">
-                            <p>With arms relaxed at your side and slightly bent, measure from the center back of your neck, over point of shoulder, down the outside of your arm to the wrist.</p>
-                        </div>
-                    </span>
-                </label>
-                <input type="number" id="sleeve-length" required>
+                <div>
+                    <label for="sleeve-length">Sleeve Length:
+                        <span class="how-to-measure">how to measure
+                            <div class="tooltip-content">
+                                <p>With arms relaxed at your side and slightly bent, measure from the center back of your neck, over point of shoulder, down the outside of your arm to the wrist.</p>
+                            </div>
+                        </span>
+                    </label>
+                    <input type="number" id="sleeve-length" data-cm-min=89 data-cm-max=98 data-in-min = 33 data-in-max = 37 required>
+                    <span class="range-info" style="display: none;"></span>
+                    <span class="error-message-size" style="display: none;">Invalid sleeve length!</span>
+                </div>
 
-                <label for="waist">Waist:
-                    <span class="how-to-measure">how to measure
-                        <div class="tooltip-content">
-                            <p>Measure around your natural waistline, which is just under your ribs. If you are not sure, you can bend to the side to find where your body natural creases and that is your natural waist.</p>
-                        </div>
-                    </span>
-                </label>
-                <input type="number" id="waist" required>
+                <div>
+                    <label for="waist">Waist:
+                        <span class="how-to-measure">how to measure
+                            <div class="tooltip-content">
+                                <p>Measure around your natural waistline, which is just under your ribs. If you are not sure, you can bend to the side to find where your body natural creases and that is your natural waist.</p>
+                            </div>
+                        </span>
+                    </label>
+                    <input type="number" id="waist" data-cm-min=75 data-cm-max=124 data-in-min = 28 data-in-max = 49 required>
+                    <span class="range-info" style="display: none;"></span>
+                    <span class="error-message-size" style="display: none;">Invalid waist size!</span>
+                </div>
 
-                <label for="hip">Hip:
-                    <span class="how-to-measure">how to measure
-                        <div class="tooltip-content">
-                            <p>With your feet hip-width apart, measure around the fullest part of your hips.</p>
-                        </div>
-                    </span>
-                </label>
-                <input type="number" id="hip" required>
+                <div>
+                    <label for="hip">Hip:
+                        <span class="how-to-measure">how to measure
+                            <div class="tooltip-content">
+                                <p>With your feet hip-width apart, measure around the fullest part of your hips.</p>
+                            </div>
+                        </span>
+                    </label>
+                    <input type="number" id="hip" data-cm-min=81 data-cm-max=124 data-in-min = 33 data-in-max = 49 required>
+                    <span class="range-info" style="display: none;"></span>
+                    <span class="error-message-size" style="display: none;">Invalid hip size!</span>
+                </div>
                 <button type="button" class = 'calculateFit' onclick="calculateFit()">Calculate Your Size</button>
                 <button type="button" class = 'calculateFit' onclick="switchToSelector()">Select Your Size</button>
             </form>
@@ -186,7 +205,7 @@
                 <button class = "size-select-btn"> XL </button>
                 <button class = "size-select-btn"> 2XL </button>
                 <button class = "size-select-btn"> 3XL </button>
-                <button class = "size-select-btn"> 4XL </button>
+                <!-- <button class = "size-select-btn"> 4XL </button> -->
                 </p>
             </div>
             <div id = "jacket-size" class = "size-select-cot">Jacket Size:

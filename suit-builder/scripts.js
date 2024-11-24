@@ -73,7 +73,7 @@ window.calculateFit = function() {
     let waist = document.getElementById('waist').value;
     let sizeForm = document.getElementById('size-form');
     let currentUnit = sizeForm.getAttribute('data-unit');
-    if(currentUnit === 'cm'){
+    if(currentUnit !== 'in'){
         chest = chest*0.3937;
         neck = neck*0.3937;
         sl = sl*0.3937;
@@ -81,18 +81,21 @@ window.calculateFit = function() {
         waist = waist*0.3937;
     }
 
-    let suitVest =((chest - 35) / 3) | 0 /*0 = small, 1=Med, 2= large, 3=xl, 4=xxl, 5=xxxl, 6=xxxxl*/ 
-    let pants = ((waist - 28) / 4) | 0 /*0 = small, 1=Med, 2= large, 3=xl, 4=xxl,*/ 
+    const vestN = ((neck-14) / 0.9)
+    const vestC = ((chest-34) / 3.6)
+    const vestW = ((waist-28) / 4.1)
+    let sizeArrC = [vestN, vestC, vestW]
+    let suitVest =(sizeArrC.reduce((sum, num) => sum + num, 0) / sizeArrC.length) | 0  /*0 = small, 1=Med, 2= large, 3=xl, 4=xxl, 5=xxxl, 6=xxxxl*/ 
+    let pants = ((waist - 28) / 4.5) | 0 /*0 = small, 1=Med, 2= large, 3=xl, 4=xxl,*/ 
 
     const Nsize = (neck - 14)
     const Csize = ((chest - 34) / 4)
     const Wsize = ((waist - 28) / 4)
     const Hsize = ((hip - 33) / 4)
-    const sleeve = ((sl -32 / 2)) | 0
-    const sSize = ((sl - sleeve - 33.5) / 0.5)
-    const sizeArr = [Nsize, Csize, Wsize, Hsize, sSize]
-    let jacket = Math.max((sizeArr.reduce((sum, num) => sum + num, 0) / sizeArr.length) | 0, 0); // Same as pants
-
+    const sleeve = ((sl -32) / 2.5) | 0
+    const sSize = ((sl - sleeve - 33) / 0.5)
+    let  sizeArr = [Nsize, Csize, Wsize, Hsize, sSize]
+    let jacket = (sizeArr.reduce((sum, num) => sum + num, 0) / sizeArr.length) | 0 // Same as pants
     if(suitVest < 0){
         userConfirmed = confirm("Vest size smaller than we can provide, would you accept one that is larger?");
         if (userConfirmed) {
@@ -100,10 +103,10 @@ window.calculateFit = function() {
         } else {
             return
         }
-    } else if (suitVest > 6){
+    } else if (suitVest > 5){
         userConfirmed = confirm("Vest size larger than we can provide, would you accept one that is smaller?");
         if (userConfirmed) {
-            suitVest = 6
+            suitVest = 5
         } else {
             return
         }
@@ -173,6 +176,49 @@ function initializeEventListeners() {
         });
     });
 }
+//Check user input every time they enter something
+function updateRangeInfo(input) {//This is for range info
+    const unit = document.getElementById('size-form').getAttribute('data-unit') ==='in' ? 'in' : 'cm';
+    const min = input.getAttribute(`data-${unit}-min`);
+    const max = input.getAttribute(`data-${unit}-max`);
+    const rangeInfo = input.nextElementSibling;
+    rangeInfo.textContent = `(${unit} range: ${min} - ${max})`;
+}
+document.querySelectorAll('input[type="number"]').forEach(input => {
+    const defaultOption = document.getElementById('measurementSwitchToCm');
+    if (defaultOption) {
+        defaultOption.classList.add('checked');
+    }
+    updateRangeInfo(input);
+});
+//When click the size option, change the text used for range suggest
+document.querySelectorAll('.sizeOption').forEach(button => {
+    button.addEventListener('click', () => {
+        document.querySelectorAll('input[type="number"]').forEach(input => {
+            updateRangeInfo(input);
+        });
+    });
+});
+document.getElementById('size-form').addEventListener('input', function (event) {
+    const input = event.target;
+    if (!input.matches('input[type="number"]')) return;
+    const unit = document.getElementById('size-form').getAttribute('data-unit') ==='in' ? 'in' : 'cm';
+    const min = parseFloat(input.getAttribute(`data-${unit}-min`));
+    const max = parseFloat(input.getAttribute(`data-${unit}-max`));
+    const value = parseFloat(input.value);
+    const errorMessage = input.nextElementSibling.nextElementSibling;
+    const rangeinfo = input.nextElementSibling;
+
+    if (isNaN(value) || ( value < min || value > max)) {
+        errorMessage.style.display = 'inline';
+        rangeinfo.style.display = 'inline';
+        input.style.borderColor = 'red';
+    } else {
+        errorMessage.style.display = 'none';
+        rangeinfo.style.display = 'none';
+        input.style.borderColor = '';
+    }
+});
 
 //pre select size based on calculation
 window.preselectButton = function(groupId, index) {
