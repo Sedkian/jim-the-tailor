@@ -3,6 +3,11 @@ document.addEventListener("DOMContentLoaded", () => {
     // Initialize the database
     initializeDatabase();
 
+    const sizeForm = document.getElementById('size-form');
+    if (sizeForm) {
+        sizeForm.addEventListener('input', validateInput);
+    }
+
     const addToCartButton = document.getElementById('add-to-cart');
     if (addToCartButton) {
         addToCartButton.addEventListener('click', function() {
@@ -204,17 +209,17 @@ document.querySelectorAll('.sizeOption').forEach(button => {
         });
     });
 });
-document.getElementById('size-form').addEventListener('input', function (event) {
+function validateInput(event) {
     const input = event.target;
     if (!input.matches('input[type="number"]')) return;
-    const unit = document.getElementById('size-form').getAttribute('data-unit') ==='in' ? 'in' : 'cm';
+    const unit = document.getElementById('size-form').getAttribute('data-unit') === 'in' ? 'in' : 'cm';
     const min = parseFloat(input.getAttribute(`data-${unit}-min`));
     const max = parseFloat(input.getAttribute(`data-${unit}-max`));
     const value = parseFloat(input.value);
     const errorMessage = input.nextElementSibling.nextElementSibling;
     const rangeinfo = input.nextElementSibling;
 
-    if (isNaN(value) || ( value < min || value > max)) {
+    if (isNaN(value) || (value < min || value > max)) {
         errorMessage.style.display = 'inline';
         rangeinfo.style.display = 'inline';
         input.style.borderColor = 'red';
@@ -223,7 +228,7 @@ document.getElementById('size-form').addEventListener('input', function (event) 
         rangeinfo.style.display = 'none';
         input.style.borderColor = '';
     }
-});
+}
 
 //pre select size based on calculation
 window.preselectButton = function(groupId, index) {
