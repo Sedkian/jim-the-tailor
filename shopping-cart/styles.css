@@ -21,7 +21,7 @@ main.cart-container {
 
 .cart-item img {
     width: 200px;
-    height: 200px;
+    height: auto;
     margin-right: 1rem;
     border-radius: 8px;
 }

@@ -81,7 +81,7 @@ main.fit-finder {
 }
 
 /* Suit Display (Center) */
-.suit-display {
+/* .suit-display {
     flex: 1;
     max-width: 40%;
     text-align: center;
@@ -90,53 +90,134 @@ main.fit-finder {
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    order: 2; /* Center this section */
-    max-height: 60%;
+    order: 2; /* Center this section 
+    max-height: 950px;
+    max-height: 950px;
+} */
+
+.suit-display {
+    flex: 1; 
+    max-width: 40%; 
+    text-align: center;
+    margin: 1rem;
+    padding: 1rem;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    order: 2;
 }
 
-#suit-360-view img {
+body {
+    transform: scale(1);
+    transform-origin: 0 0; 
+}
+
+/* #suit-360-view img {
+/* #suit-360-view img {
     width: 100%;
     max-width: 300px;
     margin-top: 1rem;
-    /* height: 100%;
-    max-height: 300px; */
+    height: 100%;
+    max-height: 300px;
+    height: 100%;
+    max-height: 300px;
     overflow: hidden;
-}
+} */
+} */
 
 .suit-360-view {
     position: relative;
 }
 .tieImage {
-    position: relative;
-    z-index: 2;
-    top: -825px;
+    position: absolute;
+    z-index: 3;
+    top: auto;
+    left: auto;
+    transform: translate(-50%, 0%);
+    height: 45%;
+    width: auto;
+    /* top: -825px; */
+    position: absolute;
+    z-index: 3;
+    top: auto;
+    left: auto;
+    transform: translate(-50%, 0%);
+    height: 55%;
+    width: auto;
+    /* top: -825px; */
 }
 
 .jacketImage {
-    position: relative;
-    z-index: 3;
-    top: -410px;
+    position: absolute;
+    z-index: 4;
+    top: auto;
+    left: auto;
+    transform: translate(-50%, 0%);
+    height: 45%;
+    width: auto;
+    /* top: -410px; */
+    position: absolute;
+    z-index: 4;
+    top: auto;
+    left: auto;
+    transform: translate(-50%, 0%);
+    height: 55%;
+    width: auto;
+    /* top: -410px; */
     /* object-fit: scale-down; */
     /* top: 0; */
 }
 
 .shirtImage {
-    position: relative;
+    position: absolute;
+    position: absolute;
     z-index: 1;
+    top: auto;
+    left: auto;
+    transform: translate(-50%, 0%);
+    height: 45%;
+    width: auto;
+    top: auto;
+    left: auto;
+    transform: translate(-50%, 0%);
+    height: 55%;
+    width: auto;
 }
 
 .pantsImage {
-    position: relative;
-    top: -1000px;
+    position: absolute;
+    position: absolute;
     z-index: 2;
-    /* object-fit: scale-down; */
-    /* left: 30px; */
+    top: auto;
+    left: auto;
+    transform: translate(-50%, 0%);
+    height: 45%;
+    width: auto;
+    /* top: -1000px; */
+    top: auto;
+    left: auto;
+    transform: translate(-50%, 0%);
+    height: 55%;
+    width: auto;
+    /* top: -1000px; */
 }
 
 .shoesImage {
-    position: relative;
+    position: absolute;
+    position: absolute;
     z-index: 1;
-    top: -1070px;
+    top: auto;
+    left: auto;
+    transform: translate(-50%, 0%);
+    height: 45%;
+    width: auto;
+    /* top: -1050px; */
+    top: auto;
+    left: auto;
+    transform: translate(-50%, 0%);
+    height: 55%;
+    width: auto;
+    /* top: -1050px; */
 }
 
 .custom-option {
@@ -154,7 +235,7 @@ main.fit-finder {
 /* Customization Section (Left) */
 .customization {
     flex: 1;
-    max-width: 25%;
+    max-width: 30%;
     margin: 1rem;
     padding: 1rem;
     background-color: #fff;
@@ -174,7 +255,15 @@ label {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 1rem 0;
+    margin-top: 0%;
+    margin-bottom: 1rem;
+}
+
+.item-label {
+    display: block;
+    text-align: center;
+    margin-bottom: 0%;
+    font-size: larger;
 }
 
 .item-container {
@@ -232,7 +321,7 @@ label {
 .size-finder {
     flex: 1;
     display: block !important;
-    max-width: 25%;
+    max-width: 30%;
     margin: 1rem;
     padding: 1rem;
     background-color: #fff;
@@ -359,6 +448,8 @@ button.calculateFit:hover {
 .add-to-cart {
     text-align: center;
     margin: 1rem 0;
+    position: relative;
+    /* top: -120px; */
 }
 
 #add-to-cart {
