@@ -114,15 +114,7 @@ body {
     transform: translate(-50%, 0%);
     height: 45%;
     width: auto;
-    /* top: -825px; */
-    position: absolute;
-    z-index: 3;
-    top: auto;
-    left: auto;
-    transform: translate(-50%, 0%);
-    height: 45%;
-    width: auto;
-    /* top: -825px; */
+    opacity: 1;
 }
 
 .jacketImage {
@@ -133,21 +125,10 @@ body {
     transform: translate(-50%, 0%);
     height: 45%;
     width: auto;
-    /* top: -410px; */
-    position: absolute;
-    z-index: 4;
-    top: auto;
-    left: auto;
-    transform: translate(-50%, 0%);
-    height: 45%;
-    width: auto;
-    /* top: -410px; */
-    /* object-fit: scale-down; */
-    /* top: 0; */
+    opacity: 1;
 }
 
 .shirtImage {
-    position: absolute;
     position: absolute;
     z-index: 1;
     top: auto;
@@ -155,15 +136,10 @@ body {
     transform: translate(-50%, 0%);
     height: 45%;
     width: auto;
-    top: auto;
-    left: auto;
-    transform: translate(-50%, 0%);
-    height: 45%;
-    width: auto;
+    opacity: 1;
 }
 
 .pantsImage {
-    position: absolute;
     position: absolute;
     z-index: 2;
     top: auto;
@@ -171,17 +147,10 @@ body {
     transform: translate(-50%, 0%);
     height: 45%;
     width: auto;
-    /* top: -1000px; */
-    top: auto;
-    left: auto;
-    transform: translate(-50%, 0%);
-    height: 45%;
-    width: auto;
-    /* top: -1000px; */
+    opacity: 1;
 }
 
 .shoesImage {
-    position: absolute;
     position: absolute;
     z-index: 1;
     top: auto;
@@ -189,13 +158,7 @@ body {
     transform: translate(-50%, 0%);
     height: 45%;
     width: auto;
-    /* top: -1050px; */
-    top: auto;
-    left: auto;
-    transform: translate(-50%, 0%);
-    height: 45%;
-    width: auto;
-    /* top: -1050px; */
+    opacity: 1;
 }
 
 .custom-option {
@@ -239,9 +202,19 @@ label {
 
 .item-label {
     display: block;
-    text-align: center;
     margin-bottom: 0%;
     font-size: larger;
+    font-weight: bold;
+}
+.item-toggle-button {
+    border: none;
+    cursor: pointer;
+    appearance: none;
+    background-color: inherit;
+}
+.item-toggle-button-image {
+    height: 17px;
+    width: auto;
 }
 
 .item-container {
