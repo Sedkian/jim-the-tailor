@@ -31,30 +31,35 @@ window.changeImage = function(type, direction) {
         currentJacket = (currentJacket + direction + NUM_JACKETS) % NUM_JACKETS;
         document.getElementById("jacketImage").src = Jackets[currentJacket].image;
         document.getElementById("jacket-price").innerText = `$${Jackets[currentJacket].price}`;
+        document.getElementById("jacket-name").innerText = `${Jackets[currentJacket].name}`;
     } else if (type === 1) { // Shirt
         const Shirts = getShirts();
         const NUM_SHIRTS = Shirts.length;
         currentShirt = (currentShirt + direction + NUM_SHIRTS) % NUM_SHIRTS;
         document.getElementById("shirtImage").src = Shirts[currentShirt].image;
         document.getElementById("shirt-price").innerText = `$${Shirts[currentShirt].price}`;
+        document.getElementById("shirt-name").innerText = `${Shirts[currentShirt].name}`;
     } else if (type === 2) { // Tie
         const Ties = getTies();
         const NUM_TIES = Ties.length;
         currentTie = (currentTie + direction + NUM_TIES) % NUM_TIES;
         document.getElementById("tieImage").src = Ties[currentTie].image;
         document.getElementById("tie-price").innerText = `$${Ties[currentTie].price}`;
+        document.getElementById("tie-name").innerText = `${Ties[currentTie].name}`;
     } else if (type === 4) { // Pants
         const Pants = getPants();
         const NUM_PANTS = Pants.length;
         currentPants = (currentPants + direction + NUM_PANTS) % NUM_PANTS;
         document.getElementById("pantsImage").src = Pants[currentPants].image;
         document.getElementById("pants-price").innerText = `$${Pants[currentPants].price}`;
+        document.getElementById("pants-name").innerText = `${Pants[currentPants].name}`;
     } else if (type === 5) { // Shoes
         const Shoes = getShoes();
         const NUM_SHOES = Shoes.length;
         currentShoes = (currentShoes + direction + NUM_SHOES) % NUM_SHOES;
         document.getElementById("shoesImage").src = Shoes[currentShoes].image;
         document.getElementById("shoes-price").innerText = `$${Shoes[currentShoes].price}`;
+        document.getElementById("shoes-name").innerText = `${Shoes[currentShoes].name}`;
     }
 }
 
@@ -390,7 +395,7 @@ const jacketsDatabase = [
         name: "Modern Trim Jacket",
         type: "jacket",
         color: "Grey",
-        price: 150,
+        price: 180,
         image: "../database/images/jackets/j1.png",
         rating: 5
     },
@@ -399,7 +404,7 @@ const jacketsDatabase = [
         name: "Jetted Jacket",
         type: "jacket",
         color: "Blue",
-        price: 150,
+        price: 160,
         image: "../database/images/jackets/j2.png",
         rating: 2
     },
@@ -408,7 +413,7 @@ const jacketsDatabase = [
         name: "Center Vent Jacket",
         type: "jacket",
         color: "Brown",
-        price: 150,
+        price: 200,
         image: "../database/images/jackets/j3.png",
         rating: 3
     },
@@ -417,7 +422,7 @@ const jacketsDatabase = [
         name: "Tailored Jacket",
         type: "jacket",
         color: "Black",
-        price: 150,
+        price: 220,
         image: "../database/images/jackets/j4.png",
         rating: 4
     },
@@ -426,7 +431,7 @@ const jacketsDatabase = [
         name: "Classic Jacket",
         type: "jacket",
         color: "Black",
-        price: 150,
+        price: 110,
         image: "../database/images/jackets/j5.png",
         rating: 5
     },
@@ -435,7 +440,7 @@ const jacketsDatabase = [
         name: "Slim Trim Jacket",
         type: "jacket",
         color: "Grey",
-        price: 150,
+        price: 80,
         image: "../database/images/jackets/j6.png",
         rating: 2
     },
@@ -444,7 +449,7 @@ const jacketsDatabase = [
         name: "Modern Trim Jacket",
         type: "jacket",
         color: "Blue",
-        price: 150,
+        price: 300,
         image: "../database/images/jackets/j7.png",
         rating: 3
     },
@@ -453,7 +458,7 @@ const jacketsDatabase = [
         name: "Jetted Jacket",
         type: "jacket",
         color: "Brown",
-        price: 150,
+        price: 170,
         image: "../database/images/jackets/j8.png",
         rating: 4
     },
@@ -465,8 +470,8 @@ const pantsDatabase = [
         id: "pant0",
         name: "Slim Trim Pant",
         type: "pant",
-        color: "Black",
-        price: 100,
+        color: "Grey",
+        price: 80,
         image: "../database/images/pants/p0.png",
         rating: 5
     },
@@ -474,7 +479,7 @@ const pantsDatabase = [
         id: "pant1",
         name: "Modern Trim Pant",
         type: "pant",
-        color: "Grey",
+        color: "Beige",
         price: 100,
         image: "../database/images/pants/p1.png",
         rating: 4
@@ -483,10 +488,46 @@ const pantsDatabase = [
         id: "pant2",
         name: "Jetted Pant",
         type: "pant",
-        color: "Blue",
-        price: 100,
+        color: "Red",
+        price: 75,
         image: "../database/images/pants/p2.png",
         rating: 3
+    },
+    {
+        id: "pant3",
+        name: "Formal Pant",
+        type: "pant",
+        color: "Black",
+        price: 100,
+        image: "../database/images/pants/p3.png",
+        rating: 5
+    },
+    {
+        id: "pant4",
+        name: "Casual Pant",
+        type: "pant",
+        color: "Blue",
+        price: 80,
+        image: "../database/images/pants/p4.png",
+        rating: 5
+    },
+    {
+        id: "pant5",
+        name: "Modern Trim Pant",
+        type: "pant",
+        color: "Coral",
+        price: 90,
+        image: "../database/images/pants/p5.png",
+        rating: 2
+    },
+    {
+        id: "pant6",
+        name: "Fun Jetted Pant",
+        type: "pant",
+        color: "Pink",
+        price: 75,
+        image: "../database/images/pants/p6.png",
+        rating: 4
     },
 ];
 
@@ -497,7 +538,7 @@ const shirtsDatabase = [
         name: "Slim Trim Shirt",
         type: "shirt",
         color: "Black",
-        price: 40,
+        price: 50,
         image: "../database/images/shirts/s0.png",
         rating: 2
     },
@@ -573,7 +614,7 @@ const shoesDatabase = [
         name: "Slim Trim Shoe",
         type: "shoe",
         color: "Black",
-        price: 80,
+        price: 120,
         image: "../database/images/shoes/f0.png",
         rating: 4
     },
@@ -591,7 +632,7 @@ const shoesDatabase = [
         name: "Jetted Shoe",
         type: "shoe",
         color: "Blue",
-        price: 80,
+        price: 100,
         image: "../database/images/shoes/f2.png",
         rating: 2
     }
@@ -612,7 +653,7 @@ const tiesDatabase = [
         name: "Modern Trim Tie",
         type: "tie",
         color: "Grey",
-        price: 30,
+        price: 50,
         image: "../database/images/ties/t1.png",
         rating: 4
     },
@@ -621,7 +662,7 @@ const tiesDatabase = [
         name: "Jetted Tie",
         type: "tie",
         color: "Blue",
-        price: 30,
+        price: 65,
         image: "../database/images/ties/t2.png",
         rating: 5
     },
@@ -630,7 +671,7 @@ const tiesDatabase = [
         name: "Center Vent Tie",
         type: "tie",
         color: "Brown",
-        price: 30,
+        price: 40,
         image: "../database/images/ties/t3.png",
         rating: 2
     },
@@ -648,7 +689,7 @@ const tiesDatabase = [
         name: "Classic Tie",
         type: "tie",
         color: "Black",
-        price: 30,
+        price: 90,
         image: "../database/images/ties/t5.png",
         rating: 4
     },
@@ -657,7 +698,7 @@ const tiesDatabase = [
         name: "Slim Trim Tie",
         type: "tie",
         color: "Grey",
-        price: 30,
+        price: 25,
         image: "../database/images/ties/t6.png",
         rating: 5
     } 
