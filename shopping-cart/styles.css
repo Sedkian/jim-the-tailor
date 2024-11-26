@@ -91,9 +91,14 @@ main.cart-container {
     margin-right: 0.2rem;
 }
 
+.button-container {
+    display: flex; /* Align items horizontally */
+    justify-content: center; /* Center the buttons horizontally */
+    gap: 1rem; /* Add space between buttons */
+    margin-top: 1rem; /* Add space above the buttons */
+}
+
 .clear-cart-button {
-    position: absolute;
-    right: 0;
     background-color: #ff0000;
     color: #fff;
     border: none;
@@ -101,7 +106,7 @@ main.cart-container {
     padding: 0.5rem 1rem;
     cursor: pointer;
     font-size: 1rem;
-    margin-right: 30%;
+    transition: background-color 0.3s;
 }
 
 .clear-cart-button:hover {
@@ -115,9 +120,7 @@ main.cart-container {
     padding: 15px 32px; /* Some padding */
     text-align: center; /* Centered text */
     text-decoration: none; /* Remove underline */
-    display: inline-block; /* Make the button inline-block */
     font-size: 16px; /* Increase font size */
-    margin: 10px 2px; /* Some margin */
     cursor: pointer; /* Pointer/hand icon */
     border-radius: 4px; /* Rounded corners */
     transition: background-color 0.3s; /* Smooth transition */
@@ -128,30 +131,33 @@ main.cart-container {
 }
 
 .checkout-modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
+    position: fixed; /* Ensures the modal is fixed to the viewport */
+    top: 0;          /* Position from the top of the viewport */
+    left: 0;         /* Position from the left of the viewport */
+    width: 100%;     /* Full width of the viewport */
+    height: 100vh;   /* Full height of the viewport (visible area) */
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    display: flex;   /* Flexbox for centering */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    z-index: 1000;   /* Ensure it's above other elements */
+    overflow: hidden; /* Prevent scrolling within the modal */
 }
 
 .checkout-modal-content {
-    background-color: white;
-    padding: 20px;
-    border-radius: 5px;
-    text-align: center;
+    background-color: white; /* Modal background */
+    padding: 20px;          /* Padding around content */
+    border-radius: 5px;     /* Rounded corners */
+    text-align: center;     /* Center text content */
+    max-width: 90%;         /* Make modal responsive */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25); /* Add a subtle shadow */
 }
 
 .checkout-modal-content button {
-    margin: 10px;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
+    margin: 10px;           /* Spacing between buttons */
+    padding: 10px 20px;     /* Button padding */
+    font-size: 16px;        /* Font size for buttons */
+    cursor: pointer;        /* Change cursor on hover */
 }
 
 #pay-button {

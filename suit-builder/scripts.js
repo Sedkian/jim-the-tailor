@@ -21,11 +21,6 @@ document.addEventListener("DOMContentLoaded", () => {
         displayCartItems();
     }
 
-    const clearCartButton = document.getElementById('clear-cart');
-    if (clearCartButton) {
-        clearCartButton.addEventListener('click', clearCart);
-    }
-
     const suitCustomization = document.getElementById('suit-customization');
     if (suitCustomization) {
         updateItemDetails();
@@ -541,6 +536,27 @@ function displayCartItems() {
         return;
     }
 
+    // Create a button container
+    const buttonContainer = document.createElement('div');
+    buttonContainer.className = 'button-container';
+
+    // Add the checkout button
+    const checkoutButton = document.createElement('button');
+    checkoutButton.className = 'checkout-button';
+    checkoutButton.textContent = 'Checkout';
+    checkoutButton.onclick = () => handleCheckout(totalPrice);
+    buttonContainer.appendChild(checkoutButton);
+
+    // Add the clear cart button
+    const clearCartButton = document.createElement('button');
+    clearCartButton.className = 'clear-cart-button';
+    clearCartButton.textContent = 'Clear Cart';
+    clearCartButton.onclick = () => clearCart();
+    buttonContainer.appendChild(clearCartButton);
+
+    // Append the button container to the cart
+    cartContainer.appendChild(buttonContainer);
+
     cart.forEach((item, index) => {
         const cartItem = document.createElement('div');
         cartItem.className = 'cart-item';
@@ -568,15 +584,12 @@ function displayCartItems() {
     if (totalPriceElement) {
         totalPriceElement.textContent = `Total Price: $${totalPrice} CAD`;
     }
-    // Add a checkout button
-    const checkoutButton = document.createElement('button');
-    checkoutButton.className = 'checkout-button';
-    checkoutButton.textContent = 'Checkout';
-    checkoutButton.onclick = () => handleCheckout(totalPrice);
-    cartContainer.appendChild(checkoutButton);
 }
 
 function handleCheckout(totalPrice) {
+    // Lock scrolling
+    document.body.style.overflow = 'hidden';
+
     // Create the checkout modal
     const checkoutModal = document.createElement('div');
     checkoutModal.className = 'checkout-modal';
@@ -592,45 +605,79 @@ function handleCheckout(totalPrice) {
 
     // Add event listeners for the buttons
     document.getElementById('pay-button').addEventListener('click', () => {
-        // Prompt the user to pay
-        alert("Thank you for your order! Your order was paid successfully.");
+        // Remove the checkout modal
+        document.body.removeChild(checkoutModal);
+
+        // Create the thank-you and review modal
+        const thankYouModal = document.createElement('div');
+        thankYouModal.className = 'checkout-modal';
+        thankYouModal.innerHTML = `
+            <div class="checkout-modal-content">
+                <h2>Thank You for Your Order!</h2>
+                <p>Your order has been successfully placed. We appreciate your support!</p>
+                <h3>But Wait!</h3>
+                <p>We'd love to hear your thoughts! Please leave us a review and make our day brighter 🌟.</p>
+                <textarea id="review-text" placeholder="Write your review here..." rows="4" style="width: 100%; margin-top: 10px;"></textarea>
+                <div style="margin-top: 20px;">
+                    <button id="submit-review-button">Submit Review</button>
+                    <button id="skip-review-button">Skip Review</button>
+                </div>
+            </div>
+        `;
+        document.body.appendChild(thankYouModal);
+        
+        // Handle review submission
+        document.getElementById('submit-review-button').addEventListener('click', () => {
+            const reviewText = document.getElementById('review-text').value;
+
+            // Create a styled notification modal
+            const notificationModal = document.createElement('div');
+            notificationModal.className = 'checkout-modal';
+            notificationModal.innerHTML = `
+                <div class="checkout-modal-content">
+                    <h2>${reviewText.trim() ? "Thank you for your feedback!" : "No review? That's okay, we still appreciate you!"}</h2>
+                    <p>${reviewText.trim() ? "Your thoughts mean a lot to us!" : "Have a great day!"}</p>
+                </div>
+            `;
+            document.body.appendChild(notificationModal);
+
+            // Add event listener to close on click
+            notificationModal.addEventListener('click', () => {
+                document.body.removeChild(notificationModal);
+                // Unlock scrolling
+                document.body.style.overflow = '';
+            });
+
+            // Automatically remove the modal after 5 seconds
+            setTimeout(() => {
+                if (document.body.contains(notificationModal)) {
+                    document.body.removeChild(notificationModal);
+                    // Unlock scrolling
+                    document.body.style.overflow = '';
+                }
+            }, 5000);
+
+            // Remove the thank-you modal
+            document.body.removeChild(thankYouModal);
+        });
+
+        // Handle skipping the review
+        document.getElementById('skip-review-button').addEventListener('click', () => {
+            document.body.removeChild(thankYouModal);
+            // Unlock scrolling
+            document.body.style.overflow = '';
+        });
 
         // Clear the cart
         clearCart();
-
-        // Ask for a review
-        const reviewPrompt = document.createElement('div');
-        reviewPrompt.className = 'review-prompt';
-        reviewPrompt.innerHTML = `
-            <h2>Leave a review</h2>
-            <textarea placeholder="Write your review here..."></textarea>
-            <button onclick="submitReview()">Submit</button>
-        `;
-        document.body.appendChild(reviewPrompt);
-
-        // Show the review prompt with animation
-        setTimeout(() => {
-            reviewPrompt.classList.add('show');
-        }, 10);
-
-        // Hide the review prompt after 10 seconds
-        setTimeout(() => {
-            reviewPrompt.classList.remove('show');
-            setTimeout(() => {
-                document.body.removeChild(reviewPrompt);
-            }, 500);
-        }, 10000);
-
-        // Scroll to the review prompt
-        reviewPrompt.scrollIntoView({ behavior: 'smooth' });
-
-        // Remove the checkout modal
-        document.body.removeChild(checkoutModal);
     });
 
     document.getElementById('cancel-button').addEventListener('click', () => {
         // Remove the checkout modal
         document.body.removeChild(checkoutModal);
+
+        // Unlock scrolling
+        document.body.style.overflow = '';
     });
 }
 
