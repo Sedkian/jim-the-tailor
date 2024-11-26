@@ -381,7 +381,7 @@ function displayCartItems() {
         const cartItem = document.createElement('div');
         cartItem.className = 'cart-item';
         cartItem.innerHTML = `
-            <img src="${item.image}" alt="${item.name}">
+            <img src="${item.cartImage}" alt="${item.name}">
             <div class="item-details">
                 <h2>${item.name}</h2>
                 <p>Color: ${item.color}</p>
@@ -455,6 +455,7 @@ const jacketsDatabase = [
         color: "Black",
         price: 150,
         image: "../database/images/jackets/j0.png",
+        cartImage: "../database/cartImages/jackets/j0.png",
         rating: 4
     },
     {
@@ -464,6 +465,7 @@ const jacketsDatabase = [
         color: "Grey",
         price: 180,
         image: "../database/images/jackets/j1.png",
+        cartImage: "../database/cartImages/jackets/j1.png",
         rating: 5
     },
     {
@@ -473,6 +475,7 @@ const jacketsDatabase = [
         color: "Blue",
         price: 160,
         image: "../database/images/jackets/j2.png",
+        cartImage: "../database/cartImages/jackets/j2.png",
         rating: 2
     },
     {
@@ -482,6 +485,7 @@ const jacketsDatabase = [
         color: "Brown",
         price: 200,
         image: "../database/images/jackets/j3.png",
+        cartImage: "../database/cartImages/jackets/j3.png",
         rating: 3
     },
     {
@@ -491,6 +495,7 @@ const jacketsDatabase = [
         color: "Black",
         price: 220,
         image: "../database/images/jackets/j4.png",
+        cartImage: "../database/cartImages/jackets/j4.png",
         rating: 4
     },
     {
@@ -500,6 +505,7 @@ const jacketsDatabase = [
         color: "Black",
         price: 110,
         image: "../database/images/jackets/j5.png",
+        cartImage: "../database/cartImages/jackets/j5.png",
         rating: 5
     },
     {
@@ -509,6 +515,7 @@ const jacketsDatabase = [
         color: "Grey",
         price: 80,
         image: "../database/images/jackets/j6.png",
+        cartImage: "../database/cartImages/jackets/j6.png",
         rating: 2
     },
     {
@@ -517,7 +524,7 @@ const jacketsDatabase = [
         type: "jacket",
         color: "Blue",
         price: 300,
-        image: "../database/images/jackets/j7.png",
+        cartImage: "../database/cartImages/jackets/j7.png",
         rating: 3
     },
     {
@@ -527,6 +534,7 @@ const jacketsDatabase = [
         color: "Brown",
         price: 170,
         image: "../database/images/jackets/j8.png",
+        cartImage: "../database/cartImages/jackets/j8.png",
         rating: 4
     },
 ];
@@ -540,6 +548,7 @@ const pantsDatabase = [
         color: "Grey",
         price: 80,
         image: "../database/images/pants/p0.png",
+        cartImage: "../database/cartImages/pants/p0.png",
         rating: 5
     },
     {
@@ -549,6 +558,7 @@ const pantsDatabase = [
         color: "Beige",
         price: 100,
         image: "../database/images/pants/p1.png",
+        cartImage: "../database/cartImages/pants/p1.png",
         rating: 4
     },
     {
@@ -558,6 +568,7 @@ const pantsDatabase = [
         color: "Red",
         price: 75,
         image: "../database/images/pants/p2.png",
+        cartImage: "../database/cartImages/pants/p2.png",
         rating: 3
     },
     {
@@ -567,6 +578,7 @@ const pantsDatabase = [
         color: "Black",
         price: 100,
         image: "../database/images/pants/p3.png",
+        cartImage: "../database/cartImages/pants/p3.png",
         rating: 5
     },
     {
@@ -576,6 +588,7 @@ const pantsDatabase = [
         color: "Blue",
         price: 80,
         image: "../database/images/pants/p4.png",
+        cartImage: "../database/cartImages/pants/p4.png",
         rating: 5
     },
     {
@@ -585,6 +598,7 @@ const pantsDatabase = [
         color: "Coral",
         price: 90,
         image: "../database/images/pants/p5.png",
+        cartImage: "../database/cartImages/pants/p5.png",
         rating: 2
     },
     {
@@ -594,6 +608,7 @@ const pantsDatabase = [
         color: "Pink",
         price: 75,
         image: "../database/images/pants/p6.png",
+        cartImage: "../database/cartImages/pants/p6.png",
         rating: 4
     },
 ];
@@ -607,6 +622,7 @@ const shirtsDatabase = [
         color: "Black",
         price: 50,
         image: "../database/images/shirts/s0.png",
+        cartImage: "../database/cartImages/shirts/s0.png",
         rating: 2
     },
     {
@@ -616,6 +632,7 @@ const shirtsDatabase = [
         color: "Grey",
         price: 30,
         image: "../database/images/shirts/s1.png",
+        cartImage: "../database/cartImages/shirts/s1.png",
         rating: 3
     },
     {
@@ -625,6 +642,7 @@ const shirtsDatabase = [
         color: "Blue",
         price: 55,
         image: "../database/images/shirts/s2.png",
+        cartImage: "../database/cartImages/shirts/s2.png",
         rating: 4
     },
     {
@@ -634,6 +652,7 @@ const shirtsDatabase = [
         color: "Brown",
         price: 50,
         image: "../database/images/shirts/s3.png",
+        cartImage: "../database/cartImages/shirts/s3.png",
         rating: 5
     },
     {
@@ -643,6 +662,7 @@ const shirtsDatabase = [
         color: "Black",
         price: 60,
         image: "../database/images/shirts/s4.png",
+        cartImage: "../database/cartImages/shirts/s4.png",
         rating: 2
     },
     {
@@ -652,6 +672,7 @@ const shirtsDatabase = [
         color: "Black",
         price: 30,
         image: "../database/images/shirts/s5.png",
+        cartImage: "../database/cartImages/shirts/s5.png",
         rating: 3
     },
     {
@@ -661,6 +682,7 @@ const shirtsDatabase = [
         color: "Grey",
         price: 50,
         image: "../database/images/shirts/s6.png",
+        cartImage: "../database/cartImages/shirts/s6.png",
         rating: 4
     },
     {
@@ -670,6 +692,7 @@ const shirtsDatabase = [
         color: "Blue",
         price: 40,
         image: "../database/images/shirts/s7.png",
+        cartImage: "../database/cartImages/shirts/s7.png",
         rating: 5
     }
 ];
@@ -683,6 +706,7 @@ const shoesDatabase = [
         color: "Black",
         price: 120,
         image: "../database/images/shoes/f0.png",
+        cartImage: "../database/cartImages/shoes/f0.png",
         rating: 4
     },
     {
@@ -692,6 +716,7 @@ const shoesDatabase = [
         color: "Grey",
         price: 80,
         image: "../database/images/shoes/f1.png",
+        cartImage: "../database/cartImages/shoes/f1.png",
         rating: 5
     },
     {
@@ -701,6 +726,7 @@ const shoesDatabase = [
         color: "Blue",
         price: 100,
         image: "../database/images/shoes/f2.png",
+        cartImage: "../database/cartImages/shoes/f2.png",
         rating: 2
     }
 ]
@@ -713,6 +739,7 @@ const tiesDatabase = [
         color: "Black",
         price: 30,
         image: "../database/images/ties/t0.png",
+        cartImage: "../database/cartImages/ties/t0.png",
         rating: 3
     },
     {
@@ -722,6 +749,7 @@ const tiesDatabase = [
         color: "Grey",
         price: 50,
         image: "../database/images/ties/t1.png",
+        cartImage: "../database/cartImages/ties/t1.png",
         rating: 4
     },
     {
@@ -731,6 +759,7 @@ const tiesDatabase = [
         color: "Blue",
         price: 65,
         image: "../database/images/ties/t2.png",
+        cartImage: "../database/cartImages/ties/t2.png",
         rating: 5
     },
     {
@@ -740,6 +769,7 @@ const tiesDatabase = [
         color: "Brown",
         price: 40,
         image: "../database/images/ties/t3.png",
+        cartImage: "../database/cartImages/ties/t3.png",
         rating: 2
     },
     {
@@ -749,6 +779,7 @@ const tiesDatabase = [
         color: "Black",
         price: 30,
         image: "../database/images/ties/t4.png",
+        cartImage: "../database/cartImages/ties/t4.png",
         rating: 3
     },
     {
@@ -758,6 +789,7 @@ const tiesDatabase = [
         color: "Black",
         price: 90,
         image: "../database/images/ties/t5.png",
+        cartImage: "../database/cartImages/ties/t5.png",
         rating: 4
     },
     {
@@ -767,6 +799,7 @@ const tiesDatabase = [
         color: "Grey",
         price: 25,
         image: "../database/images/ties/t6.png",
+        cartImage: "../database/cartImages/ties/t6.png",
         rating: 5
     } 
 ]
