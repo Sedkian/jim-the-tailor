@@ -138,3 +138,30 @@
     .search-bar button:hover {
       background-color: #555;
     }
+
+    .trending-styles {
+      text-align: center;
+      margin: 2rem 0;
+    }
+    
+    .styles-container {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+    }
+    
+    .style-item {
+      cursor: pointer;
+      text-align: center;
+    }
+    
+    .style-item img {
+      width: 150px;
+      height: auto;
+      border-radius: 8px;
+    }
+    
+    .style-item p {
+      margin-top: 0.5rem;
+      font-size: 1.2rem;
+    }
