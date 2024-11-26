@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const sizeForm = document.getElementById('size-form');
     if (sizeForm) {
         sizeForm.addEventListener('input', validateInput);
+        initializeEventListeners();
     }
 
     const addToCartButton = document.getElementById('add-to-cart');
@@ -15,10 +16,19 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    initializeEventListeners();
     const cartContainer = document.querySelector(".cart-container"); 
     if (cartContainer) {
         displayCartItems();
+    }
+
+    const clearCartButton = document.getElementById('clear-cart');
+    if (clearCartButton) {
+        clearCartButton.addEventListener('click', clearCart);
+    }
+
+    const suitCustomization = document.getElementById('suit-customization');
+    if (suitCustomization) {
+        updateItemDetails();
     }
 });
 
@@ -34,38 +44,76 @@ window.changeImage = function(type, direction) {
         const Jackets = getJackets();
         const NUM_JACKETS = Jackets.length;
         currentJacket = (currentJacket + direction + NUM_JACKETS) % NUM_JACKETS;
-        document.getElementById("jacketImage").src = Jackets[currentJacket].image;
-        document.getElementById("jacket-price").innerText = `$${Jackets[currentJacket].price}`;
-        document.getElementById("jacket-name").innerText = `${Jackets[currentJacket].name}`;
+        updatePreviewedJacket();
     } else if (type === 1) { // Shirt
         const Shirts = getShirts();
         const NUM_SHIRTS = Shirts.length;
         currentShirt = (currentShirt + direction + NUM_SHIRTS) % NUM_SHIRTS;
-        document.getElementById("shirtImage").src = Shirts[currentShirt].image;
-        document.getElementById("shirt-price").innerText = `$${Shirts[currentShirt].price}`;
-        document.getElementById("shirt-name").innerText = `${Shirts[currentShirt].name}`;
+        updatePreviewedShirt();
     } else if (type === 2) { // Tie
         const Ties = getTies();
         const NUM_TIES = Ties.length;
         currentTie = (currentTie + direction + NUM_TIES) % NUM_TIES;
-        document.getElementById("tieImage").src = Ties[currentTie].image;
-        document.getElementById("tie-price").innerText = `$${Ties[currentTie].price}`;
-        document.getElementById("tie-name").innerText = `${Ties[currentTie].name}`;
+        updatePreviewedTie();
     } else if (type === 4) { // Pants
         const Pants = getPants();
         const NUM_PANTS = Pants.length;
         currentPants = (currentPants + direction + NUM_PANTS) % NUM_PANTS;
-        document.getElementById("pantsImage").src = Pants[currentPants].image;
-        document.getElementById("pants-price").innerText = `$${Pants[currentPants].price}`;
-        document.getElementById("pants-name").innerText = `${Pants[currentPants].name}`;
+        updatePreviewedPants();
     } else if (type === 5) { // Shoes
         const Shoes = getShoes();
         const NUM_SHOES = Shoes.length;
         currentShoes = (currentShoes + direction + NUM_SHOES) % NUM_SHOES;
-        document.getElementById("shoesImage").src = Shoes[currentShoes].image;
-        document.getElementById("shoes-price").innerText = `$${Shoes[currentShoes].price}`;
-        document.getElementById("shoes-name").innerText = `${Shoes[currentShoes].name}`;
+        updatePreviewedShoes();
     }
+}
+
+function updatePreviewedJacket() {
+    const Jackets = getJackets();
+    document.getElementById("jacketImage").src = Jackets[currentJacket].image;
+    document.getElementById("jacket-price").innerText = `$${Jackets[currentJacket].price}`;
+    document.getElementById("jacket-name").innerText = `${Jackets[currentJacket].name}`;
+    document.getElementById("jacket-rating").innerHTML = `${generateStars(Jackets[currentJacket].rating)}`;
+}
+
+function updatePreviewedShirt() {
+    const Shirts = getShirts();
+    document.getElementById("shirtImage").src = Shirts[currentShirt].image;
+    document.getElementById("shirt-price").innerText = `$${Shirts[currentShirt].price}`;
+    document.getElementById("shirt-name").innerText = `${Shirts[currentShirt].name}`;
+    document.getElementById("shirt-rating").innerHTML = `${generateStars(Shirts[currentShirt].rating)}`;
+}
+
+function updatePreviewedTie() {
+    const Ties = getTies();
+    document.getElementById("tieImage").src = Ties[currentTie].image;
+    document.getElementById("tie-price").innerText = `$${Ties[currentTie].price}`;
+    document.getElementById("tie-name").innerText = `${Ties[currentTie].name}`;
+    document.getElementById("tie-rating").innerHTML = `${generateStars(Ties[currentTie].rating)}`;
+}
+
+function updatePreviewedPants() {
+    const Pants = getPants();
+    document.getElementById("pantsImage").src = Pants[currentPants].image;
+    document.getElementById("pants-price").innerText = `$${Pants[currentPants].price}`;
+    document.getElementById("pants-name").innerText = `${Pants[currentPants].name}`;
+    document.getElementById("pants-rating").innerHTML = `${generateStars(Pants[currentPants].rating)}`;
+}
+
+function updatePreviewedShoes() {
+    const Shoes = getShoes();
+    document.getElementById("shoesImage").src = Shoes[currentShoes].image;
+    document.getElementById("shoes-price").innerText = `$${Shoes[currentShoes].price}`;
+    document.getElementById("shoes-name").innerText = `${Shoes[currentShoes].name}`;
+    document.getElementById("shoes-rating").innerHTML = `${generateStars(Shoes[currentShoes].rating)}`;
+}
+
+function updateItemDetails() {
+    updatePreviewedJacket();
+    updatePreviewedShirt();
+    updatePreviewedTie();
+    updatePreviewedPants();
+    updatePreviewedShoes();
 }
 
 window.measurementSwitchCheck = function(checkedButton, uncheckedButton) {
