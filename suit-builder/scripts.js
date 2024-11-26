@@ -213,6 +213,68 @@ window.toggleDisplay = function(type) {
     }
 }
 
+var jacketOpacity = 1;
+var shirtOpacity = 1;
+var tieOpacity = 1;
+var pantsOpacity = 1;
+var shoesOpacity = 1;
+
+window.toggleDisplay = function(type) {
+    if (type === 0) {
+        if (jacketOpacity === 1) {
+            jacketOpacity = 0;
+            document.getElementById("jacketImage").style.opacity = jacketOpacity;
+            document.getElementById("jacket-toggle").src = "../database/images/offButton.png";
+        } else {
+            jacketOpacity = 1
+            document.getElementById("jacketImage").style.opacity = jacketOpacity;
+            document.getElementById("jacket-toggle").src = "../database/images/onButton.png";
+        }
+    } else if (type === 1) {
+        if (shirtOpacity === 1) {
+            shirtOpacity = 0;
+            document.getElementById("shirtImage").style.opacity = shirtOpacity;
+            document.getElementById("shirt-toggle").src = "../database/images/offButton.png";
+        } else {
+            shirtOpacity = 1
+            document.getElementById("shirtImage").style.opacity = shirtOpacity;
+            document.getElementById("shirt-toggle").src = "../database/images/onButton.png";
+        }
+    } else if (type === 2) {
+        if (tieOpacity === 1) {
+            tieOpacity = 0;
+            document.getElementById("tieImage").style.opacity = tieOpacity;
+            document.getElementById("tie-toggle").src = "../database/images/offButton.png";
+        } else {
+            tieOpacity = 1
+            document.getElementById("tieImage").style.opacity = tieOpacity;
+            document.getElementById("tie-toggle").src = "../database/images/onButton.png";
+        }
+        
+    } else if (type === 4) {
+        if (pantsOpacity === 1) {
+            pantsOpacity = 0;
+            document.getElementById("pantsImage").style.opacity = pantsOpacity;
+            document.getElementById("pants-toggle").src = "../database/images/offButton.png";
+        } else {
+            pantsOpacity = 1
+            document.getElementById("pantsImage").style.opacity = pantsOpacity;
+            document.getElementById("pants-toggle").src = "../database/images/onButton.png";
+        }
+        
+    } else if (type === 5) {
+        if (shoesOpacity === 1) {
+            shoesOpacity = 0;
+            document.getElementById("shoesImage").style.opacity = shoesOpacity;
+            document.getElementById("shoes-toggle").src = "../database/images/offButton.png";
+        } else {
+            shoesOpacity = 1
+            document.getElementById("shoesImage").style.opacity = shoesOpacity;
+            document.getElementById("shoes-toggle").src = "../database/images/onButton.png";
+        }
+    }
+}
+
 window.measurementSwitchCheck = function(checkedButton, uncheckedButton) {
     checkedButton.classList.add('checked');
     uncheckedButton.classList.remove('checked');
