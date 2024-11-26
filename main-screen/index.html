@@ -25,7 +25,6 @@
     <i class="fas fa-user"></i>
   </a>
 </header>
-</header>
 
 <!-- Main Content -->
 <main>
@@ -46,6 +45,28 @@
     </button>
   </div>
 </main>
+
+<!-- Trending Styles Section -->
+<section class="trending-styles">
+  <h2>Trending Styles</h2>
+  <div class="styles-container">
+    <div class="style-item" onclick="selectStyle('john-wick')">
+      <img src="../database/images/styles/john_wick.png" alt="John Wick Style">
+      <p>John Wick</p>
+    </div>
+    <div class="style-item" onclick="selectStyle('james-bond')">
+      <img src="../database/images/styles/james_bond.png" alt="James Bond Style">
+      <p>James Bond</p>
+    </div>
+    <!-- Add more styles as needed -->
+  </div>
+</section>
+
+<script>
+  function selectStyle(style) {
+    window.location.href = `../suit-builder/index.html?style=${style}`;
+  }
+</script>
 
 </body>
 </html>

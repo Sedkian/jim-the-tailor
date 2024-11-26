@@ -30,7 +30,42 @@ document.addEventListener("DOMContentLoaded", () => {
     if (suitCustomization) {
         updateItemDetails();
     }
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const selectedStyle = urlParams.get('style');
+    if (selectedStyle) {
+      applyStyle(selectedStyle);
+    }
 });
+
+function applyStyle(style) {
+    const styles = {
+      'john-wick': {
+        jacket: 0,
+        shirt: 1,
+        tie: 0,
+        pants: 3,
+        shoes: 0
+      },
+      'james-bond': {
+        jacket: 1,
+        shirt: 2,
+        tie: 3,
+        pants: 4,
+        shoes: 0
+      }
+    };
+  
+    const selectedItems = styles[style];
+    if (selectedItems) {
+      currentJacket = selectedItems.jacket;
+      currentShirt = selectedItems.shirt;
+      currentTie = selectedItems.tie;
+      currentPants = selectedItems.pants;
+      currentShoes = selectedItems.shoes;
+      updateItemDetails();
+    }
+  }
 
 var currentJacket = 0;
 var currentShirt = 0;
