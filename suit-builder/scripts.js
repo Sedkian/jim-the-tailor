@@ -42,6 +42,7 @@ window.changeImage = function(type, direction) {
         document.getElementById("jacketImage").src = Jackets[currentJacket].image;
         document.getElementById("jacket-price").innerText = `$${Jackets[currentJacket].price}`;
         document.getElementById("jacket-name").innerText = `${Jackets[currentJacket].name}`;
+        document.getElementById("jacket-rating").innerHTML = `${generateStars(Jackets[currentJacket].rating)}`;
     } else if (type === 1) { // Shirt
         const Shirts = getShirts();
         const NUM_SHIRTS = Shirts.length;
@@ -49,6 +50,7 @@ window.changeImage = function(type, direction) {
         document.getElementById("shirtImage").src = Shirts[currentShirt].image;
         document.getElementById("shirt-price").innerText = `$${Shirts[currentShirt].price}`;
         document.getElementById("shirt-name").innerText = `${Shirts[currentShirt].name}`;
+        document.getElementById("shirt-rating").innerHTML = `${generateStars(Shirts[currentShirt].rating)}`;
     } else if (type === 2) { // Tie
         const Ties = getTies();
         const NUM_TIES = Ties.length;
@@ -56,6 +58,7 @@ window.changeImage = function(type, direction) {
         document.getElementById("tieImage").src = Ties[currentTie].image;
         document.getElementById("tie-price").innerText = `$${Ties[currentTie].price}`;
         document.getElementById("tie-name").innerText = `${Ties[currentTie].name}`;
+        document.getElementById("tie-rating").innerHTML = `${generateStars(Ties[currentTie].rating)}`;
     } else if (type === 4) { // Pants
         const Pants = getPants();
         const NUM_PANTS = Pants.length;
@@ -63,6 +66,7 @@ window.changeImage = function(type, direction) {
         document.getElementById("pantsImage").src = Pants[currentPants].image;
         document.getElementById("pants-price").innerText = `$${Pants[currentPants].price}`;
         document.getElementById("pants-name").innerText = `${Pants[currentPants].name}`;
+        document.getElementById("pants-rating").innerHTML = `${generateStars(Pants[currentPants].rating)}`;
     } else if (type === 5) { // Shoes
         const Shoes = getShoes();
         const NUM_SHOES = Shoes.length;
@@ -70,6 +74,7 @@ window.changeImage = function(type, direction) {
         document.getElementById("shoesImage").src = Shoes[currentShoes].image;
         document.getElementById("shoes-price").innerText = `$${Shoes[currentShoes].price}`;
         document.getElementById("shoes-name").innerText = `${Shoes[currentShoes].name}`;
+        document.getElementById("shoes-rating").innerHTML = `${generateStars(Shoes[currentShoes].rating)}`;
     }
 }
 
