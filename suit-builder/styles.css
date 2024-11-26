@@ -6,7 +6,7 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: Helvetica Neue;
     background-color: #f4f4f9;
     color: #333;
     line-height: 1.6;
@@ -28,9 +28,7 @@ footer {
 /* Static Header */
 .static-header {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 1rem;
+    padding: 0.2rem 1rem; 
     background-color: #333;
     color: #fff;
     position: relative;
@@ -38,10 +36,13 @@ footer {
 
 .static-header h1 {
     margin: 0;
+    margin-left: 10px;
+
 }
 
 .static-header h1 a {
     color: #fff;
+    
     text-decoration: none;
 }
 
@@ -70,6 +71,11 @@ h3 {
     text-align: center;
     margin: 2rem 0;
 }
+header .logo {
+    top: 10px;
+    width: 45px; 
+    height: auto;
+}
 
 /* Main Content (Fit Finder) */
 main.fit-finder {
@@ -79,21 +85,6 @@ main.fit-finder {
     margin: 2rem auto;
     max-width: 1200px;
 }
-
-/* Suit Display (Center) */
-/* .suit-display {
-    flex: 1;
-    max-width: 40%;
-    text-align: center;
-    margin: 1rem;
-    padding: 1rem;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    order: 2; /* Center this section 
-    max-height: 950px;
-    max-height: 950px;
-} */
 
 .suit-display {
     flex: 1; 
@@ -112,18 +103,6 @@ body {
     transform-origin: 0 0; 
 }
 
-/* #suit-360-view img {
-/* #suit-360-view img {
-    width: 100%;
-    max-width: 300px;
-    margin-top: 1rem;
-    height: 100%;
-    max-height: 300px;
-    height: 100%;
-    max-height: 300px;
-    overflow: hidden;
-} */
-
 .suit-360-view {
     position: relative;
 }
@@ -141,7 +120,7 @@ body {
     top: auto;
     left: auto;
     transform: translate(-50%, 0%);
-    height: 55%;
+    height: 45%;
     width: auto;
     /* top: -825px; */
 }
@@ -160,7 +139,7 @@ body {
     top: auto;
     left: auto;
     transform: translate(-50%, 0%);
-    height: 55%;
+    height: 45%;
     width: auto;
     /* top: -410px; */
     /* object-fit: scale-down; */
@@ -179,7 +158,7 @@ body {
     top: auto;
     left: auto;
     transform: translate(-50%, 0%);
-    height: 55%;
+    height: 45%;
     width: auto;
 }
 
@@ -196,7 +175,7 @@ body {
     top: auto;
     left: auto;
     transform: translate(-50%, 0%);
-    height: 55%;
+    height: 45%;
     width: auto;
     /* top: -1000px; */
 }
@@ -214,7 +193,7 @@ body {
     top: auto;
     left: auto;
     transform: translate(-50%, 0%);
-    height: 55%;
+    height: 45%;
     width: auto;
     /* top: -1050px; */
 }
@@ -490,6 +469,7 @@ button.calculateFit:hover {
     top: 1rem;
     right: 1rem;
     font-size: 2rem;
+    transform: translateY(-20%);
     color: #fff;
 }
 

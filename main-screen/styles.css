@@ -1,0 +1,140 @@
+    body, html {
+      margin: 0;
+      padding: 0;
+      font-family: Helvetica Neue;
+      background-color: #f4f4f4;
+      color: #333;
+    }
+
+    /* Header */
+    header {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 10px;
+      background-color: #ffffff;
+      position: relative;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 3.5rem;
+      text-align: center;
+    }
+
+    header .logo {
+      position: absolute;
+      left: 10px; 
+      top: 10px;
+      width: 60px; 
+      height: auto;
+    }
+
+    .login-icon {
+      position: absolute;
+      right: 130px; 
+      top: 50%; 
+      transform: translateY(-50%);
+      font-size: 3rem;
+      color: rgb(51, 51, 51);
+    }
+
+
+    .cart-icon {
+      position: absolute;
+      right: 40px; 
+      top: 50%; 
+      transform: translateY(-50%);
+      font-size: 3rem;
+      color: #333;
+    }
+    
+    .cart-icon a, .login-icon a {
+      cursor: pointer;
+    }
+    
+  
+    .login-icon:hover i, .cart-icon:hover i {
+      color: #555;
+    }
+
+    /* Main Content */
+    main {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: -10px;
+    }
+
+    .button-container {
+      display: flex;
+      justify-content: center;
+      gap: 150px;
+      margin: 30px 0;
+    }
+
+    .main-button {
+      padding: 15px 30px;
+      font-size: 1.5rem;
+      font-family: Helvetica Neue;
+      border: none;
+      border-radius: 5px;
+
+      color: black;
+      cursor: pointer;
+      transition: transform 0.2s ease, background-color 0.3s ease;
+    }
+
+    .main-button:hover {
+      transform: scale(1.05);
+      background-color: lightgrey;
+    }
+
+    .main-button:active {
+      transform: scale(0.95);
+    }
+
+    /* Suit Builder Button (Middle) */
+    .suit-builder-button {
+      font-size: 1.8rem;
+      font-family: Helvetica Neue;
+      padding: 20px 40px;
+    }
+
+    .suit-builder-button:hover {
+      background-color: lightgrey;
+    }
+
+    /* Search Bar */
+    .search-bar {
+      margin-top: 5px;
+      display: flex;
+      width: 100%;
+      max-width: 900px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      overflow: hidden;
+    }
+
+    .search-bar input {
+      flex-grow: 1;
+      padding: 10px 15px;
+      font-size: 1.5rem;
+      font-family: Helvetica Neue;
+      border: none;
+      outline: none;
+    }
+
+    .search-bar button {
+      padding: 10px 20px;
+      font-size: 1rem;
+      font-family: Helvetica Neue;
+      background-color: #333;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+
+    .search-bar button:hover {
+      background-color: #555;
+    }
