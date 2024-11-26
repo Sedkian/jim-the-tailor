@@ -568,6 +568,70 @@ function displayCartItems() {
     if (totalPriceElement) {
         totalPriceElement.textContent = `Total Price: $${totalPrice} CAD`;
     }
+    // Add a checkout button
+    const checkoutButton = document.createElement('button');
+    checkoutButton.className = 'checkout-button';
+    checkoutButton.textContent = 'Checkout';
+    checkoutButton.onclick = () => handleCheckout(totalPrice);
+    cartContainer.appendChild(checkoutButton);
+}
+
+function handleCheckout(totalPrice) {
+    // Create the checkout modal
+    const checkoutModal = document.createElement('div');
+    checkoutModal.className = 'checkout-modal';
+    checkoutModal.innerHTML = `
+        <div class="checkout-modal-content">
+            <h2>Checkout</h2>
+            <p>Total Price: $${totalPrice} CAD</p>
+            <button id="pay-button">Pay</button>
+            <button id="cancel-button">Cancel</button>
+        </div>
+    `;
+    document.body.appendChild(checkoutModal);
+
+    // Add event listeners for the buttons
+    document.getElementById('pay-button').addEventListener('click', () => {
+        // Prompt the user to pay
+        alert("Thank you for your order! Your order was paid successfully.");
+
+        // Clear the cart
+        clearCart();
+
+        // Ask for a review
+        const reviewPrompt = document.createElement('div');
+        reviewPrompt.className = 'review-prompt';
+        reviewPrompt.innerHTML = `
+            <h2>Leave a review</h2>
+            <textarea placeholder="Write your review here..."></textarea>
+            <button onclick="submitReview()">Submit</button>
+        `;
+        document.body.appendChild(reviewPrompt);
+
+        // Show the review prompt with animation
+        setTimeout(() => {
+            reviewPrompt.classList.add('show');
+        }, 10);
+
+        // Hide the review prompt after 10 seconds
+        setTimeout(() => {
+            reviewPrompt.classList.remove('show');
+            setTimeout(() => {
+                document.body.removeChild(reviewPrompt);
+            }, 500);
+        }, 10000);
+
+        // Scroll to the review prompt
+        reviewPrompt.scrollIntoView({ behavior: 'smooth' });
+
+        // Remove the checkout modal
+        document.body.removeChild(checkoutModal);
+    });
+
+    document.getElementById('cancel-button').addEventListener('click', () => {
+        // Remove the checkout modal
+        document.body.removeChild(checkoutModal);
+    });
 }
 
 function clearCart() {
