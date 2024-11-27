@@ -317,13 +317,12 @@ label {
     display: none;
   }
   
-  /* Label as Custom Toggle */
   .toggle-label {
     position: relative;
     display: inline-block;
     width: 50px;
     height: 25px;
-    background-color: #ccc;
+    background-color: #b5d54d;
     border-radius: 15px;
     cursor: pointer;
     transition: background-color 0.3s;

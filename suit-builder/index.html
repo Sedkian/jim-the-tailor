@@ -156,12 +156,13 @@
             <form id="size-form">
                 
                 <div class="toggle-switch">
+                    <span id="unit-label">cm</span>
                     <input type="checkbox" id="toggle-unit" class="toggle-input">
                     <label for="toggle-unit" class="toggle-label">
                       <span class="toggle-inner"></span>
                       <span class="toggle-switch-circle"></span>
                     </label>
-                    <span id="unit-label">cm</span>
+                    <span id="unit-label">in</span>
                 </div>
                 <input type="hidden" id="data-unit" name="data-unit" value="cm">
                 <div>
@@ -228,7 +229,7 @@
                     <span class="range-info" style="display: none;"></span>
                     <span class="error-message-size" style="display: none;">Invalid hip size!</span>
                 </div>
-                <button type="button" class = 'calculateFit' onclick="calculateFit()">Calculate Your Size</button>
+                <button type="button" id = 'calculateFitBtd' class = 'calculateFit' onclick="calculateFit()" style="pointer-events :none; opacity: 0.5">Calculate Your Size</button>
                 <button type="button" class = 'calculateFit' onclick="switchToSelector()">Select Your Size</button>
             </form>
         </section>
@@ -236,13 +237,14 @@
         <!-- Size Selector -->
         <section id="size-selector" style="display: none">
             <h2>Size Selector</h2>
-            <div id = "pants-size" class = "size-select-cot">Pants Size
+            <div id = "jacket-size" class = "size-select-cot">Jacket Size:
                 <p>
                 <button class = "size-select-btn"> S </button>
                 <button class = "size-select-btn"> M </button>
                 <button class = "size-select-btn"> L </button>
                 <button class = "size-select-btn"> XL </button>
                 <button class = "size-select-btn"> 2XL </button>
+
                 </p>
             </div>
             <div id = "vest-size" class = "size-select-cot">Shirt Size:
@@ -256,13 +258,24 @@
                 <!-- <button class = "size-select-btn"> 4XL </button> -->
                 </p>
             </div>
-            <div id = "jacket-size" class = "size-select-cot">Jacket Size:
+            <div id = "pants-size" class = "size-select-cot">Pants Size
                 <p>
                 <button class = "size-select-btn"> S </button>
                 <button class = "size-select-btn"> M </button>
                 <button class = "size-select-btn"> L </button>
                 <button class = "size-select-btn"> XL </button>
                 <button class = "size-select-btn"> 2XL </button>
+                </p>
+            </div>
+            <div id = "shoes-size" class = "size-select-cot">Pants Size
+                <p>
+                <button class = "size-select-btn"> 7 </button>
+                <button class = "size-select-btn"> 8 </button>
+                <button class = "size-select-btn"> 9 </button>
+                <button class = "size-select-btn"> 10 </button>
+                <button class = "size-select-btn"> 11 </button>
+                <button class = "size-select-btn"> 12 </button>
+                <button class = "size-select-btn"> 13 </button>
 
                 </p>
             </div>
