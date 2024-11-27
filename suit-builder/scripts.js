@@ -371,15 +371,7 @@ window.goBackToSizeFinder = function() {
     document.getElementById('size-selector').style.setProperty('display', 'none', 'important');  // Show the size-selector form
 }
 
-document.getElementById("toggle-unit").addEventListener("change", function () {
-    const unitLabel = document.getElementById("unit-label");
-    const sizeForm = document.getElementById('size-form');
-    if (this.checked) {
-      unitLabel.textContent = "in"; // Change to inches
-    } else {
-      unitLabel.textContent = "cm"; // Change to centimeters
-    }
-  });
+
 
 function getCurrentUnit() {
     const toggleSwitch = document.getElementById("toggle-unit");
@@ -498,6 +490,20 @@ function initializeEventListeners() {
             }
         });
     });
+    document.getElementById("toggle-unit").addEventListener("change", function () {
+        const unitLabel = document.getElementById("unit-label");
+        const sizeForm = document.getElementById('size-form');
+        if (this.checked) {
+          unitLabel.textContent = "in"; // Change to inches
+        } else {
+          unitLabel.textContent = "cm"; // Change to centimeters
+        }
+      });
+    document.getElementById("toggle-unit").addEventListener("change", () => {
+        document.querySelectorAll('input[type="number"]').forEach(input => {
+            updateRangeInfo(input);
+        });
+    });
 }
 //Check user input every time they enter something
 function updateRangeInfo(input) {//This is for range info
@@ -511,11 +517,7 @@ document.querySelectorAll('input[type="number"]').forEach(input => {
     updateRangeInfo(input);
 });
 //When click the size option, change the text used for range suggest
-document.getElementById("toggle-unit").addEventListener("change", () => {
-    document.querySelectorAll('input[type="number"]').forEach(input => {
-        updateRangeInfo(input);
-    });
-});
+
 
 function validateInput(event) {
     const input = event.target;
