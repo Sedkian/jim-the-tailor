@@ -45,16 +45,31 @@ footer {
 .static-header h1 {
     margin: 0;
     margin-left: 10px;
-
 }
 
 .static-header h1 a {
     color: #fff;
-    
     text-decoration: none;
 }
 
 .static-header h1 a:hover {
+    color: #d3d3d3;
+}
+
+.static-header h2 {
+    margin: 0;
+    margin-left: 10px;
+    text-align: center;
+    flex: 1;
+    font-size: 2rem;
+}
+
+.static-header h2 a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.static-header h2 a:hover {
     color: #d3d3d3;
 }
 
@@ -77,12 +92,12 @@ h3 {
 /* Page Title */
 .page-title {
     text-align: center;
-    margin: 2rem 0;
+    margin: 1rem 0;
 }
 header .logo {
     top: 10px;
     width: 45px; 
-    height: auto;
+    height: 55px;
 }
 
 /* Main Content (Fit Finder) */
