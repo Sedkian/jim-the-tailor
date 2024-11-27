@@ -371,6 +371,117 @@ window.goBackToSizeFinder = function() {
     document.getElementById('size-selector').style.setProperty('display', 'none', 'important');  // Show the size-selector form
 }
 
+document.getElementById("toggle-unit").addEventListener("change", function () {
+    const unitLabel = document.getElementById("unit-label");
+    const sizeForm = document.getElementById('size-form');
+    if (this.checked) {
+      unitLabel.textContent = "in"; // Change to inches
+    } else {
+      unitLabel.textContent = "cm"; // Change to centimeters
+    }
+  });
+
+function getCurrentUnit() {
+    const toggleSwitch = document.getElementById("toggle-unit");
+    return toggleSwitch.checked ? "in" : "cm"; 
+}
+  
+
+
+window.calculateFit = function() {
+    let chest = document.getElementById('chest').value;
+    let neck = document.getElementById('neck').value;
+    let sl = document.getElementById('sleeve-length').value;
+    let hip = document.getElementById('hip').value;
+    let waist = document.getElementById('waist').value;
+    let sizeForm = document.getElementById('size-form');
+    let currentUnit = getCurrentUnit();
+    if(currentUnit !== 'in'){
+        chest = chest*0.3937;
+        neck = neck*0.3937;
+        sl = sl*0.3937;
+        hip = hip*0.3937; 
+        waist = waist*0.3937;
+    }
+
+    const vestN = ((neck-14) / 0.9)
+    const vestC = ((chest-34) / 3.6)
+    const vestW = ((waist-28) / 4.1)
+    let sizeArrC = [vestN, vestC, vestW]
+    let suitVest =(sizeArrC.reduce((sum, num) => sum + num, 0) / sizeArrC.length) | 0  /*0 = small, 1=Med, 2= large, 3=xl, 4=xxl, 5=xxxl, 6=xxxxl*/ 
+    let pants = ((waist - 28) / 4.5) | 0 /*0 = small, 1=Med, 2= large, 3=xl, 4=xxl,*/ 
+
+    const Nsize = (neck - 14)
+    const Csize = ((chest - 34) / 4)
+    const Wsize = ((waist - 28) / 4)
+    const Hsize = ((hip - 33) / 4)
+    const sleeve = ((sl -32) / 2.5) | 0
+    const sSize = ((sl - sleeve - 33) / 0.5)
+    let  sizeArr = [Nsize, Csize, Wsize, Hsize, sSize]
+    let jacket = (sizeArr.reduce((sum, num) => sum + num, 0) / sizeArr.length) | 0 // Same as pants
+    if(suitVest < 0){
+        userConfirmed = confirm("Vest size smaller than we can provide, would you accept one that is larger?");
+        if (userConfirmed) {
+            suitVest = 0
+        } else {
+            return
+        }
+    } else if (suitVest > 5){
+        userConfirmed = confirm("Vest size larger than we can provide, would you accept one that is smaller?");
+        if (userConfirmed) {
+            suitVest = 5
+        } else {
+            return
+        }
+    }
+    if(pants < 0){
+        userConfirmed = confirm("Pants size smaller than we can provide, would you accept one that is larger?");
+        if (userConfirmed) {
+            pants = 0
+        } else {
+            return
+        }
+    } else if( pants > 4){
+        userConfirmed = confirm("Pants size larger than we can provide, would you accept one that is smaller?");
+        if (userConfirmed) {
+            pants = 4
+        } else {
+            return
+        }
+    }
+    if(jacket < 0){
+        userConfirmed = confirm("Jacket size smaller than we can provide, would you accept a larger one?");
+        if (userConfirmed) {
+            jacket = 0
+        } else {
+            return
+        }
+    } else if(jacket > 4){
+        userConfirmed = confirm("Jacket size larger than we can provide, would you accept a smaller one?");
+        if (userConfirmed) {
+            jacket = 0
+        } else {
+            return
+        }
+    }
+
+    preselectButton("pants-size", pants)
+    preselectButton("vest-size", suitVest)
+    preselectButton("jacket-size", jacket)
+
+    document.getElementById('size-finder').style.setProperty('display', 'none', 'important');
+    document.getElementById('size-selector').style.setProperty('display', 'block', 'important');
+}
+window.switchToSelector = function() {
+    document.getElementById('size-finder').style.setProperty('display', 'none', 'important');
+    document.getElementById('size-selector').style.setProperty('display', 'block', 'important');
+}
+
+window.goBackToSizeFinder = function() {
+    document.getElementById('size-finder').style.setProperty('display', 'block', 'important'); // Hide the size-finder form
+    document.getElementById('size-selector').style.setProperty('display', 'none', 'important');  // Show the size-selector form
+}
+
 //Event listener for size select, when select one, deselect everything else
 function initializeEventListeners() {
     const buttonGroups = document.querySelectorAll('.size-select-cot');
@@ -390,31 +501,26 @@ function initializeEventListeners() {
 }
 //Check user input every time they enter something
 function updateRangeInfo(input) {//This is for range info
-    const unit = document.getElementById('size-form').getAttribute('data-unit') ==='in' ? 'in' : 'cm';
+    const unit = getCurrentUnit(); 
     const min = input.getAttribute(`data-${unit}-min`);
     const max = input.getAttribute(`data-${unit}-max`);
     const rangeInfo = input.nextElementSibling;
     rangeInfo.textContent = `(${unit} range: ${min} - ${max})`;
 }
 document.querySelectorAll('input[type="number"]').forEach(input => {
-    const defaultOption = document.getElementById('measurementSwitchToCm');
-    if (defaultOption) {
-        defaultOption.classList.add('checked');
-    }
     updateRangeInfo(input);
 });
 //When click the size option, change the text used for range suggest
-document.querySelectorAll('.sizeOption').forEach(button => {
-    button.addEventListener('click', () => {
-        document.querySelectorAll('input[type="number"]').forEach(input => {
-            updateRangeInfo(input);
-        });
+document.getElementById("toggle-unit").addEventListener("change", () => {
+    document.querySelectorAll('input[type="number"]').forEach(input => {
+        updateRangeInfo(input);
     });
 });
+
 function validateInput(event) {
     const input = event.target;
     if (!input.matches('input[type="number"]')) return;
-    const unit = document.getElementById('size-form').getAttribute('data-unit') === 'in' ? 'in' : 'cm';
+    const unit = getCurrentUnit(); 
     const min = parseFloat(input.getAttribute(`data-${unit}-min`));
     const max = parseFloat(input.getAttribute(`data-${unit}-max`));
     const value = parseFloat(input.value);

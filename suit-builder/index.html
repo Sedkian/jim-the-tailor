@@ -150,12 +150,19 @@
         <section class="size-finder" id = "size-finder">
             <h2>Customize Your Size</h2>
             <form id="size-form">
-                <button type="button" id="measurementSwitchToCm" class="sizeOption" onclick="measurementSwitchCheck(this, measurementSwitchToIn)">cm</button>
-                <button type="button" id="measurementSwitchToIn" class="sizeOption" onclick="measurementSwitchCheck(this, measurementSwitchToCm)">in</button>
+                
+                <div class="toggle-switch">
+                    <input type="checkbox" id="toggle-unit" class="toggle-input">
+                    <label for="toggle-unit" class="toggle-label">
+                      <span class="toggle-inner"></span>
+                      <span class="toggle-switch-circle"></span>
+                    </label>
+                    <span id="unit-label">cm</span>
+                </div>
                 <input type="hidden" id="data-unit" name="data-unit" value="cm">
                 <div>
                     <label for="chest">Chest: 
-                        <span class="how-to-measure">how to measure
+                        <span class="how-to-measure">ⓘ
                             <div class="tooltip-content">
                                 <p>Measure just under the arms and across the shoulder blades holding the tape measure firm and level. Make sure the tape measure is snug (not tight).</p>
                             </div>
@@ -168,7 +175,7 @@
 
                 <div>
                     <label for="neck">Neck:
-                        <span class="how-to-measure">how to measure
+                        <span class="how-to-measure">ⓘ
                             <div class="tooltip-content">
                                 <p>Measure your neck circumference where you would normally button up your shirt.</p>
                             </div>
@@ -181,7 +188,7 @@
 
                 <div>
                     <label for="sleeve-length">Sleeve Length:
-                        <span class="how-to-measure">how to measure
+                        <span class="how-to-measure">ⓘ
                             <div class="tooltip-content">
                                 <p>With arms relaxed at your side and slightly bent, measure from the center back of your neck, over point of shoulder, down the outside of your arm to the wrist.</p>
                             </div>
@@ -194,7 +201,7 @@
 
                 <div>
                     <label for="waist">Waist:
-                        <span class="how-to-measure">how to measure
+                        <span class="how-to-measure">ⓘ
                             <div class="tooltip-content">
                                 <p>Measure around your natural waistline, which is just under your ribs. If you are not sure, you can bend to the side to find where your body natural creases and that is your natural waist.</p>
                             </div>
@@ -207,7 +214,7 @@
 
                 <div>
                     <label for="hip">Hip:
-                        <span class="how-to-measure">how to measure
+                        <span class="how-to-measure">ⓘ
                             <div class="tooltip-content">
                                 <p>With your feet hip-width apart, measure around the fullest part of your hips.</p>
                             </div>
@@ -256,7 +263,6 @@
                 </p>
             </div>
             <button type="button" class = 'calculateFit' onclick="goBackToSizeFinder()">Go Back</button>
-        </section>
 
     </main>
 

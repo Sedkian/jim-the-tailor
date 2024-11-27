@@ -285,7 +285,7 @@ label {
 /* Size Finder Section (Right) */
 #size-selector{
     flex: 1;
-    max-width: 25%;
+    max-width: 40%;
     margin: 1rem;
     padding: 1rem;
     background-color: #fff;
@@ -296,7 +296,7 @@ label {
 .size-finder {
     flex: 1;
     display: block !important;
-    max-width: 30%;
+    max-width: 40%;
     margin: 1rem;
     padding: 1rem;
     background-color: #fff;
@@ -305,7 +305,74 @@ label {
     order: 3; /* Place this section to the right */
     text-align: center;
 }
-
+/* Container */
+.toggle-switch {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  /* Hidden Checkbox */
+  .toggle-input {
+    display: none;
+  }
+  
+  /* Label as Custom Toggle */
+  .toggle-label {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 25px;
+    background-color: #ccc;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  /* Toggle Background for "ON"/"OFF" */
+  .toggle-inner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: orange;
+    border-radius: 15px;
+    transition: background-color 0.3s;
+    opacity: 0;
+  }
+  
+  /* Toggle Circle */
+  .toggle-switch-circle {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 21px;
+    height: 21px;
+    background-color: white;
+    border-radius: 50%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s;
+  }
+  
+  /* Checked State */
+  .toggle-input:checked + .toggle-label .toggle-inner {
+    opacity: 1;
+  }
+  
+  .toggle-input:checked + .toggle-label .toggle-switch-circle {
+    transform: translateX(25px);
+  }
+  
+  .toggle-input:checked + .toggle-label {
+    background-color: orange;
+  }
+  
+  /* Unit Label */
+  #unit-label {
+    font-size: 16px;
+    font-weight: bold;
+  }
 #size-form input {
     width: 100%;
     padding: 0.5rem;
@@ -417,6 +484,7 @@ button.calculateFit:hover {
     background-color: green;
     color: white;
   }
+
 
 
 /* Add to Cart Section */
