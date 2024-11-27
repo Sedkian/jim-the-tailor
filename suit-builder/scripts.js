@@ -444,13 +444,22 @@ window.preselectButton = function(groupId, index) {
 // Function to add item to cart
 function addToCart() {
     const cart = getCart();
-    const currentItems = [
-        { ...getJackets()[currentJacket], quantity: 1 },
-        { ...getShirts()[currentShirt], quantity: 1 },
-        { ...getTies()[currentTie], quantity: 1 },
-        { ...getPants()[currentPants], quantity: 1 },
-        { ...getShoes()[currentShoes], quantity: 1 }
-    ];
+    const currentItems = [];
+    if (jacketOpacity == 1) {
+        currentItems.push({ ...getJackets()[currentJacket], quantity: 1 });
+    }
+    if (shirtOpacity == 1) {
+        currentItems.push({ ...getShirts()[currentShirt], quantity: 1 });
+    }
+    if (tieOpacity == 1) {
+        currentItems.push({ ...getTies()[currentTie], quantity: 1 });
+    }
+    if (pantsOpacity == 1) {
+        currentItems.push({ ...getPants()[currentPants], quantity: 1 });
+    }
+    if (shoesOpacity == 1) {
+        currentItems.push({ ...getShoes()[currentShoes], quantity: 1 });
+    }
 
     currentItems.forEach(newItem => {
         const existingItemIndex = cart.findIndex(item => item.id === newItem.id);
@@ -807,6 +816,7 @@ const jacketsDatabase = [
         type: "jacket",
         color: "Blue",
         price: 300,
+        image: "../database/images/jackets/j7.png",
         cartImage: "../database/cartImages/jackets/j7.png",
         rating: 3
     },
