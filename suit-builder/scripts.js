@@ -492,18 +492,15 @@ function initializeEventListeners() {
     });
     document.getElementById("toggle-unit").addEventListener("change", function () {
         const unitLabel = document.getElementById("unit-label");
-        const sizeForm = document.getElementById('size-form');
         if (this.checked) {
           unitLabel.textContent = "in"; // Change to inches
         } else {
           unitLabel.textContent = "cm"; // Change to centimeters
         }
-      });
-    document.getElementById("toggle-unit").addEventListener("change", () => {
         document.querySelectorAll('input[type="number"]').forEach(input => {
             updateRangeInfo(input);
         });
-    });
+      });
 }
 //Check user input every time they enter something
 function updateRangeInfo(input) {//This is for range info
