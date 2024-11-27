@@ -348,7 +348,7 @@ window.calculateFit = function() {
     } else if(jacket > 4){
         userConfirmed = confirm("Jacket size larger than we can provide, would you accept a smaller one?");
         if (userConfirmed) {
-            jacket = 0
+            jacket = 4
         } else {
             return
         }
@@ -377,8 +377,6 @@ function getCurrentUnit() {
     const toggleSwitch = document.getElementById("toggle-unit");
     return toggleSwitch.checked ? "in" : "cm"; 
 }
-  
-
 
 window.calculateFit = function() {
     let chest = document.getElementById('chest').value;
@@ -412,46 +410,46 @@ window.calculateFit = function() {
     let  sizeArr = [Nsize, Csize, Wsize, Hsize, sSize]
     let jacket = (sizeArr.reduce((sum, num) => sum + num, 0) / sizeArr.length) | 0 // Same as pants
     if(suitVest < 0){
-        userConfirmed = confirm("Vest size smaller than we can provide, would you accept one that is larger?");
-        if (userConfirmed) {
+        //userConfirmed = confirm("Vest size smaller than we can provide, would you accept one that is larger?");
+        if (true) {
             suitVest = 0
         } else {
             return
         }
     } else if (suitVest > 5){
-        userConfirmed = confirm("Vest size larger than we can provide, would you accept one that is smaller?");
-        if (userConfirmed) {
+        //userConfirmed = confirm("Vest size larger than we can provide, would you accept one that is smaller?");
+        if (true) {
             suitVest = 5
         } else {
             return
         }
     }
     if(pants < 0){
-        userConfirmed = confirm("Pants size smaller than we can provide, would you accept one that is larger?");
-        if (userConfirmed) {
+        //userConfirmed = confirm("Pants size smaller than we can provide, would you accept one that is larger?");
+        if (true) {
             pants = 0
         } else {
             return
         }
     } else if( pants > 4){
-        userConfirmed = confirm("Pants size larger than we can provide, would you accept one that is smaller?");
-        if (userConfirmed) {
+        //userConfirmed = confirm("Pants size larger than we can provide, would you accept one that is smaller?");
+        if (true) {
             pants = 4
         } else {
             return
         }
     }
     if(jacket < 0){
-        userConfirmed = confirm("Jacket size smaller than we can provide, would you accept a larger one?");
-        if (userConfirmed) {
+        //userConfirmed = confirm("Jacket size smaller than we can provide, would you accept a larger one?");
+        if (true) {
             jacket = 0
         } else {
             return
         }
     } else if(jacket > 4){
-        userConfirmed = confirm("Jacket size larger than we can provide, would you accept a smaller one?");
-        if (userConfirmed) {
-            jacket = 0
+        //userConfirmed = confirm("Jacket size larger than we can provide, would you accept a smaller one?");
+        if (true) {
+            jacket = 4
         } else {
             return
         }
@@ -491,12 +489,6 @@ function initializeEventListeners() {
         });
     });
     document.getElementById("toggle-unit").addEventListener("change", function () {
-        const unitLabel = document.getElementById("unit-label");
-        if (this.checked) {
-          unitLabel.textContent = "in"; // Change to inches
-        } else {
-          unitLabel.textContent = "cm"; // Change to centimeters
-        }
         document.querySelectorAll('input[type="number"]').forEach(input => {
             updateRangeInfo(input);
         });
@@ -525,15 +517,20 @@ function validateInput(event) {
     const value = parseFloat(input.value);
     const errorMessage = input.nextElementSibling.nextElementSibling;
     const rangeinfo = input.nextElementSibling;
-
+    const calFit = document.getElementById('calculateFitBtd')
     if (isNaN(value) || (value < min || value > max)) {
         errorMessage.style.display = 'inline';
         rangeinfo.style.display = 'inline';
         input.style.borderColor = 'red';
+        calFit.style.setProperty('pointer-events', 'none');
+        calFit.style.setProperty('opacity', '0.5');
+
     } else {
         errorMessage.style.display = 'none';
         rangeinfo.style.display = 'none';
         input.style.borderColor = '';
+        calFit.style.setProperty('pointer-events', 'auto');
+        calFit.style.setProperty('opacity', '1');
     }
 }
 
