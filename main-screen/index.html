@@ -7,66 +7,69 @@
 
   <!-- Stylesheet -->
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="../suit-builder/styles.css">
 
   <!-- Font Awesome for icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-
-<!-- Header -->
-<header>
-  <img src="../database/images/logoB.png"  class="logo">
-  <h1>Jim The Tailor</h1>
-  <a href="../shopping-cart/cart.html" class="cart-icon">
-    <i class="fas fa-shopping-cart"></i>
-  </a>
-  <!-- Login Icon -->
-  <a href="#" class="login-icon">
-    <i class="fas fa-user"></i>
-  </a>
-</header>
-
-<!-- Main Content -->
-<main>
-  <!-- Buttons -->
-  <div class="button-container">
-    <button class="main-button">Shop Now</button>
-    <a href="../suit-builder/index.html">
-      <button class="main-button suit-builder-button">Suit Builder</button>
+  <!-- Header -->
+  <header class="static-header">
+    <img src="../database/images/logo.png"  class="logo">
+    <h2>Jim The Tailor</h2>
+    <a href="../shopping-cart/cart.html" class="cart-icon">
+      <i class="fas fa-shopping-cart"></i>
     </a>
-    <button class="main-button">Fit Finder</button>
-  </div>
+    <!-- Login Icon -->
+    <a href="#" class="login-icon">
+      <i class="fas fa-user"></i>
+    </a>
+  </header>
 
-  <!-- Search Bar -->
-  <div class="search-bar">
-    <input type="text" placeholder="Search">
-    <button>
-      <i class="fas fa-search"></i> <!-- Search Icon -->
-    </button>
-  </div>
-</main>
-
-<!-- Trending Styles Section -->
-<section class="trending-styles">
-  <h2>Trending Styles</h2>
-  <div class="styles-container">
-    <div class="style-item" onclick="selectStyle('john-wick')">
-      <img src="../database/images/styles/john_wick.png" alt="John Wick Style">
-      <p>John Wick</p>
+  <!-- Main Content -->
+  <main>
+    <!-- Buttons -->
+    <div class="button-container">
+      <button class="main-button">Shop Now</button>
+      <a href="../suit-builder/index.html">
+        <button class="main-button suit-builder-button">Suit Builder</button>
+      </a>
+      <button class="main-button">Fit Finder</button>
     </div>
-    <div class="style-item" onclick="selectStyle('james-bond')">
-      <img src="../database/images/styles/james_bond.png" alt="James Bond Style">
-      <p>James Bond</p>
+
+    <!-- Search Bar -->
+    <div class="search-bar">
+      <input type="text" placeholder="Search">
+      <button>
+        <i class="fas fa-search"></i> <!-- Search Icon -->
+      </button>
     </div>
-    <!-- Add more styles as needed -->
-  </div>
-</section>
+  </main>
 
-<script>
-  function selectStyle(style) {
-    window.location.href = `../suit-builder/index.html?style=${style}`;
-  }
-</script>
+  <!-- Trending Styles Section -->
+  <section class="trending-styles">
+    <h2>Trending Styles</h2>
+    <div class="styles-container">
+      <div class="style-item" onclick="selectStyle('john-wick')">
+        <img src="../database/images/styles/john_wick.png" alt="John Wick Style">
+        <p>John Wick</p>
+      </div>
+      <div class="style-item" onclick="selectStyle('james-bond')">
+        <img src="../database/images/styles/james_bond.png" alt="James Bond Style">
+        <p>James Bond</p>
+      </div>
+      <!-- Add more styles as needed -->
+    </div>
+  </section>
 
+  <script>
+    function selectStyle(style) {
+      window.location.href = `../suit-builder/index.html?style=${style}`;
+    }
+  </script>
+
+  <footer>
+    <p>&copy; 2024 Jim The Tailor - The Future of Suit Shopping</p>
+  </footer>
 </body>
 </html>
