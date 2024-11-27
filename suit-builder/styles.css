@@ -468,7 +468,7 @@ button.calculateFit:hover {
     text-align: center;
     margin: 1rem 0;
     position: relative;
-    /* top: -120px; */
+    top: 550px;
 }
 
 #add-to-cart {
