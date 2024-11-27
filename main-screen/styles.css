@@ -30,23 +30,13 @@
     font-size: 3rem;
     color: rgb(51, 51, 51);
   }
-
-
-  .cart-icon {
-    position: absolute;
-    right: 40px; 
-    top: 50%; 
-    transform: translateY(-50%);
-    font-size: 3rem;
-    color: #333;
-  }
   
-  .cart-icon a, .login-icon a {
+  .login-icon a {
     cursor: pointer;
   }
   
 
-  .login-icon:hover i, .cart-icon:hover i {
+  .login-icon:hover i {
     color: #555;
   }
 
@@ -92,14 +82,14 @@
 
   /* Search Bar */
   .search-bar {
-    margin-top: 5px;
     display: flex;
     width: 100%;
-    max-width: 900px;
+    max-width: 40%;
     border: 1px solid #ddd;
     border-radius: 5px;
-    overflow: hidden;
-  }
+    justify-content: center;
+    margin: 20px auto; /* Center the search bar horizontally */
+}
 
   .search-bar input {
     flex-grow: 1;

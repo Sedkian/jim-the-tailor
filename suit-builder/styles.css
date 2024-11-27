@@ -457,3 +457,16 @@ button.calculateFit:hover {
 .cart-icon:hover {
     color: #d3d3d3;
 }
+
+.login-icon {
+    position: absolute;
+    top: 1rem;
+    right: 4rem; /* Adjust this value to place it next to the cart icon */
+    font-size: 2rem;
+    transform: translateY(-20%);
+    color: #fff;
+}
+
+.login-icon:hover {
+    color: #d3d3d3;
+}
