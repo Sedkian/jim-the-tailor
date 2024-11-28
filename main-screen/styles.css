@@ -98,3 +98,21 @@
     margin-top: 0.5rem;
     font-size: 1.2rem;
   }
+
+  .unimplemented-popup {
+    position: absolute;
+    top: 1rem;
+    left: 50%;
+    transform: translate(-50%, 0);
+    background-color: #da6a6a;
+    color: #fff;
+    padding: 1rem;
+    border-radius: 4px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    opacity: 0; /* Start with opacity 0 */
+    transition: opacity 0.5s ease-in-out;
+  }
+  .unimplemented-popup.show {
+      opacity: 1;
+  }

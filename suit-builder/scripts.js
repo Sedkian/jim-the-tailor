@@ -70,27 +70,27 @@ var currentShoes = 0;
 
 window.changeImage = function(type, direction) {
     // Handle changes based on the item type
-    if (type === 0) { // Jacket
+    if (type === 0 && jacketOpacity === 1) { // Jacket
         const Jackets = getJackets();
         const NUM_JACKETS = Jackets.length;
         currentJacket = (currentJacket + direction + NUM_JACKETS) % NUM_JACKETS;
         updatePreviewedJacket();
-    } else if (type === 1) { // Shirt
+    } else if (type === 1 && shirtOpacity === 1) { // Shirt
         const Shirts = getShirts();
         const NUM_SHIRTS = Shirts.length;
         currentShirt = (currentShirt + direction + NUM_SHIRTS) % NUM_SHIRTS;
         updatePreviewedShirt();
-    } else if (type === 2) { // Tie
+    } else if (type === 2 && tieOpacity === 1) { // Tie
         const Ties = getTies();
         const NUM_TIES = Ties.length;
         currentTie = (currentTie + direction + NUM_TIES) % NUM_TIES;
         updatePreviewedTie();
-    } else if (type === 4) { // Pants
+    } else if (type === 4 && pantsOpacity === 1) { // Pants
         const Pants = getPants();
         const NUM_PANTS = Pants.length;
         currentPants = (currentPants + direction + NUM_PANTS) % NUM_PANTS;
         updatePreviewedPants();
-    } else if (type === 5) { // Shoes
+    } else if (type === 5 && shoesOpacity === 1) { // Shoes
         const Shoes = getShoes();
         const NUM_SHOES = Shoes.length;
         currentShoes = (currentShoes + direction + NUM_SHOES) % NUM_SHOES;
@@ -158,10 +158,15 @@ window.toggleDisplay = function(type) {
             jacketOpacity = 0;
             document.getElementById("jacketImage").style.opacity = jacketOpacity;
             document.getElementById("jacket-toggle").src = "../database/images/offButton.png";
+            document.getElementById("jacket-name").innerHTML = "";
+            document.getElementById("jacket-price").style.opacity = jacketOpacity;
+            document.getElementById("jacket-rating").style.opacity = jacketOpacity;
+            // document.getElementById()
         } else {
             jacketOpacity = 1
             document.getElementById("jacketImage").style.opacity = jacketOpacity;
             document.getElementById("jacket-toggle").src = "../database/images/onButton.png";
+            // document.getElementById("jacket-name").style.opacity = jacketOpacity;
         }
     } else if (type === 1) {
         if (shirtOpacity === 1) {
@@ -456,13 +461,22 @@ window.preselectButton = function(groupId, index) {
 // Function to add item to cart
 function addToCart() {
     const cart = getCart();
-    const currentItems = [
-        { ...getJackets()[currentJacket], quantity: 1 },
-        { ...getShirts()[currentShirt], quantity: 1 },
-        { ...getTies()[currentTie], quantity: 1 },
-        { ...getPants()[currentPants], quantity: 1 },
-        { ...getShoes()[currentShoes], quantity: 1 }
-    ];
+    const currentItems = [];
+    if (jacketOpacity == 1) {
+        currentItems.push({ ...getJackets()[currentJacket], quantity: 1 });
+    }
+    if (shirtOpacity == 1) {
+        currentItems.push({ ...getShirts()[currentShirt], quantity: 1 });
+    }
+    if (tieOpacity == 1) {
+        currentItems.push({ ...getTies()[currentTie], quantity: 1 });
+    }
+    if (pantsOpacity == 1) {
+        currentItems.push({ ...getPants()[currentPants], quantity: 1 });
+    }
+    if (shoesOpacity == 1) {
+        currentItems.push({ ...getShoes()[currentShoes], quantity: 1 });
+    }
 
     currentItems.forEach(newItem => {
         const existingItemIndex = cart.findIndex(item => item.id === newItem.id);
@@ -819,6 +833,7 @@ const jacketsDatabase = [
         type: "jacket",
         color: "Blue",
         price: 300,
+        image: "../database/images/jackets/j7.png",
         cartImage: "../database/cartImages/jackets/j7.png",
         rating: 3
     },
@@ -1131,4 +1146,27 @@ function getTies() {
 function getItemById(type, id) {
     let items = JSON.parse(localStorage.getItem(type));
     return items.find(item => item.id === id);
+}
+
+function notImplemented() {
+    // Show the popup
+    const popup = document.createElement('div');
+    popup.className = 'unimplemented-popup';
+    popup.textContent = 'Feature Not Implemented!';
+
+    document.body.appendChild(popup);
+
+
+    // Show the popup with animation
+    setTimeout(() => {
+        popup.classList.add('show');
+    }, 10);
+
+    // Hide the popup after 3 seconds
+    setTimeout(() => {
+        popup.classList.remove('show');
+        setTimeout(() => {
+            document.body.removeChild(popup);
+        }, 500);
+    }, 3000);
 }
