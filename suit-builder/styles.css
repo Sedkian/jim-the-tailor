@@ -223,7 +223,8 @@ label {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 0%;
+
+    margin-bottom: 2rem;
 
 }
 
@@ -250,6 +251,15 @@ label {
     align-items: center;
     text-align: center;
 }
+
+.item-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem; /* Add spacing between name and price */
+    font-size: 1.2rem; /* Adjust size if needed */
+}
+
 
 .item-container label {
     font-weight: bold;
@@ -295,6 +305,7 @@ label {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     order: 3;
     text-align: center;
+    
 }
 /* Size Finder Section (Right) */
 .size-finder {
@@ -308,6 +319,8 @@ label {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     order: 3;
     text-align: center;
+    
+
 }
 /* Container */
 .toggle-switch {

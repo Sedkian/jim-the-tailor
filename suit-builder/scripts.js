@@ -153,127 +153,79 @@ var pantsOpacity = 1;
 var shoesOpacity = 1;
 
 window.toggleDisplay = function(type) {
-    if (type === 0) {
+    if (type === 0) { // Jacket
         if (jacketOpacity === 1) {
             jacketOpacity = 0;
             document.getElementById("jacketImage").style.opacity = jacketOpacity;
             document.getElementById("jacket-toggle").src = "../database/images/offButton.png";
-            document.getElementById("jacket-name").innerHTML = "";
-            document.getElementById("jacket-price").style.opacity = jacketOpacity;
-            document.getElementById("jacket-rating").style.opacity = jacketOpacity;
-            // document.getElementById()
+            document.getElementById("jacket-name").innerText = ""; // Clear the name
+            document.getElementById("jacket-price").innerText = ""; // Clear the price
+            document.getElementById("jacket-rating").innerHTML = ""; // Clear the rating
         } else {
-            jacketOpacity = 1
+            jacketOpacity = 1;
             document.getElementById("jacketImage").style.opacity = jacketOpacity;
             document.getElementById("jacket-toggle").src = "../database/images/onButton.png";
-            // document.getElementById("jacket-name").style.opacity = jacketOpacity;
+            updatePreviewedJacket(); // Restore the information
         }
-    } else if (type === 1) {
+    } else if (type === 1) { // Shirt
         if (shirtOpacity === 1) {
             shirtOpacity = 0;
             document.getElementById("shirtImage").style.opacity = shirtOpacity;
             document.getElementById("shirt-toggle").src = "../database/images/offButton.png";
+            document.getElementById("shirt-name").innerText = ""; // Clear the name
+            document.getElementById("shirt-price").innerText = ""; // Clear the price
+            document.getElementById("shirt-rating").innerHTML = ""; // Clear the rating
         } else {
-            shirtOpacity = 1
+            shirtOpacity = 1;
             document.getElementById("shirtImage").style.opacity = shirtOpacity;
             document.getElementById("shirt-toggle").src = "../database/images/onButton.png";
+            updatePreviewedShirt(); // Restore the information
         }
-    } else if (type === 2) {
+    } else if (type === 2) { // Tie
         if (tieOpacity === 1) {
             tieOpacity = 0;
             document.getElementById("tieImage").style.opacity = tieOpacity;
             document.getElementById("tie-toggle").src = "../database/images/offButton.png";
+            document.getElementById("tie-name").innerText = ""; // Clear the name
+            document.getElementById("tie-price").innerText = ""; // Clear the price
+            document.getElementById("tie-rating").innerHTML = ""; // Clear the rating
         } else {
-            tieOpacity = 1
+            tieOpacity = 1;
             document.getElementById("tieImage").style.opacity = tieOpacity;
             document.getElementById("tie-toggle").src = "../database/images/onButton.png";
+            updatePreviewedTie(); // Restore the information
         }
-        
-    } else if (type === 4) {
+    } else if (type === 4) { // Pants
         if (pantsOpacity === 1) {
             pantsOpacity = 0;
             document.getElementById("pantsImage").style.opacity = pantsOpacity;
             document.getElementById("pants-toggle").src = "../database/images/offButton.png";
+            document.getElementById("pants-name").innerText = ""; // Clear the name
+            document.getElementById("pants-price").innerText = ""; // Clear the price
+            document.getElementById("pants-rating").innerHTML = ""; // Clear the rating
         } else {
-            pantsOpacity = 1
+            pantsOpacity = 1;
             document.getElementById("pantsImage").style.opacity = pantsOpacity;
             document.getElementById("pants-toggle").src = "../database/images/onButton.png";
+            updatePreviewedPants(); // Restore the information
         }
-        
-    } else if (type === 5) {
+    } else if (type === 5) { // Shoes
         if (shoesOpacity === 1) {
             shoesOpacity = 0;
             document.getElementById("shoesImage").style.opacity = shoesOpacity;
             document.getElementById("shoes-toggle").src = "../database/images/offButton.png";
+            document.getElementById("shoes-name").innerText = ""; // Clear the name
+            document.getElementById("shoes-price").innerText = ""; // Clear the price
+            document.getElementById("shoes-rating").innerHTML = ""; // Clear the rating
         } else {
-            shoesOpacity = 1
+            shoesOpacity = 1;
             document.getElementById("shoesImage").style.opacity = shoesOpacity;
             document.getElementById("shoes-toggle").src = "../database/images/onButton.png";
+            updatePreviewedShoes(); // Restore the information
         }
     }
 }
 
-var jacketOpacity = 1;
-var shirtOpacity = 1;
-var tieOpacity = 1;
-var pantsOpacity = 1;
-var shoesOpacity = 1;
-
-window.toggleDisplay = function(type) {
-    if (type === 0) {
-        if (jacketOpacity === 1) {
-            jacketOpacity = 0;
-            document.getElementById("jacketImage").style.opacity = jacketOpacity;
-            document.getElementById("jacket-toggle").src = "../database/images/offButton.png";
-        } else {
-            jacketOpacity = 1
-            document.getElementById("jacketImage").style.opacity = jacketOpacity;
-            document.getElementById("jacket-toggle").src = "../database/images/onButton.png";
-        }
-    } else if (type === 1) {
-        if (shirtOpacity === 1) {
-            shirtOpacity = 0;
-            document.getElementById("shirtImage").style.opacity = shirtOpacity;
-            document.getElementById("shirt-toggle").src = "../database/images/offButton.png";
-        } else {
-            shirtOpacity = 1
-            document.getElementById("shirtImage").style.opacity = shirtOpacity;
-            document.getElementById("shirt-toggle").src = "../database/images/onButton.png";
-        }
-    } else if (type === 2) {
-        if (tieOpacity === 1) {
-            tieOpacity = 0;
-            document.getElementById("tieImage").style.opacity = tieOpacity;
-            document.getElementById("tie-toggle").src = "../database/images/offButton.png";
-        } else {
-            tieOpacity = 1
-            document.getElementById("tieImage").style.opacity = tieOpacity;
-            document.getElementById("tie-toggle").src = "../database/images/onButton.png";
-        }
-        
-    } else if (type === 4) {
-        if (pantsOpacity === 1) {
-            pantsOpacity = 0;
-            document.getElementById("pantsImage").style.opacity = pantsOpacity;
-            document.getElementById("pants-toggle").src = "../database/images/offButton.png";
-        } else {
-            pantsOpacity = 1
-            document.getElementById("pantsImage").style.opacity = pantsOpacity;
-            document.getElementById("pants-toggle").src = "../database/images/onButton.png";
-        }
-        
-    } else if (type === 5) {
-        if (shoesOpacity === 1) {
-            shoesOpacity = 0;
-            document.getElementById("shoesImage").style.opacity = shoesOpacity;
-            document.getElementById("shoes-toggle").src = "../database/images/offButton.png";
-        } else {
-            shoesOpacity = 1
-            document.getElementById("shoesImage").style.opacity = shoesOpacity;
-            document.getElementById("shoes-toggle").src = "../database/images/onButton.png";
-        }
-    }
-}
 
 window.calculateFit = function() {
     let chest = document.getElementById('chest').value;
