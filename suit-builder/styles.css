@@ -9,7 +9,7 @@ body {
     font-family: Helvetica Neue;
     background-color: #f4f4f9;
     color: #333;
-    line-height: 1.6;
+    line-height: 1.4;
     display: flex;
     flex-direction: column;
     min-height: 100vh; /* Full viewport height */
@@ -36,19 +36,23 @@ footer {
 /* Static Header */
 .static-header {
     display: flex;
-    padding: 0.2rem 1rem; 
+    align-items: center;
+    padding: .05%;
     background-color: #333;
     color: #fff;
-    position: relative;
 }
 
 .static-header h1 {
     margin: 0;
+    padding: .05%;
+    font-size: 2.1rem;
     margin-left: 10px;
 }
 
 .static-header h1 a {
+
     color: #fff;
+    font-size: 2.5rem;
     text-decoration: none;
 }
 
@@ -61,7 +65,8 @@ footer {
     margin-left: 10px;
     text-align: center;
     flex: 1;
-    font-size: 2rem;
+    padding: .01px;
+    font-size: 2.3rem;
 }
 
 .static-header h2 a {
@@ -81,7 +86,8 @@ h1 {
 
 h2 {
     font-size: 1.5rem;
-    margin-bottom: 0.5rem;
+    margin-top: 0.7rem;
+
 }
 
 h3 {
@@ -92,28 +98,27 @@ h3 {
 /* Page Title */
 .page-title {
     text-align: center;
-    margin: 1rem 0;
+    margin: .7rem 0;
 }
 header .logo {
     top: 10px;
-    width: 45px; 
+    width: 45px;
     height: 55px;
 }
 
 /* Main Content (Fit Finder) */
 main.fit-finder {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin: 2rem auto;
-    max-width: 1200px;
+    gap: 10px;
+    width: 85%;
+    margin: 0rem 8rem;
 }
 
 .suit-display {
-    flex: 1; 
-    max-width: 40%; 
+    flex-grow: 1;
     text-align: center;
     margin: 1rem;
+    width: 33%;
     padding: 1rem;
     background-color: #fff;
     border-radius: 8px;
@@ -135,7 +140,7 @@ body {
     top: auto;
     left: auto;
     transform: translate(-50%, 0%);
-    height: 45%;
+    height: 53%;
     width: auto;
     opacity: 1;
 }
@@ -146,7 +151,7 @@ body {
     top: auto;
     left: auto;
     transform: translate(-50%, 0%);
-    height: 45%;
+    height: 53%;
     width: auto;
     opacity: 1;
 }
@@ -157,7 +162,7 @@ body {
     top: auto;
     left: auto;
     transform: translate(-50%, 0%);
-    height: 45%;
+    height: 53%;
     width: auto;
     opacity: 1;
 }
@@ -168,7 +173,7 @@ body {
     top: auto;
     left: auto;
     transform: translate(-50%, 0%);
-    height: 45%;
+    height: 53%;
     width: auto;
     opacity: 1;
 }
@@ -179,7 +184,7 @@ body {
     top: auto;
     left: auto;
     transform: translate(-50%, 0%);
-    height: 45%;
+    height: 53%;
     width: auto;
     opacity: 1;
 }
@@ -189,7 +194,7 @@ body {
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    /* margin: 1rem 0; */
+
 }
 .arrowButton {
     width: 50px;
@@ -198,8 +203,8 @@ body {
 
 /* Customization Section (Left) */
 .customization {
-    flex: 1;
-    max-width: 30%;
+    flex-grow: 1;
+    width: 30%;
     margin: 1rem;
     padding: 1rem;
     background-color: #fff;
@@ -221,7 +226,7 @@ label {
     justify-content: space-between;
     align-items: center;
     margin-top: 0%;
-    margin-bottom: 1rem;
+
 }
 
 .item-label {
@@ -282,27 +287,28 @@ label {
     background-color: #005bb5;
 }
 
-/* Size Finder Section (Right) */
 #size-selector{
-    flex: 1;
-    max-width: 40%;
+    flex-grow: 1;
+    max-width: 30%;
     margin: 1rem;
     padding: 1rem;
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    order: 3; 
+    order: 3;
+    text-align: center;
 }
+/* Size Finder Section (Right) */
 .size-finder {
-    flex: 1;
+    flex-grow: 1;
     display: block !important;
-    max-width: 40%;
+    width: 30%;
     margin: 1rem;
     padding: 1rem;
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    order: 3; /* Place this section to the right */
+    order: 3;
     text-align: center;
 }
 /* Container */
@@ -461,17 +467,14 @@ button.calculateFit:hover {
   }
 
 
-
 /* Add to Cart Section */
 .add-to-cart {
-    text-align: center;
-    margin: 1rem 0;
     position: relative;
-    /* top: -120px; */
+    
 }
 
 #add-to-cart {
-    background-color: #ff6600;
+    background-color: #333;
     color: #fff;
     padding: 1rem 2rem;
     border: none;

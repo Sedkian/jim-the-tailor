@@ -1,52 +1,47 @@
+
   /* Main Content */
   .button-container {
     display: flex;
     justify-content: center;
     gap: 150px;
-    margin: 30px 0;
+    margin: 12px 0;
   }
 
   .main-button {
-    padding: 15px 30px;
-    font-size: 1.5rem;
+    padding: 20px 30px;
+    font-size: 1.3rem;
     font-family: Helvetica Neue;
     border: none;
-    border-radius: 5px;
-
+    border-radius: 15px;
+background-color: #E8E8E8;
     color: black;
-    cursor: pointer;
-    transition: transform 0.2s ease, background-color 0.3s ease;
-  }
 
-  .main-button:hover {
-    transform: scale(1.05);
-    background-color: lightgrey;
-  }
-
-  .main-button:active {
-    transform: scale(0.95);
+    transition: transform 0.3s ease, background-color 0.4s ease;
   }
 
   /* Suit Builder Button (Middle) */
   .suit-builder-button {
-    font-size: 1.8rem;
+    font-size: 1.5rem;
     font-family: Helvetica Neue;
-    padding: 20px 40px;
+    padding: 18px 40px;
+    background-color: #E8E8E8;
+
   }
 
   .suit-builder-button:hover {
-    background-color: lightgrey;
+    background-color: #A8A8A8;
+    cursor: pointer;
   }
 
   /* Search Bar */
   .search-bar {
     display: flex;
     width: 100%;
-    max-width: 40%;
+    max-width: 60%;
     border: 1px solid #ddd;
     border-radius: 5px;
     justify-content: center;
-    margin: 20px auto; /* Center the search bar horizontally */
+    margin: 12px auto; /* Center the search bar horizontally */
 }
 
   .search-bar input {
@@ -74,7 +69,7 @@
 
   .trending-styles {
     text-align: center;
-    margin: 2rem 0;
+    margin: 1rem 0;
   }
   
   .styles-container {
@@ -86,6 +81,9 @@
   .style-item {
     cursor: pointer;
     text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.4s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+     border-radius: 15px;
   }
   
   .style-item img {
@@ -97,4 +95,9 @@
   .style-item p {
     margin-top: 0.5rem;
     font-size: 1.2rem;
+  }
+
+  .style-item:hover {
+    transform: scale(1.05); /* Slight scale-up effect */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Add shadow on hover */
   }
