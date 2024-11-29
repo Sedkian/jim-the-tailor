@@ -3,7 +3,7 @@ main.cart-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 2rem auto;
+    margin-left: 2rem;
     max-width: 800px;
 }
 
@@ -94,11 +94,16 @@ main.cart-container {
 .button-container {
     display: flex; /* Align items horizontally */
     justify-content: center; /* Center the buttons horizontally */
+    flex-direction: column;
+    align-items: flex-end;
     gap: 1rem; /* Add space between buttons */
     margin-top: 1rem; /* Add space above the buttons */
 }
 
 .clear-cart-button {
+    position: absolute;
+        top: 0;
+        right: 0;
     background-color: #ff0000;
     color: #fff;
     border: none;
@@ -114,6 +119,9 @@ main.cart-container {
 }
 
 .checkout-button {
+    position: absolute;
+        top: 0;
+        right: 0;
     background-color: #4CAF50; /* Green background */
     border: none; /* Remove borders */
     color: white; /* White text */
