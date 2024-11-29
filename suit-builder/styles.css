@@ -500,7 +500,7 @@ button.calculateFit:hover {
 
 /* Add to Cart Button */
 #add-to-cart {
-    background-color: orange;
+    background-color: #3e3d3d;
     color: #ffffff;
     font-family: Helvetica Neue, Arial, sans-serif;
     padding: 0.9rem 2rem;
@@ -512,7 +512,7 @@ button.calculateFit:hover {
 }
 
 #add-to-cart:hover {
-    background-color: darkorange;
+    background-color: rgb(0, 0, 0);
 }
 
 /* Popup Notification */
