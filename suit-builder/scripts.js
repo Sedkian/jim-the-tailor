@@ -466,7 +466,7 @@ function displayCartItems() {
         cartContainer.innerHTML = '<p>Your cart is empty.</p>';
         const totalPriceElement = document.querySelector(".total-price h2");
         if (totalPriceElement) {
-            totalPriceElement.textContent = `Total Price: $0 CAD`;
+            totalPriceElement.textContent = `Total: $0 CAD`;
         }
         return;
     }
@@ -517,7 +517,7 @@ function displayCartItems() {
 
     const totalPriceElement = document.querySelector(".total-price h2");
     if (totalPriceElement) {
-        totalPriceElement.textContent = `Total Price: $${totalPrice} CAD`;
+        totalPriceElement.textContent = `Total: $${totalPrice} CAD`;
     }
 }
 
@@ -531,7 +531,7 @@ function handleCheckout(totalPrice) {
     checkoutModal.innerHTML = `
         <div class="checkout-modal-content">
             <h2>Checkout</h2>
-            <p>Total Price: $${totalPrice} CAD</p>
+            <p>Total: $${totalPrice} CAD</p>
             <button id="pay-button">Pay</button>
             <button id="cancel-button">Cancel</button>
         </div>
