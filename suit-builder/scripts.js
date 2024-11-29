@@ -281,8 +281,7 @@ window.calculateFit = function() {
     let sl = document.getElementById('sleeve-length').value;
     let hip = document.getElementById('hip').value;
     let waist = document.getElementById('waist').value;
-    let sizeForm = document.getElementById('size-form');
-    let currentUnit = sizeForm.getAttribute('data-unit');
+    let currentUnit = getCurrentUnit();
     if(currentUnit !== 'in'){
         chest = chest*0.3937;
         neck = neck*0.3937;
@@ -290,7 +289,6 @@ window.calculateFit = function() {
         hip = hip*0.3937; 
         waist = waist*0.3937;
     }
-
     const vestN = ((neck-14) / 0.9)
     const vestC = ((chest-34) / 3.6)
     const vestW = ((waist-28) / 4.1)
@@ -306,53 +304,11 @@ window.calculateFit = function() {
     const sSize = ((sl - sleeve - 33) / 0.5)
     let  sizeArr = [Nsize, Csize, Wsize, Hsize, sSize]
     let jacket = (sizeArr.reduce((sum, num) => sum + num, 0) / sizeArr.length) | 0 // Same as pants
-    userConfirmed=true
-    if(suitVest < 0){
-        //userConfirmed = confirm("Vest size smaller than we can provide, would you accept one that is larger?");
-        if (userConfirmed) {
-            suitVest = 0
-        } else {
-            return
-        }
-    } else if (suitVest > 5){
-        //userConfirmed = confirm("Vest size larger than we can provide, would you accept one that is smaller?");
-        if (userConfirmed) {
-            suitVest = 5
-        } else {
-            return
-        }
-    }
-    if(pants < 0){
-        //userConfirmed = confirm("Pants size smaller than we can provide, would you accept one that is larger?");
-        if (userConfirmed) {
-            pants = 0
-        } else {
-            return
-        }
-    } else if( pants > 4){
-        //userConfirmed = confirm("Pants size larger than we can provide, would you accept one that is smaller?");
-        if (userConfirmed) {
-            pants = 4
-        } else {
-            return
-        }
-    }
-    if(jacket < 0){
-        //userConfirmed = confirm("Jacket size smaller than we can provide, would you accept a larger one?");
-        if (userConfirmed) {
-            jacket = 0
-        } else {
-            return
-        }
-    } else if(jacket > 4){
-        //userConfirmed = confirm("Jacket size larger than we can provide, would you accept a smaller one?");
-        if (userConfirmed) {
-            jacket = 4
-        } else {
-            return
-        }
-    }
-
+    
+    suitVest = Math.min(Math.max(suitVest, 0), 5)
+    pants = Math.min(Math.max(pants, 0), 4)
+    jacket = Math.min(Math.max(jacket, 0), 4)
+    
     preselectButton("pants-size", pants)
     preselectButton("vest-size", suitVest)
     preselectButton("jacket-size", jacket)
@@ -370,14 +326,13 @@ window.goBackToSizeFinder = function() {
     document.getElementById('size-selector').style.setProperty('display', 'none', 'important');  // Show the size-selector form
 }
 
-function getCurrentUnit() {
+window.getCurrentUnit = function() {
     const toggleSwitch = document.getElementById("toggle-unit");
     return toggleSwitch.checked ? "in" : "cm"; 
 }
 
-
 //Event listener for size select, when select one, deselect everything else
-function initializeEventListeners() {
+window.initializeEventListeners = function() {
     const buttonGroups = document.querySelectorAll('.size-select-cot');
     buttonGroups.forEach(group => {
         group.addEventListener('click', (event) => {
@@ -397,27 +352,28 @@ function initializeEventListeners() {
             updateRangeInfo(input);
         });
     });
+    document.querySelectorAll('input[type="number"]').forEach(input => {
+        updateRangeInfo(input);
+    });
 }
 //Check user input every time they enter something
-function updateRangeInfo(input) {//This is for range info
+window.updateRangeInfo = function(input) {//This is for range info
     const unit = getCurrentUnit(); 
     const min = input.getAttribute(`data-${unit}-min`);
     const max = input.getAttribute(`data-${unit}-max`);
     const rangeInfo = input.nextElementSibling;
     rangeInfo.textContent = `(${unit} range: ${min} - ${max})`;
 }
-document.querySelectorAll('input[type="number"]').forEach(input => {
-    updateRangeInfo(input);
-});
+
 //When click the size option, change the text used for range suggest
 
-function areAllSizeFilled() {
+window.areAllSizeFilled = function() {
     const inputs = document.querySelectorAll('#size-form input[type="number"]');
     return Array.from(inputs).every(input => input.value.trim() !== '');
 }
 
 
-function validateInput(event) {
+window. validateInput = function(event) {
     const input = event.target;
     if (!input.matches('input[type="number"]')) return;
     const unit = getCurrentUnit(); 
@@ -456,6 +412,7 @@ window.preselectButton = function(groupId, index) {
     buttons.forEach(button => button.classList.remove('selected'));
     buttons[index].classList.add('selected');
 }
+
 
 /* Shopping Cart */
 // Function to add item to cart
