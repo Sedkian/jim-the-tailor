@@ -472,15 +472,21 @@ function displayCartItems() {
     }
 
     // Create a button container
+    const rightContainer = document.querySelector('.right-container');
+
     const buttonContainer = document.createElement('div');
     buttonContainer.className = 'button-container';
 
     // Add the checkout button
     const checkoutButton = document.createElement('button');
     checkoutButton.className = 'checkout-button';
-    checkoutButton.textContent = 'Checkout';
+    checkoutButton.textContent = 'Proceed to Checkout';
     checkoutButton.onclick = () => handleCheckout(totalPrice);
     buttonContainer.appendChild(checkoutButton);
+
+
+    // Append the button container to the right container
+    rightContainer.appendChild(buttonContainer);
 
     // Add the clear cart button
     const clearCartButton = document.createElement('button');

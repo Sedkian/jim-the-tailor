@@ -4,14 +4,13 @@ main.cart-container {
     flex-direction: column;
     align-items: center;
     margin-left: 2.2rem;
-    max-width: 50%;
+    max-width: 66%;
 }
 
 .cart-container p{
     position: absolute;
     left: 45.5%;
     font-size: 1.5rem;
-              /* Optional, for some padding around */
 }
 
 .cart-item {
@@ -75,6 +74,39 @@ main.cart-container {
     color: #cc0000;
 }
 
+
+
+.main-container {
+    display: flex; /* Flexbox to align children horizontally */
+    justify-content: space-between; /* Space between cart and summary */
+    align-items: flex-start; /* Align content to the top */
+    gap: 1rem; /* Space between the two containers */
+    padding: 1rem; /* Optional padding */
+    max-width: 100%; /* Prevent overflow */
+    box-sizing: border-box;
+}
+
+/* Ensure .cart-container takes up 2/3 of the width */
+.cart-container {
+    flex: 2; /* Takes up two-thirds of the available space */
+    max-width: 75%; /* Ensure no overflow */
+}
+
+.right-container {
+
+    flex: 1;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 2rem; /* Inner spacing */
+    display: flex;
+    max-width: 33%;
+    margin-top: 1.5rem;
+    flex-direction: column; /* Stack content vertically */
+    align-items: center; /* Center-align content horizontally */
+    gap: 2rem; /* Space between elements */
+}
+
 .back-button {
     position: absolute;   /* Absolute positioning */
     top: 5rem;            /* Space from the top of the page */
@@ -98,17 +130,15 @@ main.cart-container {
 }
 
 .total-price {
-    position: absolute;
-    top: 7.6rem;
-    right: 12rem;
+    position: relative;
     margin: 1rem;
-    font-size: 1.5rem;
+    font-size: 1rem;
     font-weight: bold;
     color: #000;
     background-color: #fff;
-    padding: 10rem 1rem;
+    padding: 1rem 1rem;
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
 }
 
 .rating {
@@ -134,7 +164,6 @@ main.cart-container {
     position: absolute;
     left: 15%;
     top: 6%;
-    
     background-color: #ff0000;
     color: #fff;
     border: none;
@@ -150,9 +179,7 @@ main.cart-container {
 }
 
 .checkout-button {
-    position: absolute;
-    top: 27rem;
-    right: 20rem;
+    position: relative;
     background-color: #4CAF50; /* Green background */
     border: none; /* Remove borders */
     color: white; /* White text */
