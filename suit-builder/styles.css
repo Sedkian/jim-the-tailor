@@ -108,8 +108,8 @@ header .logo {
 main.fit-finder {
     display: flex;
     gap: 10px;
-    width: 85%;
-    margin: 0rem 8rem;
+    width: 95%;
+    margin: 0rem 2rem;
 }
 
 .suit-display {
@@ -204,7 +204,7 @@ body {
     flex-grow: 1;
     width: 30%;
     margin: 1rem;
-    padding: 4rem;
+    padding: 1rem;
     background-color: #fff;
     border-radius: 8px;
     order: 1; /* Place this section to the left */
@@ -299,7 +299,7 @@ label {
     flex-grow: 1;
     max-width: 30%;
     margin: 1rem;
-    padding: 3.5rem;
+    padding: 1rem;
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -320,7 +320,7 @@ label {
     display: block !important;
     width: 30%;
     margin: 1rem;
-    padding: 3.5rem;
+    padding: 1rem;
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
