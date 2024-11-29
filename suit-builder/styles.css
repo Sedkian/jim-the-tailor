@@ -487,25 +487,28 @@ button.calculateFit:hover {
 
 /* Add to Cart Section */
 .add-to-cart {
-    position: relative;
-    z-index: 2;
-    top: auto;
-    left: auto;
-    transform: translate(0%, 950%);
+    position: absolute; /* Set to absolute for positioning relative to suit-display */
+    bottom: 10%; /* Adjust the vertical position as needed */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, 0); /* Adjust for centering */
+    z-index: 2; /* Keep it above other elements */
+    text-align: center;
+    margin-bottom: 5rem;
+    margin-left: -1rem;
     
 }
 
-
+/* Add to Cart Button */
 #add-to-cart {
-    background-color:orange;
+    background-color: orange;
     color: #ffffff;
-    font-family: Helvetica Neue;
+    font-family: Helvetica Neue, Arial, sans-serif;
     padding: 0.9rem 2rem;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    font: bold;
     font-size: 1.4rem;
+    transition: background-color 0.3s ease;
 }
 
 #add-to-cart:hover {
