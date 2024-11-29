@@ -452,7 +452,7 @@ label {
 
 
 button.calculateFit {
-    background-color: #28a745;
+    background-color: #ff1c15;
     color: #fff;
     padding: 0.5rem 1rem;
     border: none;
@@ -491,7 +491,7 @@ button.calculateFit:hover {
 }
 
 #add-to-cart {
-    background-color: #333;
+    background-color: #ff1c15;
     color: #ffffff;
     font-family: Helvetica Neue;
     padding: 0.9rem 2rem;
@@ -503,7 +503,7 @@ button.calculateFit:hover {
 }
 
 #add-to-cart:hover {
-    background-color: #000000;
+    background-color: #333;
 }
 
 /* Popup Notification */
