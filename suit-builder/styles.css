@@ -204,7 +204,7 @@ body {
     flex-grow: 1;
     width: 30%;
     margin: 1rem;
-    padding: 1rem;
+    padding: 4rem;
     background-color: #fff;
     border-radius: 8px;
     order: 1; /* Place this section to the left */
@@ -295,25 +295,32 @@ label {
     background-color: #aaadaf;
 }
 
-#size-selector{
+#size-selector {
     flex-grow: 1;
     max-width: 30%;
     margin: 1rem;
-    padding: 1rem;
+    padding: 3.5rem;
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     order: 3;
     text-align: center;
-    
 }
+
+/* Size Selector Section (Spacing between rows) */
+.size-select-cot {
+    margin-top: 2rem;
+    margin-bottom: 2rem; /* Add spacing between each row of size options */
+    text-align: center;
+}
+
 /* Size Finder Section (Right) */
 .size-finder {
     flex-grow: 1;
     display: block !important;
     width: 30%;
     margin: 1rem;
-    padding: 1rem;
+    padding: 3.5rem;
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -452,7 +459,7 @@ label {
 
 
 button.calculateFit {
-    background-color: #ff1c15;
+    background-color: green;
     color: #fff;
     padding: 0.5rem 1rem;
     border: none;
@@ -461,7 +468,7 @@ button.calculateFit {
 }
 
 button.calculateFit:hover {
-    background-color: #218838;
+    background-color: darkgreen;
 }
 
 .size-select-btn {
@@ -491,7 +498,7 @@ button.calculateFit:hover {
 }
 
 #add-to-cart {
-    background-color: #ff1c15;
+    background-color:orange;
     color: #ffffff;
     font-family: Helvetica Neue;
     padding: 0.9rem 2rem;
@@ -503,7 +510,7 @@ button.calculateFit:hover {
 }
 
 #add-to-cart:hover {
-    background-color: #333;
+    background-color: darkorange;
 }
 
 /* Popup Notification */
