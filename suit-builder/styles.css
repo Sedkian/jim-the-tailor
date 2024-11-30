@@ -108,11 +108,12 @@ header .logo {
 main.fit-finder {
     display: flex;
     gap: 10px;
-    width: 85%;
-    margin: 0rem 8rem;
+    width: 95%;
+    margin: 0rem 3rem;
 }
 
 .suit-display {
+    justify-content: flex-end;
     flex-grow: 1;
     text-align: center;
     margin: 1rem;
@@ -223,7 +224,8 @@ label {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 0%;
+
+    margin-bottom: 2rem;
 
 }
 
@@ -250,6 +252,15 @@ label {
     align-items: center;
     text-align: center;
 }
+
+.item-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem; /* Add spacing between name and price */
+    font-size: 1.2rem; /* Adjust size if needed */
+}
+
 
 .item-container label {
     font-weight: bold;
@@ -285,7 +296,7 @@ label {
     background-color: #aaadaf;
 }
 
-#size-selector{
+#size-selector {
     flex-grow: 1;
     max-width: 30%;
     margin: 1rem;
@@ -296,6 +307,14 @@ label {
     order: 3;
     text-align: center;
 }
+
+/* Size Selector Section (Spacing between rows) */
+.size-select-cot {
+    margin-top: 2rem;
+    margin-bottom: 2rem; /* Add spacing between each row of size options */
+    text-align: center;
+}
+
 /* Size Finder Section (Right) */
 .size-finder {
     flex-grow: 1;
@@ -308,6 +327,8 @@ label {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     order: 3;
     text-align: center;
+    
+
 }
 /* Container */
 .toggle-switch {
@@ -439,7 +460,7 @@ label {
 
 
 button.calculateFit {
-    background-color: #28a745;
+    background-color: #0066cc;
     color: #fff;
     padding: 0.5rem 1rem;
     border: none;
@@ -448,11 +469,10 @@ button.calculateFit {
 }
 
 button.calculateFit:hover {
-    background-color: #218838;
+    background-color: #0255b4;
 }
 
 .size-select-btn {
-    background-color: lightgray;
     padding: 10px 20px;
     margin: 5px;
     border: none;
@@ -460,43 +480,41 @@ button.calculateFit:hover {
   }
   
   .size-select-btn.selected {
-    background-color: green;
+    background-color: #333;
     color: white;
   }
 
 
 /* Add to Cart Section */
 .add-to-cart {
-    position: relative;
-    z-index: 2;
-    top: auto;
-    left: auto;
+    display: flexbox;
+    position: relative; /* Set to absolute for positioning relative to suit-display */
+   margin-top: ;
+    text-align: center;
     transform: translate(0%, 950%);
-    
-    
-    
 }
 
+/* Add to Cart Button */
 #add-to-cart {
-    background-color: #333;
+    background-color:#4CAF50;
     color: #ffffff;
     font-family: Helvetica Neue;
     padding: 0.9rem 2rem;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    font: bold;
     font-size: 1.4rem;
+    transition: background-color 0.3s ease;
 }
 
 #add-to-cart:hover {
-    background-color: #000000;
+    background-color:#3a8d3e;
 }
 
 /* Popup Notification */
 .popup {
-    position: fixed;
-    bottom: 1rem;
+    position: absolute;
+    bottom: 2rem;
     left: 1rem;
     background-color: #28a745;
     color: #fff;

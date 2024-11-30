@@ -153,127 +153,79 @@ var pantsOpacity = 1;
 var shoesOpacity = 1;
 
 window.toggleDisplay = function(type) {
-    if (type === 0) {
+    if (type === 0) { // Jacket
         if (jacketOpacity === 1) {
             jacketOpacity = 0;
             document.getElementById("jacketImage").style.opacity = jacketOpacity;
             document.getElementById("jacket-toggle").src = "../database/images/offButton.png";
-            document.getElementById("jacket-name").innerHTML = "";
-            document.getElementById("jacket-price").style.opacity = jacketOpacity;
-            document.getElementById("jacket-rating").style.opacity = jacketOpacity;
-            // document.getElementById()
+            document.getElementById("jacket-name").innerText = ""; // Clear the name
+            document.getElementById("jacket-price").innerText = ""; // Clear the price
+            document.getElementById("jacket-rating").innerHTML = ""; // Clear the rating
         } else {
-            jacketOpacity = 1
+            jacketOpacity = 1;
             document.getElementById("jacketImage").style.opacity = jacketOpacity;
             document.getElementById("jacket-toggle").src = "../database/images/onButton.png";
-            // document.getElementById("jacket-name").style.opacity = jacketOpacity;
+            updatePreviewedJacket(); // Restore the information
         }
-    } else if (type === 1) {
+    } else if (type === 1) { // Shirt
         if (shirtOpacity === 1) {
             shirtOpacity = 0;
             document.getElementById("shirtImage").style.opacity = shirtOpacity;
             document.getElementById("shirt-toggle").src = "../database/images/offButton.png";
+            document.getElementById("shirt-name").innerText = ""; // Clear the name
+            document.getElementById("shirt-price").innerText = ""; // Clear the price
+            document.getElementById("shirt-rating").innerHTML = ""; // Clear the rating
         } else {
-            shirtOpacity = 1
+            shirtOpacity = 1;
             document.getElementById("shirtImage").style.opacity = shirtOpacity;
             document.getElementById("shirt-toggle").src = "../database/images/onButton.png";
+            updatePreviewedShirt(); // Restore the information
         }
-    } else if (type === 2) {
+    } else if (type === 2) { // Tie
         if (tieOpacity === 1) {
             tieOpacity = 0;
             document.getElementById("tieImage").style.opacity = tieOpacity;
             document.getElementById("tie-toggle").src = "../database/images/offButton.png";
+            document.getElementById("tie-name").innerText = ""; // Clear the name
+            document.getElementById("tie-price").innerText = ""; // Clear the price
+            document.getElementById("tie-rating").innerHTML = ""; // Clear the rating
         } else {
-            tieOpacity = 1
+            tieOpacity = 1;
             document.getElementById("tieImage").style.opacity = tieOpacity;
             document.getElementById("tie-toggle").src = "../database/images/onButton.png";
+            updatePreviewedTie(); // Restore the information
         }
-        
-    } else if (type === 4) {
+    } else if (type === 4) { // Pants
         if (pantsOpacity === 1) {
             pantsOpacity = 0;
             document.getElementById("pantsImage").style.opacity = pantsOpacity;
             document.getElementById("pants-toggle").src = "../database/images/offButton.png";
+            document.getElementById("pants-name").innerText = ""; // Clear the name
+            document.getElementById("pants-price").innerText = ""; // Clear the price
+            document.getElementById("pants-rating").innerHTML = ""; // Clear the rating
         } else {
-            pantsOpacity = 1
+            pantsOpacity = 1;
             document.getElementById("pantsImage").style.opacity = pantsOpacity;
             document.getElementById("pants-toggle").src = "../database/images/onButton.png";
+            updatePreviewedPants(); // Restore the information
         }
-        
-    } else if (type === 5) {
+    } else if (type === 5) { // Shoes
         if (shoesOpacity === 1) {
             shoesOpacity = 0;
             document.getElementById("shoesImage").style.opacity = shoesOpacity;
             document.getElementById("shoes-toggle").src = "../database/images/offButton.png";
+            document.getElementById("shoes-name").innerText = ""; // Clear the name
+            document.getElementById("shoes-price").innerText = ""; // Clear the price
+            document.getElementById("shoes-rating").innerHTML = ""; // Clear the rating
         } else {
-            shoesOpacity = 1
+            shoesOpacity = 1;
             document.getElementById("shoesImage").style.opacity = shoesOpacity;
             document.getElementById("shoes-toggle").src = "../database/images/onButton.png";
+            updatePreviewedShoes(); // Restore the information
         }
     }
 }
 
-var jacketOpacity = 1;
-var shirtOpacity = 1;
-var tieOpacity = 1;
-var pantsOpacity = 1;
-var shoesOpacity = 1;
-
-window.toggleDisplay = function(type) {
-    if (type === 0) {
-        if (jacketOpacity === 1) {
-            jacketOpacity = 0;
-            document.getElementById("jacketImage").style.opacity = jacketOpacity;
-            document.getElementById("jacket-toggle").src = "../database/images/offButton.png";
-        } else {
-            jacketOpacity = 1
-            document.getElementById("jacketImage").style.opacity = jacketOpacity;
-            document.getElementById("jacket-toggle").src = "../database/images/onButton.png";
-        }
-    } else if (type === 1) {
-        if (shirtOpacity === 1) {
-            shirtOpacity = 0;
-            document.getElementById("shirtImage").style.opacity = shirtOpacity;
-            document.getElementById("shirt-toggle").src = "../database/images/offButton.png";
-        } else {
-            shirtOpacity = 1
-            document.getElementById("shirtImage").style.opacity = shirtOpacity;
-            document.getElementById("shirt-toggle").src = "../database/images/onButton.png";
-        }
-    } else if (type === 2) {
-        if (tieOpacity === 1) {
-            tieOpacity = 0;
-            document.getElementById("tieImage").style.opacity = tieOpacity;
-            document.getElementById("tie-toggle").src = "../database/images/offButton.png";
-        } else {
-            tieOpacity = 1
-            document.getElementById("tieImage").style.opacity = tieOpacity;
-            document.getElementById("tie-toggle").src = "../database/images/onButton.png";
-        }
-        
-    } else if (type === 4) {
-        if (pantsOpacity === 1) {
-            pantsOpacity = 0;
-            document.getElementById("pantsImage").style.opacity = pantsOpacity;
-            document.getElementById("pants-toggle").src = "../database/images/offButton.png";
-        } else {
-            pantsOpacity = 1
-            document.getElementById("pantsImage").style.opacity = pantsOpacity;
-            document.getElementById("pants-toggle").src = "../database/images/onButton.png";
-        }
-        
-    } else if (type === 5) {
-        if (shoesOpacity === 1) {
-            shoesOpacity = 0;
-            document.getElementById("shoesImage").style.opacity = shoesOpacity;
-            document.getElementById("shoes-toggle").src = "../database/images/offButton.png";
-        } else {
-            shoesOpacity = 1
-            document.getElementById("shoesImage").style.opacity = shoesOpacity;
-            document.getElementById("shoes-toggle").src = "../database/images/onButton.png";
-        }
-    }
-}
 
 window.calculateFit = function() {
     let chest = document.getElementById('chest').value;
@@ -405,6 +357,9 @@ window. validateInput = function(event) {
     }
 }
 
+// Global object to store selected sizes for each category
+const selectedSizes = {};  
+
 //pre select size based on calculation
 window.preselectButton = function(groupId, index) {
     const group = document.getElementById(groupId);
@@ -413,45 +368,105 @@ window.preselectButton = function(groupId, index) {
     buttons[index].classList.add('selected');
 }
 
+// Function to set size selection on button clicks
+function setSizeSelection() {
+    // Add event listeners to all the size buttons
+    document.querySelectorAll('.size-select-btn').forEach(button => {
+        button.addEventListener('click', (event) => {
+            const size = event.target.textContent.trim(); 
+            const parentId = event.target.closest('.size-select-cot').id;  
+
+            selectedSizes[parentId] = size;
+        });
+    });
+
+    // Check if calculated sizes exist and pre-select them
+    Object.keys(selectedSizes).forEach(groupId => {
+        const size = selectedSizes[groupId];
+        const group = document.getElementById(groupId);
+        
+        // Find the index of the button corresponding to the size
+        const buttons = group.querySelectorAll('.size-select-btn');
+        buttons.forEach((button, index) => {
+            if (button.textContent.trim() === size) {
+                // Pre-select the button if it matches the calculated size
+                preselectButton(groupId, index);
+            }
+        });
+    });
+}
+
+// Call this method to apply pre-selection on page load or after calculation
+window.onload = function() {
+    setSizeSelection();  // Initialize the size selection
+};
+
+setSizeSelection();  
 
 /* Shopping Cart */
 // Function to add item to cart
 function addToCart() {
-    const cart = getCart();
+    const cart = getCart();  // Get the current cart
     const currentItems = [];
-    if (jacketOpacity == 1) {
-        currentItems.push({ ...getJackets()[currentJacket], quantity: 1 });
-    }
-    if (shirtOpacity == 1) {
-        currentItems.push({ ...getShirts()[currentShirt], quantity: 1 });
-    }
-    if (tieOpacity == 1) {
-        currentItems.push({ ...getTies()[currentTie], quantity: 1 });
-    }
-    if (pantsOpacity == 1) {
-        currentItems.push({ ...getPants()[currentPants], quantity: 1 });
-    }
-    if (shoesOpacity == 1) {
-        currentItems.push({ ...getShoes()[currentShoes], quantity: 1 });
+
+    // Helper function to get the selected size for each item
+    function getSelectedSize(itemType) {
+        return selectedSizes[itemType] || 'NA'; 
     }
 
+    // Add items to the cart with their size information
+    if (jacketOpacity == 1) {
+        currentItems.push({
+            ...getJackets()[currentJacket], 
+            quantity: 1, 
+            size: getSelectedSize('jacket-size') 
+        });
+    }
+    if (shirtOpacity == 1) {
+        currentItems.push({
+            ...getShirts()[currentShirt], 
+            quantity: 1, 
+            size: getSelectedSize('vest-size') 
+        });
+    }
+    if (tieOpacity == 1) {
+        currentItems.push({
+            ...getTies()[currentTie], 
+            quantity: 1, 
+            size: 'NA'
+        });
+    }
+    if (pantsOpacity == 1) {
+        currentItems.push({
+            ...getPants()[currentPants], 
+            quantity: 1, 
+            size: getSelectedSize('pants-size')  
+        });
+    }
+    if (shoesOpacity == 1) {
+        currentItems.push({
+            ...getShoes()[currentShoes], 
+            quantity: 1, 
+            size: getSelectedSize('shoes-size') 
+        });
+    }
+
+    // Add the current items to the cart, ensuring sizes are included
     currentItems.forEach(newItem => {
-        const existingItemIndex = cart.findIndex(item => item.id === newItem.id);
+        const existingItemIndex = cart.findIndex(item => item.id === newItem.id && item.size === newItem.size);  // Match both id and size
         if (existingItemIndex !== -1) {
-            // Item already exists in the cart, increment the quantity
-            cart[existingItemIndex].quantity += 1;
+            cart[existingItemIndex].quantity += 1;  // Increment quantity if item already exists
         } else {
-            // Item does not exist in the cart, add it
-            cart.push(newItem);
+            cart.push(newItem);  // Add new item to cart
         }
     });
 
     saveCart(cart);
 
-    // Show the popup
+    // Show a popup notification after adding to cart
     const popup = document.createElement('div');
     popup.className = 'popup';
-    popup.textContent = 'Suit items added to cart!';
+    popup.textContent = 'Items added to cart!';
     document.body.appendChild(popup);
 
     // Show the popup with animation
@@ -501,6 +516,7 @@ function saveCart(cart) {
 function displayCartItems() {
     const cart = getCart();
     const cartContainer = document.querySelector(".cart-container");
+    const emptyContainer = document.querySelector(".empty-container");
 
     if (!cartContainer) {
         console.info("Cart container element not found.");
@@ -511,62 +527,80 @@ function displayCartItems() {
     let totalPrice = 0;
 
     if (!cart || cart.length === 0) {
-        cartContainer.innerHTML = '<p>Your cart is empty.</p>';
+        emptyContainer.innerHTML = '<p>Your cart is empty</p>';
         const totalPriceElement = document.querySelector(".total-price h2");
         if (totalPriceElement) {
-            totalPriceElement.textContent = `Total Price: $0 CAD`;
+            totalPriceElement.textContent = `Total: $0 CAD`;
         }
         return;
     }
 
-    // Create a button container
-    const buttonContainer = document.createElement('div');
-    buttonContainer.className = 'button-container';
+ // Check if the button container already exists
+ const existingButtonContainer = document.querySelector('.button-container');
+ if (!existingButtonContainer) {
+     // Select the right container to append buttons to
+     const rightContainer = document.querySelector('.right-container');
 
-    // Add the checkout button
-    const checkoutButton = document.createElement('button');
-    checkoutButton.className = 'checkout-button';
-    checkoutButton.textContent = 'Checkout';
-    checkoutButton.onclick = () => handleCheckout(totalPrice);
-    buttonContainer.appendChild(checkoutButton);
+     // Create a button container for the buttons
+     const buttonContainer = document.createElement('div');
+     buttonContainer.className = 'button-container';
 
-    // Add the clear cart button
-    const clearCartButton = document.createElement('button');
-    clearCartButton.className = 'clear-cart-button';
-    clearCartButton.textContent = 'Clear Cart';
-    clearCartButton.onclick = () => clearCart();
-    buttonContainer.appendChild(clearCartButton);
+     // Add the checkout button
+     const checkoutButton = document.createElement('button');
+     checkoutButton.className = 'checkout-button';
+     checkoutButton.textContent = 'Proceed to Checkout';
+     checkoutButton.onclick = () => handleCheckout(totalPrice);  // Function handleCheckout() should be defined elsewhere
+     buttonContainer.appendChild(checkoutButton);
 
-    // Append the button container to the cart
-    cartContainer.appendChild(buttonContainer);
+     // Add the clear cart button
+     const clearCartButton = document.createElement('button');
+     clearCartButton.className = 'clear-cart-button';
+     clearCartButton.textContent = 'Clear Cart';
+     clearCartButton.onclick = () => {
+         clearCart();
+         removeButtons(); 
+     };
+     buttonContainer.appendChild(clearCartButton);
 
-    cart.forEach((item, index) => {
-        const cartItem = document.createElement('div');
-        cartItem.className = 'cart-item';
-        cartItem.innerHTML = `
-            <img src="${item.cartImage}" alt="${item.name}">
-            <div class="item-details">
-                <h2>${item.name}</h2>
-                <p>Color: ${item.color}</p>
-                <div class="quantity-controls">
-                    <button onclick="decreaseQuantity(${index})">-</button>
-                    <span>${item.quantity}</span>
-                    <button onclick="increaseQuantity(${index})">+</button>
-                </div>
-                <p>Price: $${item.price * item.quantity} CAD</p>
-                <div class="rating">${generateStars(item.rating)}</div>
+     // Append the button container to the right container
+     rightContainer.appendChild(buttonContainer);
+ }
+
+ // Function to hide the button container
+ function removeButtons() {
+     const buttonContainer = document.querySelector('.button-container');
+     if (buttonContainer) {
+         buttonContainer.remove(); // This removes the entire button container from the DOM
+     }
+ }
+ cart.forEach((item, index) => {
+    const cartItem = document.createElement('div');
+    cartItem.className = 'cart-item';
+    cartItem.innerHTML = `
+        <img src="${item.cartImage}" alt="${item.name}">
+        <div class="item-details">
+            <h2>${item.name}</h2>
+            <p>Color: ${item.color}</p>
+            <p>Size: ${item.size}</p>  <!-- Display selected size -->
+            <div class="quantity-controls">
+                <button onclick="decreaseQuantity(${index})">-</button>
+                <span>${item.quantity}</span>
+                <button onclick="increaseQuantity(${index})">+</button>
             </div>
-            <i class="fas fa-trash delete-icon" onclick="removeCartItem(${index})"></i>
-        `;
+            <p>Price: $${item.price * item.quantity} CAD</p>
+            <div class="rating">${generateStars(item.rating)}</div>
+        </div>
+        <i class="fas fa-trash delete-icon" onclick="removeCartItem(${index})"></i>
+    `;
 
-        cartContainer.appendChild(cartItem);
-        totalPrice += item.price * item.quantity;
-    });
+    cartContainer.appendChild(cartItem);
+    totalPrice += item.price * item.quantity;
+});
 
-    const totalPriceElement = document.querySelector(".total-price h2");
-    if (totalPriceElement) {
-        totalPriceElement.textContent = `Total Price: $${totalPrice} CAD`;
-    }
+const totalPriceElement = document.querySelector(".total-price h2");
+if (totalPriceElement) {
+    totalPriceElement.textContent = `Total: $${totalPrice} CAD`;
+}
 }
 
 function handleCheckout(totalPrice) {
@@ -579,11 +613,12 @@ function handleCheckout(totalPrice) {
     checkoutModal.innerHTML = `
         <div class="checkout-modal-content">
             <h2>Checkout</h2>
-            <p>Total Price: $${totalPrice} CAD</p>
+            <p>Total: $${totalPrice} CAD</p>
             <button id="pay-button">Pay</button>
             <button id="cancel-button">Cancel</button>
         </div>
     `;
+    
     document.body.appendChild(checkoutModal);
 
     // Add event listeners for the buttons
@@ -612,7 +647,7 @@ function handleCheckout(totalPrice) {
         // Handle review submission
         document.getElementById('submit-review-button').addEventListener('click', () => {
             const reviewText = document.getElementById('review-text').value;
-
+            
             // Create a styled notification modal
             const notificationModal = document.createElement('div');
             notificationModal.className = 'checkout-modal';
@@ -623,12 +658,13 @@ function handleCheckout(totalPrice) {
                 </div>
             `;
             document.body.appendChild(notificationModal);
-
+            
             // Add event listener to close on click
             notificationModal.addEventListener('click', () => {
                 document.body.removeChild(notificationModal);
                 // Unlock scrolling
                 document.body.style.overflow = '';
+                location.reload();
             });
 
             // Automatically remove the modal after 5 seconds
@@ -636,12 +672,15 @@ function handleCheckout(totalPrice) {
                 if (document.body.contains(notificationModal)) {
                     document.body.removeChild(notificationModal);
                     // Unlock scrolling
+                    
                     document.body.style.overflow = '';
+                    location.reload();
                 }
             }, 5000);
 
             // Remove the thank-you modal
             document.body.removeChild(thankYouModal);
+            
         });
 
         // Handle skipping the review
@@ -649,10 +688,12 @@ function handleCheckout(totalPrice) {
             document.body.removeChild(thankYouModal);
             // Unlock scrolling
             document.body.style.overflow = '';
+            location.reload();
+            
         });
-
         // Clear the cart
         clearCart();
+        
     });
 
     document.getElementById('cancel-button').addEventListener('click', () => {
@@ -693,6 +734,9 @@ function removeCartItem(index) {
     cart.splice(index, 1);
     saveCart(cart);
     displayCartItems();
+    if (cart.length === 0) {
+        location.reload() 
+    }
 }
 
 function increaseQuantity(index) {
@@ -748,7 +792,7 @@ const jacketsDatabase = [
         id: "jacket3",
         name: "Center Vent Jacket",
         type: "jacket",
-        color: "Brown",
+        color: "Beige",
         price: 200,
         image: "../database/images/jackets/j3.png",
         cartImage: "../database/cartImages/jackets/j3.png",
@@ -758,7 +802,7 @@ const jacketsDatabase = [
         id: "jacket4",
         name: "Tailored Jacket",
         type: "jacket",
-        color: "Black",
+        color: "Purple",
         price: 220,
         image: "../database/images/jackets/j4.png",
         cartImage: "../database/cartImages/jackets/j4.png",
@@ -768,7 +812,7 @@ const jacketsDatabase = [
         id: "jacket5",
         name: "Classic Jacket",
         type: "jacket",
-        color: "Black",
+        color: "Brown",
         price: 110,
         image: "../database/images/jackets/j5.png",
         cartImage: "../database/cartImages/jackets/j5.png",
@@ -788,7 +832,7 @@ const jacketsDatabase = [
         id: "jacket7",
         name: "Modern Trim Jacket",
         type: "jacket",
-        color: "Blue",
+        color: "White & Blue ",
         price: 300,
         image: "../database/images/jackets/j7.png",
         cartImage: "../database/cartImages/jackets/j7.png",
@@ -798,7 +842,7 @@ const jacketsDatabase = [
         id: "jacket8",
         name: "Jetted Jacket",
         type: "jacket",
-        color: "Brown",
+        color: "Red & Green",
         price: 170,
         image: "../database/images/jackets/j8.png",
         cartImage: "../database/cartImages/jackets/j8.png",
@@ -832,7 +876,7 @@ const pantsDatabase = [
         id: "pant2",
         name: "Jetted Pant",
         type: "pant",
-        color: "Red",
+        color: "Red & White",
         price: 75,
         image: "../database/images/pants/p2.png",
         cartImage: "../database/cartImages/pants/p2.png",
@@ -886,7 +930,7 @@ const shirtsDatabase = [
         id: "shirt0",
         name: "Slim Trim Shirt",
         type: "shirt",
-        color: "Black",
+        color: "White",
         price: 50,
         image: "../database/images/shirts/s0.png",
         cartImage: "../database/cartImages/shirts/s0.png",
@@ -906,7 +950,7 @@ const shirtsDatabase = [
         id: "shirt2",
         name: "Jetted Shirt",
         type: "shirt",
-        color: "Blue",
+        color: "Yellow",
         price: 55,
         image: "../database/images/shirts/s2.png",
         cartImage: "../database/cartImages/shirts/s2.png",
@@ -916,7 +960,7 @@ const shirtsDatabase = [
         id: "shirt3",
         name: "Center Vent Shirt",
         type: "shirt",
-        color: "Brown",
+        color: "Orange",
         price: 50,
         image: "../database/images/shirts/s3.png",
         cartImage: "../database/cartImages/shirts/s3.png",
@@ -926,7 +970,7 @@ const shirtsDatabase = [
         id: "shirt4",
         name: "Tailored Shirt",
         type: "shirt",
-        color: "Black",
+        color: "Green",
         price: 60,
         image: "../database/images/shirts/s4.png",
         cartImage: "../database/cartImages/shirts/s4.png",
@@ -936,7 +980,7 @@ const shirtsDatabase = [
         id: "shirt5",
         name: "Classic Shirt",
         type: "shirt",
-        color: "Black",
+        color: "Blue",
         price: 30,
         image: "../database/images/shirts/s5.png",
         cartImage: "../database/cartImages/shirts/s5.png",
@@ -946,7 +990,7 @@ const shirtsDatabase = [
         id: "shirt6",
         name: "Slim Trim Shirt",
         type: "shirt",
-        color: "Grey",
+        color: "White",
         price: 50,
         image: "../database/images/shirts/s6.png",
         cartImage: "../database/cartImages/shirts/s6.png",
@@ -980,7 +1024,7 @@ const shoesDatabase = [
         id: "shoe1",
         name: "Modern Trim Shoe",
         type: "shoe",
-        color: "Grey",
+        color: "Light Grey",
         price: 80,
         image: "../database/images/shoes/f1.png",
         cartImage: "../database/cartImages/shoes/f1.png",
@@ -990,7 +1034,7 @@ const shoesDatabase = [
         id: "shoe2",
         name: "Jetted Shoe",
         type: "shoe",
-        color: "Blue",
+        color: "Grey",
         price: 100,
         image: "../database/images/shoes/f2.png",
         cartImage: "../database/cartImages/shoes/f2.png",
@@ -1013,7 +1057,7 @@ const tiesDatabase = [
         id: "tie1",
         name: "Modern Trim Tie",
         type: "tie",
-        color: "Grey",
+        color: "Red",
         price: 50,
         image: "../database/images/ties/t1.png",
         cartImage: "../database/cartImages/ties/t1.png",
@@ -1033,7 +1077,7 @@ const tiesDatabase = [
         id: "tie3",
         name: "Center Vent Tie",
         type: "tie",
-        color: "Brown",
+        color: "Pink & Orange",
         price: 40,
         image: "../database/images/ties/t3.png",
         cartImage: "../database/cartImages/ties/t3.png",
@@ -1043,7 +1087,7 @@ const tiesDatabase = [
         id: "tie4",
         name: "Tailored Tie",
         type: "tie",
-        color: "Black",
+        color: "Blue",
         price: 30,
         image: "../database/images/ties/t4.png",
         cartImage: "../database/cartImages/ties/t4.png",
@@ -1053,7 +1097,7 @@ const tiesDatabase = [
         id: "tie5",
         name: "Classic Tie",
         type: "tie",
-        color: "Black",
+        color: "White",
         price: 90,
         image: "../database/images/ties/t5.png",
         cartImage: "../database/cartImages/ties/t5.png",
@@ -1061,9 +1105,9 @@ const tiesDatabase = [
     },
     {
         id: "tie6",
-        name: "Slim Trim Tie",
+        name: "Bow Tie",
         type: "tie",
-        color: "Grey",
+        color: "Red",
         price: 25,
         image: "../database/images/ties/t6.png",
         cartImage: "../database/cartImages/ties/t6.png",
