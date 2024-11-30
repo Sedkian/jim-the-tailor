@@ -24,6 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const suitCustomization = document.getElementById('suit-customization');
     if (suitCustomization) {
         updateItemDetails();
+        loadCurrentSelections();
     }
 
     const urlParams = new URLSearchParams(window.location.search);
@@ -60,6 +61,7 @@ function applyStyle(style) {
       currentShoes = selectedItems.shoes;
       updateItemDetails();
     }
+    saveCurrentSelections();
   }
 
 var currentJacket = 0;
@@ -75,26 +77,67 @@ window.changeImage = function(type, direction) {
         const NUM_JACKETS = Jackets.length;
         currentJacket = (currentJacket + direction + NUM_JACKETS) % NUM_JACKETS;
         updatePreviewedJacket();
+        saveCurrentSelections();
     } else if (type === 1 && shirtOpacity === 1) { // Shirt
         const Shirts = getShirts();
         const NUM_SHIRTS = Shirts.length;
         currentShirt = (currentShirt + direction + NUM_SHIRTS) % NUM_SHIRTS;
         updatePreviewedShirt();
+        saveCurrentSelections();
     } else if (type === 2 && tieOpacity === 1) { // Tie
         const Ties = getTies();
         const NUM_TIES = Ties.length;
         currentTie = (currentTie + direction + NUM_TIES) % NUM_TIES;
         updatePreviewedTie();
+        saveCurrentSelections();
     } else if (type === 4 && pantsOpacity === 1) { // Pants
         const Pants = getPants();
         const NUM_PANTS = Pants.length;
         currentPants = (currentPants + direction + NUM_PANTS) % NUM_PANTS;
         updatePreviewedPants();
+        saveCurrentSelections();
     } else if (type === 5 && shoesOpacity === 1) { // Shoes
         const Shoes = getShoes();
         const NUM_SHOES = Shoes.length;
         currentShoes = (currentShoes + direction + NUM_SHOES) % NUM_SHOES;
         updatePreviewedShoes();
+        saveCurrentSelections();
+    }
+}
+
+function saveCurrentSelections() {
+    const selections = {
+        currentJacket,
+        currentShirt,
+        currentTie,
+        currentPants,
+        currentShoes
+    };
+
+    if (isChromiumBased()) {
+        localStorage.setItem("currentSelections", JSON.stringify(selections));
+    } else {
+        document.cookie = `currentSelections=${JSON.stringify(selections)}; path=/; max-age=86400; SameSite=Lax;`;
+    }
+}
+
+function loadCurrentSelections() {
+    let selections;
+    if (isChromiumBased()) {
+        selections = JSON.parse(localStorage.getItem("currentSelections"));
+    } else {
+        const cookies = document.cookie.split("; ");
+        const selectionsCookie = cookies.find(row => row.startsWith("currentSelections="));
+        selections = selectionsCookie ? JSON.parse(selectionsCookie.split("=")[1]) : null;
+    }
+
+    if (selections) {
+        currentJacket = selections.currentJacket;
+        currentShirt = selections.currentShirt;
+        currentTie = selections.currentTie;
+        currentPants = selections.currentPants;
+        currentShoes = selections.currentShoes;
+        updateItemDetails();
     }
 }
 
@@ -462,6 +505,7 @@ function addToCart() {
     });
 
     saveCart(cart);
+    saveCurrentSelections();
 
     // Show a popup notification after adding to cart
     const popup = document.createElement('div');
