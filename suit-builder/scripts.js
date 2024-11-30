@@ -357,6 +357,9 @@ window. validateInput = function(event) {
     }
 }
 
+// Global object to store selected sizes for each category
+const selectedSizes = {};  
+
 //pre select size based on calculation
 window.preselectButton = function(groupId, index) {
     const group = document.getElementById(groupId);
@@ -365,42 +368,102 @@ window.preselectButton = function(groupId, index) {
     buttons[index].classList.add('selected');
 }
 
+// Function to set size selection on button clicks
+function setSizeSelection() {
+    // Add event listeners to all the size buttons
+    document.querySelectorAll('.size-select-btn').forEach(button => {
+        button.addEventListener('click', (event) => {
+            const size = event.target.textContent.trim(); 
+            const parentId = event.target.closest('.size-select-cot').id;  
+
+            selectedSizes[parentId] = size;
+        });
+    });
+
+    // Check if calculated sizes exist and pre-select them
+    Object.keys(selectedSizes).forEach(groupId => {
+        const size = selectedSizes[groupId];
+        const group = document.getElementById(groupId);
+        
+        // Find the index of the button corresponding to the size
+        const buttons = group.querySelectorAll('.size-select-btn');
+        buttons.forEach((button, index) => {
+            if (button.textContent.trim() === size) {
+                // Pre-select the button if it matches the calculated size
+                preselectButton(groupId, index);
+            }
+        });
+    });
+}
+
+// Call this method to apply pre-selection on page load or after calculation
+window.onload = function() {
+    setSizeSelection();  // Initialize the size selection
+};
+
+setSizeSelection();  
 
 /* Shopping Cart */
 // Function to add item to cart
 function addToCart() {
-    const cart = getCart();
+    const cart = getCart();  // Get the current cart
     const currentItems = [];
-    if (jacketOpacity == 1) {
-        currentItems.push({ ...getJackets()[currentJacket], quantity: 1 });
-    }
-    if (shirtOpacity == 1) {
-        currentItems.push({ ...getShirts()[currentShirt], quantity: 1 });
-    }
-    if (tieOpacity == 1) {
-        currentItems.push({ ...getTies()[currentTie], quantity: 1 });
-    }
-    if (pantsOpacity == 1) {
-        currentItems.push({ ...getPants()[currentPants], quantity: 1 });
-    }
-    if (shoesOpacity == 1) {
-        currentItems.push({ ...getShoes()[currentShoes], quantity: 1 });
+
+    // Helper function to get the selected size for each item
+    function getSelectedSize(itemType) {
+        return selectedSizes[itemType] || 'NA'; 
     }
 
+    // Add items to the cart with their size information
+    if (jacketOpacity == 1) {
+        currentItems.push({
+            ...getJackets()[currentJacket], 
+            quantity: 1, 
+            size: getSelectedSize('jacket-size') 
+        });
+    }
+    if (shirtOpacity == 1) {
+        currentItems.push({
+            ...getShirts()[currentShirt], 
+            quantity: 1, 
+            size: getSelectedSize('vest-size') 
+        });
+    }
+    if (tieOpacity == 1) {
+        currentItems.push({
+            ...getTies()[currentTie], 
+            quantity: 1, 
+            size: 'NA'
+        });
+    }
+    if (pantsOpacity == 1) {
+        currentItems.push({
+            ...getPants()[currentPants], 
+            quantity: 1, 
+            size: getSelectedSize('pants-size')  
+        });
+    }
+    if (shoesOpacity == 1) {
+        currentItems.push({
+            ...getShoes()[currentShoes], 
+            quantity: 1, 
+            size: getSelectedSize('shoes-size') 
+        });
+    }
+
+    // Add the current items to the cart, ensuring sizes are included
     currentItems.forEach(newItem => {
-        const existingItemIndex = cart.findIndex(item => item.id === newItem.id);
+        const existingItemIndex = cart.findIndex(item => item.id === newItem.id && item.size === newItem.size);  // Match both id and size
         if (existingItemIndex !== -1) {
-            // Item already exists in the cart, increment the quantity
-            cart[existingItemIndex].quantity += 1;
+            cart[existingItemIndex].quantity += 1;  // Increment quantity if item already exists
         } else {
-            // Item does not exist in the cart, add it
-            cart.push(newItem);
+            cart.push(newItem);  // Add new item to cart
         }
     });
 
     saveCart(cart);
 
-    // Show the popup
+    // Show a popup notification after adding to cart
     const popup = document.createElement('div');
     popup.className = 'popup';
     popup.textContent = 'Suit items added to cart!';
@@ -453,9 +516,8 @@ function saveCart(cart) {
 function displayCartItems() {
     const cart = getCart();
     const cartContainer = document.querySelector(".cart-container");
-    
     const emptyContainer = document.querySelector(".empty-container");
-    
+
     if (!cartContainer) {
         console.info("Cart container element not found.");
         return;
@@ -511,33 +573,34 @@ function displayCartItems() {
          buttonContainer.remove(); // This removes the entire button container from the DOM
      }
  }
-    cart.forEach((item, index) => {
-        const cartItem = document.createElement('div');
-        cartItem.className = 'cart-item';
-        cartItem.innerHTML = `
-            <img src="${item.cartImage}" alt="${item.name}">
-            <div class="item-details">
-                <h2>${item.name}</h2>
-                <p>Color: ${item.color}</p>
-                <div class="quantity-controls">
-                    <button onclick="decreaseQuantity(${index})">-</button>
-                    <span>${item.quantity}</span>
-                    <button onclick="increaseQuantity(${index})">+</button>
-                </div>
-                <p>Price: $${item.price * item.quantity} CAD</p>
-                <div class="rating">${generateStars(item.rating)}</div>
+ cart.forEach((item, index) => {
+    const cartItem = document.createElement('div');
+    cartItem.className = 'cart-item';
+    cartItem.innerHTML = `
+        <img src="${item.cartImage}" alt="${item.name}">
+        <div class="item-details">
+            <h2>${item.name}</h2>
+            <p>Color: ${item.color}</p>
+            <p>Size: ${item.size}</p>  <!-- Display selected size -->
+            <div class="quantity-controls">
+                <button onclick="decreaseQuantity(${index})">-</button>
+                <span>${item.quantity}</span>
+                <button onclick="increaseQuantity(${index})">+</button>
             </div>
-            <i class="fas fa-trash delete-icon" onclick="removeCartItem(${index})"></i>
-        `;
+            <p>Price: $${item.price * item.quantity} CAD</p>
+            <div class="rating">${generateStars(item.rating)}</div>
+        </div>
+        <i class="fas fa-trash delete-icon" onclick="removeCartItem(${index})"></i>
+    `;
 
-        cartContainer.appendChild(cartItem);
-        totalPrice += item.price * item.quantity;
-    });
+    cartContainer.appendChild(cartItem);
+    totalPrice += item.price * item.quantity;
+});
 
-    const totalPriceElement = document.querySelector(".total-price h2");
-    if (totalPriceElement) {
-        totalPriceElement.textContent = `Total: $${totalPrice} CAD`;
-    }
+const totalPriceElement = document.querySelector(".total-price h2");
+if (totalPriceElement) {
+    totalPriceElement.textContent = `Total: $${totalPrice} CAD`;
+}
 }
 
 function handleCheckout(totalPrice) {
