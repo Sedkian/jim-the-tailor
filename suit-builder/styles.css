@@ -113,6 +113,7 @@ main.fit-finder {
 }
 
 .suit-display {
+    justify-content: flex-end;
     flex-grow: 1;
     text-align: center;
     margin: 1rem;
@@ -459,7 +460,7 @@ label {
 
 
 button.calculateFit {
-    background-color: green;
+    background-color: #ff0000;
     color: #fff;
     padding: 0.5rem 1rem;
     border: none;
@@ -468,11 +469,10 @@ button.calculateFit {
 }
 
 button.calculateFit:hover {
-    background-color: darkgreen;
+    background-color: #cc0000;
 }
 
 .size-select-btn {
-    background-color: lightgray;
     padding: 10px 20px;
     margin: 5px;
     border: none;
@@ -480,29 +480,25 @@ button.calculateFit:hover {
   }
   
   .size-select-btn.selected {
-    background-color: green;
+    background-color: #333;
     color: white;
   }
 
 
 /* Add to Cart Section */
 .add-to-cart {
-    position: absolute; /* Set to absolute for positioning relative to suit-display */
-    bottom: 10%; /* Adjust the vertical position as needed */
-    left: 50%; /* Center horizontally */
-    transform: translate(-50%, 0); /* Adjust for centering */
-    z-index: 2; /* Keep it above other elements */
+    display: flexbox;
+    position: relative; /* Set to absolute for positioning relative to suit-display */
+   margin-top: ;
     text-align: center;
-    margin-bottom: 5rem;
-    margin-left: -1rem;
-    
+    transform: translate(0%, 950%);
 }
 
 /* Add to Cart Button */
 #add-to-cart {
-    background-color: #3e3d3d;
+    background-color:#4CAF50;
     color: #ffffff;
-    font-family: Helvetica Neue, Arial, sans-serif;
+    font-family: Helvetica Neue;
     padding: 0.9rem 2rem;
     border: none;
     border-radius: 4px;
@@ -512,13 +508,13 @@ button.calculateFit:hover {
 }
 
 #add-to-cart:hover {
-    background-color: rgb(0, 0, 0);
+    background-color:#3a8d3e;
 }
 
 /* Popup Notification */
 .popup {
     position: fixed;
-    bottom: 1rem;
+    bottom: 2rem;
     left: 1rem;
     background-color: #28a745;
     color: #fff;
@@ -531,6 +527,7 @@ button.calculateFit:hover {
 }
 
 .popup.show {
+    
     opacity: 1; /* Fade in to opacity 1 */
 }
 

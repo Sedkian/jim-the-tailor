@@ -69,14 +69,15 @@
   .trending-styles {
     text-align: center;
     margin-top: 0rem;
+
     
   }
   
   .styles-container {
-    display: flex;
+    display:flex;
     margin-top: 1rem;
     justify-content: center;
-    gap: 2rem;
+    gap: 3rem;
   }
   
   .style-item {

@@ -453,7 +453,9 @@ function saveCart(cart) {
 function displayCartItems() {
     const cart = getCart();
     const cartContainer = document.querySelector(".cart-container");
-
+    
+    const emptyContainer = document.querySelector(".empty-container");
+    
     if (!cartContainer) {
         console.info("Cart container element not found.");
         return;
@@ -463,7 +465,7 @@ function displayCartItems() {
     let totalPrice = 0;
 
     if (!cart || cart.length === 0) {
-        cartContainer.innerHTML = '<p>Your cart is empty.</p>';
+        emptyContainer.innerHTML = '<p>Your cart is empty</p>';
         const totalPriceElement = document.querySelector(".total-price h2");
         if (totalPriceElement) {
             totalPriceElement.textContent = `Total: $0 CAD`;
@@ -471,33 +473,44 @@ function displayCartItems() {
         return;
     }
 
-    // Create a button container
-    const rightContainer = document.querySelector('.right-container');
+ // Check if the button container already exists
+ const existingButtonContainer = document.querySelector('.button-container');
+ if (!existingButtonContainer) {
+     // Select the right container to append buttons to
+     const rightContainer = document.querySelector('.right-container');
 
-    const buttonContainer = document.createElement('div');
-    buttonContainer.className = 'button-container';
+     // Create a button container for the buttons
+     const buttonContainer = document.createElement('div');
+     buttonContainer.className = 'button-container';
 
-    // Add the checkout button
-    const checkoutButton = document.createElement('button');
-    checkoutButton.className = 'checkout-button';
-    checkoutButton.textContent = 'Proceed to Checkout';
-    checkoutButton.onclick = () => handleCheckout(totalPrice);
-    buttonContainer.appendChild(checkoutButton);
+     // Add the checkout button
+     const checkoutButton = document.createElement('button');
+     checkoutButton.className = 'checkout-button';
+     checkoutButton.textContent = 'Proceed to Checkout';
+     checkoutButton.onclick = () => handleCheckout(totalPrice);  // Function handleCheckout() should be defined elsewhere
+     buttonContainer.appendChild(checkoutButton);
 
+     // Add the clear cart button
+     const clearCartButton = document.createElement('button');
+     clearCartButton.className = 'clear-cart-button';
+     clearCartButton.textContent = 'Clear Cart';
+     clearCartButton.onclick = () => {
+         clearCart();
+         removeButtons(); 
+     };
+     buttonContainer.appendChild(clearCartButton);
 
-    // Append the button container to the right container
-    rightContainer.appendChild(buttonContainer);
+     // Append the button container to the right container
+     rightContainer.appendChild(buttonContainer);
+ }
 
-    // Add the clear cart button
-    const clearCartButton = document.createElement('button');
-    clearCartButton.className = 'clear-cart-button';
-    clearCartButton.textContent = 'Clear Cart';
-    clearCartButton.onclick = () => clearCart();
-    buttonContainer.appendChild(clearCartButton);
-
-    // Append the button container to the cart
-    cartContainer.appendChild(buttonContainer);
-
+ // Function to hide the button container
+ function removeButtons() {
+     const buttonContainer = document.querySelector('.button-container');
+     if (buttonContainer) {
+         buttonContainer.remove(); // This removes the entire button container from the DOM
+     }
+ }
     cart.forEach((item, index) => {
         const cartItem = document.createElement('div');
         cartItem.className = 'cart-item';
@@ -542,6 +555,7 @@ function handleCheckout(totalPrice) {
             <button id="cancel-button">Cancel</button>
         </div>
     `;
+    
     document.body.appendChild(checkoutModal);
 
     // Add event listeners for the buttons
@@ -570,7 +584,7 @@ function handleCheckout(totalPrice) {
         // Handle review submission
         document.getElementById('submit-review-button').addEventListener('click', () => {
             const reviewText = document.getElementById('review-text').value;
-
+            
             // Create a styled notification modal
             const notificationModal = document.createElement('div');
             notificationModal.className = 'checkout-modal';
@@ -581,12 +595,13 @@ function handleCheckout(totalPrice) {
                 </div>
             `;
             document.body.appendChild(notificationModal);
-
+            
             // Add event listener to close on click
             notificationModal.addEventListener('click', () => {
                 document.body.removeChild(notificationModal);
                 // Unlock scrolling
                 document.body.style.overflow = '';
+                location.reload();
             });
 
             // Automatically remove the modal after 5 seconds
@@ -594,12 +609,15 @@ function handleCheckout(totalPrice) {
                 if (document.body.contains(notificationModal)) {
                     document.body.removeChild(notificationModal);
                     // Unlock scrolling
+                    
                     document.body.style.overflow = '';
+                    location.reload();
                 }
             }, 5000);
 
             // Remove the thank-you modal
             document.body.removeChild(thankYouModal);
+            
         });
 
         // Handle skipping the review
@@ -607,10 +625,12 @@ function handleCheckout(totalPrice) {
             document.body.removeChild(thankYouModal);
             // Unlock scrolling
             document.body.style.overflow = '';
+            location.reload();
+            
         });
-
         // Clear the cart
         clearCart();
+        
     });
 
     document.getElementById('cancel-button').addEventListener('click', () => {
@@ -651,6 +671,9 @@ function removeCartItem(index) {
     cart.splice(index, 1);
     saveCart(cart);
     displayCartItems();
+    if (cart.length === 0) {
+        location.reload() 
+    }
 }
 
 function increaseQuantity(index) {
