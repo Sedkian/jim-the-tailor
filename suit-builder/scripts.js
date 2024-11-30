@@ -24,6 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const suitCustomization = document.getElementById('suit-customization');
     if (suitCustomization) {
         updateItemDetails();
+        loadCurrentSelections();
     }
 
     const urlParams = new URLSearchParams(window.location.search);
@@ -60,6 +61,7 @@ function applyStyle(style) {
       currentShoes = selectedItems.shoes;
       updateItemDetails();
     }
+    saveCurrentSelections();
   }
 
 var currentJacket = 0;
@@ -96,6 +98,71 @@ window.changeImage = function(type, direction) {
         currentShoes = (currentShoes + direction + NUM_SHOES) % NUM_SHOES;
         updatePreviewedShoes();
     }
+    saveCurrentSelections();
+}
+
+function saveCurrentSelections() {
+    const selections = {
+        currentJacket,
+        currentShirt,
+        currentTie,
+        currentPants,
+        currentShoes,
+        jacketOpacity,
+        shirtOpacity,
+        tieOpacity,
+        pantsOpacity,
+        shoesOpacity
+    };
+
+    if (isChromiumBased()) {
+        localStorage.setItem("currentSelections", JSON.stringify(selections));
+    } else {
+        document.cookie = `currentSelections=${JSON.stringify(selections)}; path=/; max-age=86400; SameSite=Lax;`;
+    }
+}
+
+function loadCurrentSelections() {
+    let selections;
+    if (isChromiumBased()) {
+        selections = JSON.parse(localStorage.getItem("currentSelections"));
+    } else {
+        const cookies = document.cookie.split("; ");
+        const selectionsCookie = cookies.find(row => row.startsWith("currentSelections="));
+        selections = selectionsCookie ? JSON.parse(selectionsCookie.split("=")[1]) : null;
+    }
+
+    if (selections) {
+        currentJacket = selections.currentJacket;
+        currentShirt = selections.currentShirt;
+        currentTie = selections.currentTie;
+        currentPants = selections.currentPants;
+        currentShoes = selections.currentShoes;
+        jacketOpacity = selections.jacketOpacity;
+        shirtOpacity = selections.shirtOpacity;
+        tieOpacity = selections.tieOpacity;
+        pantsOpacity = selections.pantsOpacity;
+        shoesOpacity = selections.shoesOpacity;
+        updateItemDetails();
+        updateToggleStates();
+    }
+}
+
+function updateToggleStates() {
+    document.getElementById("jacketImage").style.opacity = jacketOpacity;
+    document.getElementById("jacket-toggle").src = jacketOpacity ? "../database/images/onButton.png" : "../database/images/offButton.png";
+
+    document.getElementById("shirtImage").style.opacity = shirtOpacity;
+    document.getElementById("shirt-toggle").src = shirtOpacity ? "../database/images/onButton.png" : "../database/images/offButton.png";
+
+    document.getElementById("tieImage").style.opacity = tieOpacity;
+    document.getElementById("tie-toggle").src = tieOpacity ? "../database/images/onButton.png" : "../database/images/offButton.png";
+
+    document.getElementById("pantsImage").style.opacity = pantsOpacity;
+    document.getElementById("pants-toggle").src = pantsOpacity ? "../database/images/onButton.png" : "../database/images/offButton.png";
+
+    document.getElementById("shoesImage").style.opacity = shoesOpacity;
+    document.getElementById("shoes-toggle").src = shoesOpacity ? "../database/images/onButton.png" : "../database/images/offButton.png";
 }
 
 function updatePreviewedJacket() {
@@ -224,6 +291,7 @@ window.toggleDisplay = function(type) {
             updatePreviewedShoes(); // Restore the information
         }
     }
+    saveCurrentSelections();
 }
 
 
@@ -462,6 +530,7 @@ function addToCart() {
     });
 
     saveCart(cart);
+    saveCurrentSelections();
 
     // Show a popup notification after adding to cart
     const popup = document.createElement('div');
