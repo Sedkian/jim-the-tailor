@@ -77,32 +77,28 @@ window.changeImage = function(type, direction) {
         const NUM_JACKETS = Jackets.length;
         currentJacket = (currentJacket + direction + NUM_JACKETS) % NUM_JACKETS;
         updatePreviewedJacket();
-        saveCurrentSelections();
     } else if (type === 1 && shirtOpacity === 1) { // Shirt
         const Shirts = getShirts();
         const NUM_SHIRTS = Shirts.length;
         currentShirt = (currentShirt + direction + NUM_SHIRTS) % NUM_SHIRTS;
         updatePreviewedShirt();
-        saveCurrentSelections();
     } else if (type === 2 && tieOpacity === 1) { // Tie
         const Ties = getTies();
         const NUM_TIES = Ties.length;
         currentTie = (currentTie + direction + NUM_TIES) % NUM_TIES;
         updatePreviewedTie();
-        saveCurrentSelections();
     } else if (type === 4 && pantsOpacity === 1) { // Pants
         const Pants = getPants();
         const NUM_PANTS = Pants.length;
         currentPants = (currentPants + direction + NUM_PANTS) % NUM_PANTS;
         updatePreviewedPants();
-        saveCurrentSelections();
     } else if (type === 5 && shoesOpacity === 1) { // Shoes
         const Shoes = getShoes();
         const NUM_SHOES = Shoes.length;
         currentShoes = (currentShoes + direction + NUM_SHOES) % NUM_SHOES;
         updatePreviewedShoes();
-        saveCurrentSelections();
     }
+    saveCurrentSelections();
 }
 
 function saveCurrentSelections() {
@@ -111,7 +107,12 @@ function saveCurrentSelections() {
         currentShirt,
         currentTie,
         currentPants,
-        currentShoes
+        currentShoes,
+        jacketOpacity,
+        shirtOpacity,
+        tieOpacity,
+        pantsOpacity,
+        shoesOpacity
     };
 
     if (isChromiumBased()) {
@@ -137,8 +138,31 @@ function loadCurrentSelections() {
         currentTie = selections.currentTie;
         currentPants = selections.currentPants;
         currentShoes = selections.currentShoes;
+        jacketOpacity = selections.jacketOpacity;
+        shirtOpacity = selections.shirtOpacity;
+        tieOpacity = selections.tieOpacity;
+        pantsOpacity = selections.pantsOpacity;
+        shoesOpacity = selections.shoesOpacity;
         updateItemDetails();
+        updateToggleStates();
     }
+}
+
+function updateToggleStates() {
+    document.getElementById("jacketImage").style.opacity = jacketOpacity;
+    document.getElementById("jacket-toggle").src = jacketOpacity ? "../database/images/onButton.png" : "../database/images/offButton.png";
+
+    document.getElementById("shirtImage").style.opacity = shirtOpacity;
+    document.getElementById("shirt-toggle").src = shirtOpacity ? "../database/images/onButton.png" : "../database/images/offButton.png";
+
+    document.getElementById("tieImage").style.opacity = tieOpacity;
+    document.getElementById("tie-toggle").src = tieOpacity ? "../database/images/onButton.png" : "../database/images/offButton.png";
+
+    document.getElementById("pantsImage").style.opacity = pantsOpacity;
+    document.getElementById("pants-toggle").src = pantsOpacity ? "../database/images/onButton.png" : "../database/images/offButton.png";
+
+    document.getElementById("shoesImage").style.opacity = shoesOpacity;
+    document.getElementById("shoes-toggle").src = shoesOpacity ? "../database/images/onButton.png" : "../database/images/offButton.png";
 }
 
 function updatePreviewedJacket() {
@@ -267,6 +291,7 @@ window.toggleDisplay = function(type) {
             updatePreviewedShoes(); // Restore the information
         }
     }
+    saveCurrentSelections();
 }
 
 
