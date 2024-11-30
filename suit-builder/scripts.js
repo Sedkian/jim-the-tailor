@@ -466,7 +466,7 @@ function addToCart() {
     // Show a popup notification after adding to cart
     const popup = document.createElement('div');
     popup.className = 'popup';
-    popup.textContent = 'Suit items added to cart!';
+    popup.textContent = 'Items added to cart!';
     document.body.appendChild(popup);
 
     // Show the popup with animation

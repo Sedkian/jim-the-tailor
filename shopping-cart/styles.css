@@ -1,12 +1,23 @@
 /* Cart Page Styles */
 main.cart-container {
     flex-direction: row;
-    margin-left: 2.2rem;
+    margin: 1rem;
+}
+
+.main-container {
+    display: flex; 
+    justify-content: space-between; 
+    align-items: flex-start;
+    gap: 2rem; 
+    padding: 1rem;
+    margin-left: 2rem;
+    box-sizing: border-box;
 }
 
 .empty-container p{
     position: relative;
     text-align: center;
+    margin-right: 2rem;
     margin: 1rem;
     font-size: 1.5rem; /* Adjust font size as needed */
 }
@@ -72,15 +83,6 @@ main.cart-container {
     color: #cc0000;
 }
 
-.main-container {
-    display: flex; 
-    justify-content: space-between; 
-    align-items: flex-start;
-    gap: 1rem; 
-    padding: 1rem;
-    max-width: 100%; 
-    box-sizing: border-box;
-}
 
 /* Ensure .cart-container takes up 2/3 of the width */
 .cart-container {
@@ -98,6 +100,7 @@ main.cart-container {
     display: flex;
     max-width: 33%;
     top: 1.5rem;
+    margin-right: 2rem;
     flex-direction: column; 
     align-items: center; 
     gap: 2rem; 
